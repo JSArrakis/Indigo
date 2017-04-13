@@ -1,0 +1,105 @@
+{
+    "RecordsReady": 9290
+    "RecordsNotReady": 2492
+
+    "RecordPotentialReady": 11699
+    "RecordPotentialNotReady": 83
+
+    "FoundationBeforeSegmentable": 0
+    "FoundationBeforeProspectable": 9291
+    "FoundationBeforeResearchable": 2491
+    "FoundationBeforeUnusable": 0
+
+    "FoundationAfterSegmentable": 10320
+    "FoundationAfterProspectable": 1405
+    "FoundationAfterResearchable": 0
+    "FoundationAfterRemove": 
+
+    "DomainsSupplied": 0
+    "DomainsBlank": 11782
+
+    "DomainsGood": 0
+    "DomainsBad": 0
+
+    "CorrectedDomainUsable": 11741
+    "CorrectedDomainNoWebsite": 41
+
+    "CorrectedDomainGood": 0
+    "CorrectedDomainFilled": 10364
+    "CorrectedDomains": 
+
+    "CompanyNameAnalysisHigh": 8180
+    "CompanyNameAnalysisMedium": 1922
+    "CompanyNameAnalysisLow": 1143
+    "CompanyNameAnalysisNone": 537
+
+    "SocialSample": 11782
+    "SocialFirmagraphics": 0
+    "SocialLinkedin": 0
+    "SocialFacebook": 0
+    "SocialTwitter": 0
+    "SocialTotal": 10320
+
+    "ContactSample": 11693
+    "ContactEmails": 10904
+    "ContactPhones": 10840
+    "ContactAddresses": 10330
+    "ContactTitles": 3262
+    "ContactSocial": 7973
+    "ContactEffected": 115
+
+    "WebsiteContactsTotal": 3262
+    "WebsiteContactsFilled": 2800
+
+    "BeforeDeptExec": 1022
+    "BeforeDeptSales": 319
+    "BeforeDeptMarketing": 1332
+    "BeforeDeptFinance": 1148
+    "BeforeDeptIT": 3177
+    "BeforeDeptLegal": 130
+    "BeforeDeptAdmin": 36
+    "BeforeDeptCommunications": 129
+    "BeforeDeptDeveloper": 16
+    "BeforeDeptCustomerService": 296
+    "BeforeDeptHumanResources": 65
+    "BeforeDeptOperations": 242
+    "BeforeDeptPR": 51
+    "BeforeDeptStrategy": 22
+    "BeforeDeptOther": 3797
+
+    "BeforeTitleBoard": 1262
+    "BeforeTitleSVP": 139
+    "BeforeTitlePresident": 1184
+    "BeforeTitleVP": 271
+    "BeforeTitleDirector": 2686
+    "BeforeTitleManager": 5872
+    "BeforeTitleStaff": 2
+    "BeforeTitleAdmin": 1
+    "BeforeTitleOther": 0
+
+    "AfterDeptExec": 10396
+    "AfterDeptSales": 2532
+    "AfterDeptMarketing": 3210
+    "AfterDeptFinance": 1473
+    "AfterDeptIT": 615
+    "AfterDeptLegal": 236
+    "AfterDeptAdmin": 522
+    "AfterDeptCommunications": 237
+    "AfterDeptDeveloper": 18
+    "AfterDeptCustomerService": 479
+    "AfterDeptHumanResources": 367
+    "AfterDeptOperations": 2485
+    "AfterDeptPR": 158
+    "AfterDeptStrategy": 71
+    "AfterDeptOther": 8886
+
+    "AfterTitleBoard": 11478
+    "AfterTitleSVP": 1073
+    "AfterTitlePresident": 143
+    "AfterTitleVP": 1687
+    "AfterTitleDirector": 1643
+    "AfterTitleManager": 13513
+    "AfterTitleStaff": 212
+    "AfterTitleAdmin": 15
+    "AfterTitleOther": 40
+}

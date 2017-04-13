@@ -1,0 +1,418 @@
+﻿<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+    <title>Indigo</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-switch.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/jquery-1.12.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/d3pie.min.js"></script>
+    <script src="js/Donut3D.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+
+
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-custom navbar-static-top" role="navigation">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="color:#FFF; padding:7px"><img src="imgs/ringlead-logo.png" /></a>
+            <div class="navbar-header navbar-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="test.htm" style="color:#FFF;">Home</a></li>
+                    <li><a href="test.htm" style="color:#FFF;">About</a></li>
+                    <li><a href="test.htm" style="color:#FFF;">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div id="testChart" class="col-md-4"></div>
+            <div id="testGraph" class="col-md-4"></div>
+            <div id="testPie" class="col-md-4"></div>
+        </div>
+    </div>
+    <footer class="footer-custom">
+        <div class="container-fluid">
+            &copy; Ringlead, Inc.
+        </div>
+    </footer>
+    <script>
+
+        
+
+        var data = {
+            labels: [
+              'Sales', 'Marketing', 'Finance',
+              'IT', 'Legal', 'Admin',
+              'Content', 'Communications', 'Developer',
+              'Customer Service'
+            ],
+            series: [
+              {
+                  label: 'Provided',
+                  values: [2000, 100, 3000, 4600, 798, 200, 1030, 2030, 1431, 2302]
+              },
+              {
+                  label: 'Enchanced',
+                  values: [764, 289, 491, 100, 315, 1080, 260, 92, 301, 254]
+              }
+            ]
+        };
+            
+        var spaceForLegend = 110;
+            chartWidth = $("#testGraph").width() - spaceForLegend,
+            barHeight = 13,
+            groupHeight = barHeight * data.series.length,
+            gapBetweenGroups = 3
+            
+
+        // Zip the series data together (first values, second values, etc.)
+        var zippedData = [];
+        for (var i = 0; i < data.labels.length; i++) {
+            for (var j = 0; j < data.series.length; j++) {
+                zippedData.push(data.series[j].values[i]);
+            }
+        }
+
+
+        // Color scale
+        var color = d3.scale.ordinal()
+                 .range(["#ed4949", "#289ea8"]);
+        var chartHeight = 600;
+
+        var x = d3.scale.linear()
+            .domain([0, d3.max(zippedData)])
+            .range([0, chartWidth]);
+
+        var y = d3.scale.linear()
+            .range([chartHeight + gapBetweenGroups, 0]);
+
+        //var xAxis = d3.svg.axis()
+        //    .scale(x)
+        //    .tickFormat('')
+        //    .tickSize(12);
+
+        //var yAxis = d3.svg.axis()
+        //    .scale(y)
+        //    .tickFormat('')
+        //    .tickSize(12)
+        //    .orient("right");
+
+        // Specify the chart area and dimensions
+        var chart = d3.select("#testGraph").
+            append("svg")
+            .attr("width", chartWidth + spaceForLegend)
+            .attr("height", chartHeight)
+            .append("g")
+            .attr("transform", "translate(0, 1)");
+
+        // Create bars
+        var bar = chart.selectAll("g")
+            .data(zippedData)
+            .enter().append("g")
+            .attr("transform", function (d, i) {
+                return "translate(" + 0 + "," + (i * barHeight + gapBetweenGroups * (0.5 + Math.floor(i / data.series.length))) + ")";
+            });
+
+        // Create rectangles of the correct width
+        bar.append("rect")
+            .attr("fill", function (d, i) { return color(i % data.series.length); })
+            .attr("class", "bar")
+            .attr("width", x)
+            .attr("height", barHeight - 1);
+
+        // Add text label in bar
+        //bar.append("text")
+        //    .attr("x", function (d) { return x(d) - 3; })
+        //    .attr("y", barHeight / 2)
+        //    .attr("fill", "red")
+        //    .attr("dy", ".35em")
+        //    .text(function (d) { return d; });
+
+        // Draw labels
+        //bar.append("text")
+        //    .attr("class", "label")
+        //    .attr("x", function (d) { return -10; })
+        //    .attr("y", groupHeight / 2)
+        //    .attr("dy", ".35em")
+        //    .text(function (d, i) {
+        //        if (i % data.series.length === 0)
+        //            return data.labels[Math.floor(i / data.series.length)];
+        //        else
+        //            return ""
+        //    });
+
+        //chart.append("g")
+        //      .attr("class", "y axis")
+        //      .attr("transform", "translate(" + spaceForLabels + ", " + -gapBetweenGroups / 2 + ")")
+        //      .call(yAxis);
+
+        //chart.append("g")
+        //    .attr("class", "x axis")
+        //    .call(xAxis);
+
+        // Draw legend
+        var legendRectSize = 10,
+            legendSpacing = 6;
+
+        var legend = chart.selectAll('.legend')
+            .data(data.series)
+            .enter()
+            .append('g')
+            .attr('transform', function (d, i) {
+                var height = legendRectSize + legendSpacing;
+                var offset = -gapBetweenGroups / 2;
+                var horz = chartWidth + 40 - legendRectSize;
+                var vert = i * height - offset;
+                return 'translate(' + horz + ',' + vert + ')';
+            })
+            
+        legend.append('rect')
+            .attr('width', legendRectSize)
+            .attr('height', legendRectSize)
+            .attr('rx', '3')
+            .attr('ry', '3')
+            .style('fill', function (d, i) { return color(i); })
+            .style('stroke', function (d, i) { return color(i); });
+
+        legend.append('text')
+            .attr('class', 'legend')
+            .attr('x', legendRectSize + legendSpacing)
+            .attr('y', legendRectSize - legendSpacing + 5)
+            .text(function (d) { return d.label; });
+
+        var key = function (d) { return d.data.label; };
+        var tableKey = function (d) { return d.label; };
+
+        var pie = d3.layout.pie()
+            .sort(null)
+            .value(function (d) {
+                return d.value;
+            });
+
+        var titleCountColor = d3.scale.ordinal()
+                .domain(["Sales", "Marketing", "Finance", "IT", "Legal", "Admin", "Content", "Communications", "Developer", "Customer Service"])
+                .range(["#98abc5", "#289ea8", "#7b6888", "#ed4949", "#77d668", "#6B486B", "#ff8c00", "#17c89e", "#98abc5", "#6f7a79"]);
+
+        var titleCountDataObj = {
+            Sales: 677,
+            Marketing: 639,
+            Finance: 30,
+            IT: 779,
+            Legal: 916,
+            Admin: 667,
+            Content: 639,
+            Communications: 30,
+            Developer: 779,
+            CustService: 916
+        }
+
+        var titleCountData = [
+            { label: "Sales", value: titleCountDataObj.Sales },
+            { label: "Marketing", value: titleCountDataObj.Marketing },
+            { label: "Finance", value: titleCountDataObj.Finance },
+            { label: "IT", value: titleCountDataObj.IT },
+            { label: "Legal", value: titleCountDataObj.Legal },
+            { label: "Admin", value: titleCountDataObj.Admin },
+            { label: "Content", value: titleCountDataObj.Content },
+            { label: "Communications", value: titleCountDataObj.Communications },
+            { label: "Developer", value: titleCountDataObj.Developer },
+            { label: "Customer Service", value: titleCountDataObj.CustService },
+
+        ];
+
+        var customSize = {
+            arc: {
+                innerRadius: 0.65,
+                outerRadius: 0.8
+            },
+            outerArc: {
+                innerRadius: 0.85,
+                outerRadius: 0.85
+            }
+        }
+
+        createSimpleTable(titleCountData, "#testChart", titleCountColor);
+
+        createStandardPie(titleCountData, "#testPie", titleCountColor, "", customSize, "#testChart");
+
+        function createSimpleTable(data, target, color) {
+
+            var table = d3.select(target)
+                .append("table")
+                .attr("class", "table");
+
+            var tbody = table.append("tbody");
+
+            for (var i = 0; i < data.length; i++) {
+                var row = tbody.append("tr");
+
+                row
+                .append("th")
+                .html(data[i].label)
+                .append("div")
+                .attr("class", "key")
+                .style("background", color(data[i].label));
+
+                row
+                .append("td")
+                .html(data[i].value);
+
+            }
+        }
+
+        function createMultiDataTable(data, target, color, fieldArray) {
+
+            var table = d3.select(target)
+                .append("table")
+                .attr("class", "table");
+
+            var tbody = table.append("tbody");
+
+            for (var i = 0; i < data.length; i++) {
+                var row = tbody.append("tr");
+
+                row
+                .append("th")
+                .html(data[i].label)
+                .append("div")
+                .attr("class", "key")
+                .style("background", color(data[i].label));
+
+                for (var j = 0; j < fieldArray.length; j++) {
+                    row
+                    .append("td")
+                    .html(data[i].value);
+                }
+            }
+        }
+
+        function createStandardPie(data, target, color, title, size, heightMatch) {
+
+
+
+            if (heightMatch !== null) {
+                $(target).css("height", $(heightMatch).height());
+            } else {
+                $(target).css("height", $(target).width());
+            }
+
+            var radius = Math.min($(target).width(), $(target).height()) / 2;
+
+            var arc = d3.svg.arc()
+            .outerRadius(radius * size.arc.outerRadius)
+            .innerRadius(radius * size.arc.innerRadius);
+
+            var outerArc = d3.svg.arc()
+            .outerRadius(radius * size.outerArc.outerRadius)
+            .innerRadius(radius * size.outerArc.innerRadius);
+
+            var element = d3.select(target)
+            .style("height", $(target).width())
+            .append("svg")
+            .append("g");
+
+            element.append("g")
+                .attr("class", "slices");
+            element.append("g")
+                .attr("class", "labels");
+            element.append("g")
+                .attr("class", "title");
+            element
+                .attr("transform", "translate(" + $(target).width() / 2 + "," + $(target).height() / 2 + ")");
+
+            element.select(".title")
+            .append("text")
+            .text(title)
+            .attr("text-anchor", "middle")
+            .attr("fill", "#5f5f5f")
+            .attr("transform", "translate(" + 0 + "," + 7 + ")")
+            .style("font-size", "20px")
+            .style("font-family", "helvetica");
+
+            var denominator = 0;
+
+            for (i = 0; i < data.length; i++) {
+                denominator = denominator + data[i].value;
+            }
+
+            /* ------- PIE SLICES -------*/
+            var slice = element.select(".slices").selectAll("path.slice")
+                .data(pie(data), key);
+
+            slice.enter()
+                .insert("path")
+                .style("fill", function (d) { return color(d.data.label); })
+                .attr("class", "slice");
+
+            slice
+                .transition().duration(1000)
+                .attrTween("d", function (d) {
+                    this._current = this._current || d;
+                    var interpolate = d3.interpolate(this._current, d);
+                    this._current = interpolate(0);
+                    return function (t) {
+                        return arc(interpolate(t));
+                    };
+                })
+
+            slice.exit()
+                .remove();
+
+            /* ------- TEXT LABELS -------*/
+            var text = element.select(".labels").selectAll("text")
+                .data(pie(data), key);
+
+            text.enter()
+                .append("text")
+                .attr("dy", ".35em")
+                .text(function (d) {
+                    if (d.data.label !== "Blank") {
+                        if (d.data.value === 0) {
+                            return "";
+                        } else {
+                            return Math.round((d.data.value / denominator) * 100) + "%";
+                        }
+                    } else {
+                        return "";
+                    }
+
+                });
+
+            function midAngle(d) {
+                return d.startAngle + (d.endAngle - d.startAngle) / 2;
+            }
+
+            text.transition().duration(1000)
+                .attrTween("transform", function (d) {
+                    this._current = this._current || d;
+                    var interpolate = d3.interpolate(this._current, d);
+                    this._current = interpolate(0);
+                    return function (t) {
+
+                        var d2 = interpolate(t);
+                        var pos = outerArc.centroid(d2);
+                        return "translate(" + pos + ")";
+                    };
+                })
+                .styleTween("text-anchor", function (d) {
+                    this._current = this._current || d;
+                    var interpolate = d3.interpolate(this._current, d);
+                    this._current = interpolate(0);
+                    return function (t) {
+                        var d2 = interpolate(t);
+                        return midAngle(d2) < Math.PI ? "start" : "end";
+                    };
+                });
+
+            text.exit()
+                .remove();
+
+        };
+    </script>
+</body>
+</html>

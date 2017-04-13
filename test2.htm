@@ -1,0 +1,1036 @@
+﻿<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+    <title>Indigo</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-switch.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/jquery-1.12.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/d3pie.min.js"></script>
+    <script src="js/Donut3D.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+
+
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-custom navbar-static-top" role="navigation">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="color:#FFF; padding:7px"><img src="imgs/ringlead-logo.png" /></a>
+            <div class="navbar-header navbar-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="test.htm" style="color:#FFF;">Home</a></li>
+                    <li><a href="test.htm" style="color:#FFF;">About</a></li>
+                    <li><a href="test.htm" style="color:#FFF;">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="col-md-8 col-md-offset-3 no-padding">
+            <input type="checkbox" name="normalizeSwitch" />
+            <input type="checkbox" name="urlSwitch" />
+            <input type="checkbox" name="companySwitch" />
+            <input type="checkbox" name="firmaSwitch" />
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="foundationBefore" class="col-md-6 no-padding" style="height:450px"></div>
+        <div id="foundationAfter" class="col-md-6 no-padding" style="height:450px"></div>
+    </div>
+    <div class="container">
+        <div class="row table-section"><div class="col-md-12 table-section no-margin"><h4 class="no-margin vert-center">Data Foundation</h4></div></div>
+    </div>
+    <div class="container no-padding">
+        <div class="col-md-12" style="margin:5px;">
+            <div class="pull-right">
+                <input type="checkbox" name="urlLocalSwitch" />
+                <input type="checkbox" name="companyLocalSwitch" />
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr>
+                    <th>Sample records provided</th>
+                    <th id="sampleSize"></th>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr><td></td><td></td></tr>
+                <tr>
+                    <th>Domains</th>
+                    <th id="domainCount"></th>
+                    <td> </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Correct</td>
+                    <td id="correctDomains"></td>
+                    <td> </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Bad</td>
+                    <td id="badDomains"></td>
+                    <td> </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Parked</td>
+                    <td id="parkedDomains"></td>
+                    <td> </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Filled</td>
+                    <td id="filledDomains"></td>
+                    <td> </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Duplicate</td>
+                    <td id="duplicateDomains"></td>
+                    <td> </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Usable</td>
+                    <td id="usableDomains"></td>
+                    <td> </td>
+                    <td></td>
+                </tr>
+                <tr><td></td><td></td></tr>
+                <tr>
+                    <th>Company names</th>
+                    <th id="companyNames"></th>
+                    <td> </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Correct</td>
+                    <td id="correctCompanies"></td>
+                    <td> </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Incorrect/Fixed</td>
+                    <td id="fixedCompanies"></td>
+                    <td> </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>No website</td>
+                    <td id="noWebsite"></td>
+                    <td> </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Usable</td>
+                    <td id="usableCompanies"></td>
+                    <td> </td>
+                    <td></td>
+                </tr>
+                <tr><td></td><td></td></tr>
+                <tr>
+                    <th>Data readiness</th>
+                    <th id="dataReadiness"></th>
+                    <td> </td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <div id="dataFoundationDomains" style="margin-top:100px">
+                <div id="correctDomainsGraph" class="domainChart"></div>
+                <div id="badDomainsGraph" class="domainChart"></div>
+                <div id="parkedDomainsGraph" class="domainChart"></div>
+                <div id="filledDomainsGraph" class="domainChart"></div>
+                <div id="duplicateDomainsGraph" class="domainChart"></div>
+                <div id="usableDomainsGraph" class="domainChart"></div>
+            </div>
+            <div id="dataFoundationCompanyNames" style="margin-top:67px">
+                <div id="correctCompaniesGraph" class="companyChart"></div>
+                <div id="fixedCompaniesGraph" class="companyChart"></div>
+                <div id="noWebsiteGraph" class="companyChart"></div>
+                <div id="usableCompaniesGraph" class="companyChart"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var aeCount = 79;
+        var x = d3.scale.linear()
+        .domain([0, 100])
+        .range([0, 486]);
+        var y = d3.scale.linear()
+        .domain([0, aeCount])
+        .range([0, 486]);
+        var sampleSize = 100;
+        var domainCount = 100;
+        var companyNames = 100;
+        var domainGraphData = {
+            correctDomains: 62,
+            badDomains: 36,
+            parkedDomains: 2,
+            filledDomains: 0,
+            duplicateDomains: 0,
+            usableDomains: 0
+        }
+
+        d3.select("#sampleSize").text(sampleSize);
+        d3.select("#domainCount").text(domainCount);
+
+        function updateDataGraph(data) {
+            for (var key in data) {
+                d3.select("#" + key).text(data[key]);
+            }
+
+            for (var key in data) {
+                d3.select("#" + key + "Graph").transition().duration(1000).style("width", x(data[key]) + "px").text(data[key]);
+            }
+
+        }
+
+        function updateAccountGraph(data) {
+            for (var key in data) {
+                d3.select("#" + key).text(data[key]);
+            }
+
+            for (var key in data) {
+                if (data[key] !== 0) {
+                    d3.select("#" + key + "Percent").text(Math.round((data[key] / aeCount) * 100) + "%");
+                } else {
+                    d3.select("#" + key + "Percent").text("");
+                }
+
+            }
+
+            for (var key in data) {
+                d3.select("#" + key + "Graph").transition().duration(1000).style("width", y(data[key]) + "px").text(data[key]);
+            }
+
+        }
+
+        updateDataGraph(domainGraphData);
+
+        var newDomainGraphData = {
+            correctDomains: 62,
+            badDomains: 36,
+            parkedDomains: 2,
+            filledDomains: 18,
+            duplicateDomains: 1,
+            usableDomains: 79
+        }
+
+        var companyNames = 100;
+        var companyGraphData = {
+            correctCompanies: 0,
+            fixedCompanies: 0,
+            noWebsite: 20,
+            usableCompanies: 0
+        }
+        var newCompanyGraphData = {
+            correctCompanies: 48,
+            fixedCompanies: 32,
+            noWebsite: 20,
+            usableCompanies: 80
+        }
+        var startCompanyGraphData = {
+            correctCompanies: 0,
+            fixedCompanies: 0,
+            noWebsite: 0,
+            usableCompanies: 0
+        }
+        updateDataGraph(startCompanyGraphData);
+    </script>
+    <div class="container">
+        <div class="row table-section"><div class="col-md-12 table-section no-margin"><h4 class="no-margin vert-center">Account Enhancement</h4></div></div>
+    </div>
+    <div class="container no-padding">
+        <div class="col-md-12" style="margin:5px;">
+            <div class="pull-right">
+                <input type="checkbox" name="firmaLocalSwitch" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr>
+                    <th>Append</th>
+                    <th>Sample</th>
+                    <th>Filled</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>Firmographics</td>
+                    <td class="aeCount"></td>
+                    <td id="aeFirma"></td>
+                    <td id="aeFirmaPercent"></td>
+                </tr>
+                <tr>
+                    <td>LinkedIn</td>
+                    <td class="aeCount"></td>
+                    <td id="aeLinkedIn"></td>
+                    <td id="aeLinkedInPercent"></td>
+                </tr>
+                <tr>
+                    <td>Facebook</td>
+                    <td class="aeCount"></td>
+                    <td id="aeFacebook"></td>
+                    <td id="aeFacebookPercent"></td>
+                </tr>
+                <tr>
+                    <td>Twitter</td>
+                    <td class="aeCount"></td>
+                    <td id="aeTwitter"></td>
+                    <td id="aeTwitterPercent"></td>
+                </tr>
+                <tr>
+                    <th>Total Enahnced</th>
+                    <td class="aeCount"></td>
+                    <td id="aeTotal"></td>
+                    <td id="aeTotalPercent"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <div id="accountEnhancement" style="margin-top:44px">
+                <div id="aeFirmaGraph" class="accountChart"></div>
+                <div id="aeLinkedInGraph" class="accountChart"></div>
+                <div id="aeFacebookGraph" class="accountChart"></div>
+                <div id="aeTwitterGraph" class="accountChart"></div>
+                <div id="aeTotalGraph" class="accountChart"></div>
+            </div>
+        </div>
+        <script>
+
+            var startAEGraphData = {
+                aeFirma: 0,
+                aeLinkedIn: 0,
+                aeFacebook: 0,
+                aeTwitter: 0,
+                aeTotal: 0
+            }
+            var aeGraphData = {
+                aeFirma: 69,
+                aeLinkedIn: 34,
+                aeFacebook: 34,
+                aeTwitter: 5,
+                aeTotal: 72
+            }
+            updateDataGraph(startAEGraphData);
+        </script>
+    </div>
+    <div class="container">
+        <div class="row table-section"><div class="col-md-12 table-section no-margin"><h4 class="no-margin vert-center">Contact Enhancement</h4></div></div>
+    </div>
+    <div class="container no-padding">
+        <div class="col-md-12">
+            <table class="table">
+                <tr>
+                    <th></th>
+                    <th>Count</th>
+                    <th>Average</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>Unique websites</td>
+                    <td id="uniqueWebsites"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Websites with contacts</td>
+                    <td id="websiteContacts"></td>
+                    <td id="websiteContactsPercent"></td>
+                    <td>Percent Filled</td>
+                </tr>
+                <tr>
+                    <td>Total contacts</td>
+                    <td id="totalContacts"></td>
+                    <td id="totalContactsAverage"></td>
+                    <td>Contacts per company</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-custom">
+        <div class="container-fluid">
+            &copy; Ringlead, Inc.
+        </div>
+    </footer>
+    <!-- Footer End -->
+    <!--<div class="container">
+        <div class="row table-section"><div class="col-md-12 table-section"><h4 class="no-margin vert-center">Account Data Assessment</h4></div></div>
+    </div>-->
+    <script>
+        function midPoint(coor1, coor2) {
+            return [(coor1[0]+coor2[0])/2,(coor1[1]+coor2[1])/2]
+        }
+
+        function pointDistance(coor1, coor2) {
+            return 10 < Math.sqrt(Math.pow(coor2[0] - coor1[0], 2) + Math.pow(coor2[1] - coor1[1], 2));
+        }
+
+        function lineDistance(coor1, coor2) {
+            return 11.2 < Math.sqrt(Math.pow(coor2[0] - coor1[0], 2) + Math.pow(coor2[1] - coor1[1], 2));
+        }
+
+
+        var fndBefore = d3.select("#foundationBefore")
+	        .append("svg")
+	        .append("g")
+
+        fndBefore.append("g")
+	        .attr("class", "slices");
+        fndBefore.append("g")
+	        .attr("class", "labels");
+        fndBefore.append("g")
+	        .attr("class", "lines");
+        fndBefore.append("g")
+            .attr("class", "title");
+        fndBefore.append("g")
+            .attr("class", "innerPoints");
+        fndBefore.append("g")
+            .attr("class", "outerPoints");
+
+        var fndAfter = d3.select("#foundationAfter")
+            .append("svg")
+            .append("g")
+
+        fndAfter.append("g")
+	        .attr("class", "slices");
+        fndAfter.append("g")
+	        .attr("class", "labels");
+        fndAfter.append("g")
+	        .attr("class", "lines");
+        fndAfter.append("g")
+            .attr("class", "title");
+        fndAfter.append("g")
+            .attr("class", "innerPoints");
+        fndAfter.append("g")
+            .attr("class", "outerPoints");
+
+        var width = 540,
+            height = 450,
+	        radius = Math.min(width, height) / 2;
+
+        var pie = d3.layout.pie()
+	        .sort(null)
+	        .value(function(d) {
+		        return d.value;
+	        });
+
+        var arc = d3.svg.arc()
+	        .outerRadius(radius * 0.6)
+	        .innerRadius(radius * 0.45);
+
+        var outerArc = d3.svg.arc()
+	        .innerRadius(radius * 0.7)
+	        .outerRadius(radius * 0.7);
+        fndBefore.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+        fndAfter.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+        var key = function (d) { return d.data.label; };
+
+        fndBefore.select(".title")
+            .append("text")
+            .text("Foundation")
+            .attr("text-anchor", "middle")
+            .attr("fill", "#5f5f5f")
+            .style("font-size", "25px")
+            .style("font-family", "helvetica");
+        fndBefore.select(".title")
+            .append("text")
+            .text("Before")
+            .attr("text-anchor", "middle")
+            .attr("fill", "#5f5f5f")
+            .attr("transform", "translate(" + 0 + "," + 23 + ")")
+            .style("font-size", "25px")
+            .style("font-family", "helvetica");
+
+        fndAfter.select(".title")
+            .append("text")
+            .text("Foundation")
+            .attr("text-anchor", "middle")
+            .attr("fill", "#5f5f5f")
+            .style("font-size", "25px")
+            .style("font-family", "helvetica");
+        fndAfter.select(".title")
+            .append("text")
+            .text("After")
+            .attr("text-anchor", "middle")
+            .attr("fill", "#5f5f5f")
+            .attr("transform", "translate(" + 0 + "," + 23 + ")")
+            .style("font-size", "25px")
+            .style("font-family", "helvetica");
+
+        var color = d3.scale.ordinal()
+	        .domain(["Sales+Marketing", "Marketing", "Sales", "Prospecting", "Research", "Unusable", "Remove"])
+	        .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+        var normalizeData = [
+	        { label: "Segmentable", value: 12 },
+            { label: "Researchable", value: 10 },
+	        { label: "Prospectable", value: -22 }
+        ];
+
+        var urlData = [
+            { label: "Segmentable", value: 5 },
+            { label: "Researchable", value: 5 },
+            { label: "Prospectable", value: -10 }
+        ];
+
+        var companyData= [
+            { label: "Segmentable", value: 52 },
+            { label: "Researchable", value: -52 },
+            { label: "Prospectable", value: 0 }
+        ];
+
+        var currentData = [
+            { label: "Sales+Marketing", value: 10 },
+	        { label: "Marketing", value: 20 },
+	        { label: "Sales", value: 15 },
+            { label: "Prospecting", value: 15 },
+            { label: "Research", value: 15 },
+            { label: "Unusable", value: 20 },
+            { label: "Remove", value: 5 }
+        ];
+
+        var urlToggleState = false;
+        var companyToggleState = false;
+        var firmaToggleState = false;
+
+
+        function dataChange(currentData, inputData) {
+            var newData = [];
+            for (i = 0; i < currentData.length; i++) {
+                newValue = currentData[i].value + inputData[i].value;
+                newData.push({ label: currentData[i].label, value: newValue });
+            }
+            return newData;
+        }
+
+        function dataRevert(currentData, inputData) {
+            var newData = [];
+            for (i = 0; i < currentData.length; i++) {
+                newValue = currentData[i].value - inputData[i].value;
+                newData.push({ label: currentData[i].label, value: newValue });
+            }
+            return newData;
+        }
+        change(currentData);
+
+        noChange(currentData);
+
+        $("[name='normalizeSwitch']").bootstrapSwitch({
+            onSwitchChange: function (event, state) {
+                if (state === true) {
+                    currentData = dataChange(currentData, normalizeData);
+                    change(currentData);
+                    $("[name='urlSwitch']").bootstrapSwitch('toggleDisabled');
+                    $("[name='urlLocalSwitch']").bootstrapSwitch('toggleDisabled');
+                }
+                if (state === false) {
+                    currentData = dataRevert(currentData, normalizeData);
+                    change(currentData);
+                    $("[name='urlSwitch']").bootstrapSwitch('toggleDisabled');
+                    $("[name='urlLocalSwitch']").bootstrapSwitch('toggleDisabled');
+                }
+            },
+            labelText: "Normalize"
+        });
+
+        $("[name='urlSwitch']").bootstrapSwitch({
+            disabled: true,
+            onSwitchChange: function (event, state) {
+                if (state === true) {
+                    currentData = dataChange(currentData, urlData);
+                    change(currentData);
+                    $("[name='companySwitch']").bootstrapSwitch('toggleDisabled');
+                    $("[name='companyLocalSwitch']").bootstrapSwitch('toggleDisabled');
+                    $("[name='normalizeSwitch']").bootstrapSwitch('toggleDisabled');
+                    if ($("[name='urlLocalSwitch']").bootstrapSwitch('state') === false) {
+                        $("[name='urlLocalSwitch']").bootstrapSwitch('toggleState');
+                    }
+                    updateDataGraph(newDomainGraphData);
+                    updateDataGraph(companyGraphData);
+                    $("#companyNames").html(companyNames);
+                }
+                if (state === false) {
+                    currentData = dataRevert(currentData, urlData);
+                    change(currentData);
+                    $("[name='companySwitch']").bootstrapSwitch('toggleDisabled');
+                    $("[name='companyLocalSwitch']").bootstrapSwitch('toggleDisabled');
+                    $("[name='normalizeSwitch']").bootstrapSwitch('toggleDisabled');
+                    if ($("[name='urlLocalSwitch']").bootstrapSwitch('state') === true) {
+                        $("[name='urlLocalSwitch']").bootstrapSwitch('toggleState');
+                    }
+                    updateDataGraph(domainGraphData);
+                    updateDataGraph(startCompanyGraphData);
+                    $("#companyNames").html("");
+                }
+            },
+            labelText: "URL"
+        });
+
+        $("[name='companySwitch']").bootstrapSwitch({
+            disabled: true,
+            onSwitchChange: function (event, state) {
+                if (state === true) {
+                    currentData = dataChange(currentData, companyData);
+                    change(currentData);
+                    $("[name='firmaSwitch']").bootstrapSwitch('toggleDisabled');
+                    $("[name='firmaLocalSwitch']").bootstrapSwitch('toggleDisabled');
+                    $("[name='urlSwitch']").bootstrapSwitch('toggleDisabled');
+                    $("[name='urlLocalSwitch']").bootstrapSwitch('toggleDisabled');
+                    if ($("[name='companyLocalSwitch']").bootstrapSwitch('state') === false) {
+                        $("[name='companyLocalSwitch']").bootstrapSwitch('toggleState');
+                    }
+                    updateDataGraph(newCompanyGraphData);
+                    $(".aeCount").html(aeCount);
+                    $("#uniqueWebsites").html(aeCount);
+                    $("#dataReadiness").html("79%");
+                }
+                if (state === false) {
+                    currentData = dataRevert(currentData, companyData);
+                    change(currentData);
+                    $("[name='firmaSwitch']").bootstrapSwitch('toggleDisabled');
+                    $("[name='firmaLocalSwitch']").bootstrapSwitch('toggleDisabled');
+                    $("[name='urlSwitch']").bootstrapSwitch('toggleDisabled');
+                    $("[name='urlLocalSwitch']").bootstrapSwitch('toggleDisabled');
+                    if ($("[name='companyLocalSwitch']").bootstrapSwitch('state') === true) {
+                        $("[name='companyLocalSwitch']").bootstrapSwitch('toggleState');
+                    }
+                    updateDataGraph(companyGraphData);
+                    $(".aeCount").html("");
+                    $("#uniqueWebsites").html("");
+                    $("#dataReadiness").html("");
+                }
+            },
+            labelText: "Company"
+        });
+
+        $("[name='firmaSwitch']").bootstrapSwitch({
+            disabled: true,
+            onSwitchChange: function (event, state) {
+                if (state === true) {
+                    currentData = dataChange(currentData, firmaData);
+                    change(currentData);
+                    $("[name='companySwitch']").bootstrapSwitch('toggleDisabled');
+                    $("[name='companyLocalSwitch']").bootstrapSwitch('toggleDisabled');
+                    if ($("[name='firmaLocalSwitch']").bootstrapSwitch('state') === false) {
+                        $("[name='firmaLocalSwitch']").bootstrapSwitch('toggleState');
+                    }
+                    updateAccountGraph(aeGraphData);
+                    $("#websiteContacts").html(33);
+                    $("#websiteContactsPercent").html(Math.round((33/aeCount)*100) + "%");
+                    $("#totalContacts").html(814);
+                    $("#totalContactsAverage").html(24.7);
+                }
+                if (state === false) {
+                    currentData = dataRevert(currentData, firmaData);
+                    change(currentData);
+                    $("[name='companySwitch']").bootstrapSwitch('toggleDisabled');
+                    $("[name='companyLocalSwitch']").bootstrapSwitch('toggleDisabled');
+                    if ($("[name='firmaLocalSwitch']").bootstrapSwitch('state') === true) {
+                        $("[name='firmaLocalSwitch']").bootstrapSwitch('toggleState');
+                    }
+                    updateAccountGraph(startAEGraphData);
+                    $("#websiteContacts").html("");
+                    $("#websiteContactsPercent").html("");
+                    $("#totalContacts").html("");
+                    $("#totalContactsAverage").html("");
+                }
+            },
+            labelText: "Firmographics"
+        });
+
+        $("[name='urlLocalSwitch']").bootstrapSwitch({
+            disabled: true,
+            onSwitchChange: function (event, state) {
+                if (state === true) {
+                    if ($("[name='urlSwitch']").bootstrapSwitch('state') === false) {
+                        $("[name='urlSwitch']").bootstrapSwitch('toggleState');
+                    }
+                }
+                if (state === false) {
+                    if ($("[name='urlSwitch']").bootstrapSwitch('state') === true) {
+                        $("[name='urlSwitch']").bootstrapSwitch('toggleState');
+                    }
+                }
+
+            },
+            labelText: "URL"
+        });
+
+        $("[name='companyLocalSwitch']").bootstrapSwitch({
+            disabled: true,
+            onSwitchChange: function (event, state) {
+                if (state === true) {
+                    if ($("[name='companySwitch']").bootstrapSwitch('state') === false) {
+                        $("[name='companySwitch']").bootstrapSwitch('toggleState');
+                    }
+                }
+                if (state === false) {
+                    if ($("[name='companySwitch']").bootstrapSwitch('state') === true) {
+                        $("[name='companySwitch']").bootstrapSwitch('toggleState');
+                    }
+                }
+            },
+            labelText: "Company"
+        });
+
+        $("[name='firmaLocalSwitch']").bootstrapSwitch({
+            disabled: true,
+            onSwitchChange: function (event, state) {
+                if (state === true) {
+                    if ($("[name='firmaSwitch']").bootstrapSwitch('state') === false) {
+                        $("[name='firmaSwitch']").bootstrapSwitch('toggleState');
+                    }
+                }
+                if (state === false) {
+                    if ($("[name='firmaSwitch']").bootstrapSwitch('state') === true) {
+                        $("[name='firmaSwitch']").bootstrapSwitch('toggleState');
+                    }
+                }
+            },
+            labelText: "Firmographics"
+        });
+
+        function noChange(data) {
+            var denominator = 0;
+
+            for (i = 0; i < data.length; i++) {
+                denominator = denominator + data[i].value;
+            }
+
+            /* ------- PIE SLICES -------*/
+            var slice = fndBefore.select(".slices").selectAll("path.slice")
+		        .data(pie(data), key);
+
+            slice.enter()
+		        .insert("path")
+		        .style("fill", function (d) { return color(d.data.label); })
+		        .attr("class", "slice");
+
+            slice
+		        .transition().duration(1000)
+		        .attrTween("d", function (d) {
+		            this._current = this._current || d;
+		            var interpolate = d3.interpolate(this._current, d);
+		            this._current = interpolate(0);
+		            return function (t) {
+		                return arc(interpolate(t));
+		            };
+		        })
+
+            slice.exit()
+		        .remove();
+
+            /* ------- OUTER POINTS -------*/
+            //Star Trek Timelines
+
+            var outerPoint = fndBefore.select(".outerPoints").selectAll(".outerPoint")
+               .data(pie(data), key);
+
+            outerPoint.enter()
+                .append("circle")
+                .attr('class', 'outerPoint')
+                .attr("r", "2");
+
+            outerPoint.transition().duration(1000)
+		        .attrTween("transform", function (d) {
+		            this._current = this._current || d;
+		            var interpolate = d3.interpolate(this._current, d);
+		            this._current = interpolate(0);
+		            return function (t) {
+
+		                var d2 = interpolate(t);
+		                var pos = outerArc.centroid(d2);
+		                pos[0] = radius * 0.624 * (midAngle(d2) < Math.PI ? 1 : -1);
+		                return "translate(" + pos + ")";
+		            };
+		        });
+
+            outerPoint.exit()
+                .remove();
+
+            /* ------- INNER POINTS -------*/
+            //Star Trek Timelines
+
+            var innerPoint = fndBefore.select(".innerPoints").selectAll(".innerPoint")
+               .data(pie(data), key);
+
+            innerPoint.enter()
+                .append("circle")
+                .attr('class', 'innerPoint')
+                .attr("r", "2");
+
+            innerPoint.transition().duration(1000)
+		        .attrTween("transform", function (d) {
+		            this._current = this._current || d;
+		            var interpolate = d3.interpolate(this._current, d);
+		            this._current = interpolate(0);
+		            return function (t) {
+
+		                var d2 = interpolate(t);
+		                var pos = outerArc.centroid(d2);
+		                pos[0] = radius * 0.624 * (midAngle(d2) < Math.PI ? 1 : -1);
+		                if (pointDistance(midPoint(midPoint(arc.centroid(d2), outerArc.centroid(d2)), outerArc.centroid(d2)), pos)) {
+		                    return "translate(" + midPoint(midPoint(arc.centroid(d2), outerArc.centroid(d2)), outerArc.centroid(d2)) + ")";
+		                } else {
+		                    return "translate(" + pos + ")";
+		                }
+		            };
+		        });
+
+            innerPoint.exit()
+                .remove();
+
+            /* ------- TEXT LABELS -------*/
+            var text = fndBefore.select(".labels").selectAll("text")
+		        .data(pie(data), key);
+
+            text.enter()
+		        .append("text")
+		        .attr("dy", ".35em")
+		        .text(function (d) {
+		            return d.data.label + " " + Math.round((d.data.value / denominator) * 100) + "%";
+		        });
+
+            function midAngle(d) {
+                return d.startAngle + (d.endAngle - d.startAngle) / 2;
+            }
+
+            text.transition().duration(1000)
+		        .attrTween("transform", function (d) {
+		            this._current = this._current || d;
+		            var interpolate = d3.interpolate(this._current, d);
+		            this._current = interpolate(0);
+		            return function (t) {
+
+		                var d2 = interpolate(t);
+		                var pos = outerArc.centroid(d2);
+		                pos[0] = radius * 0.65 * (midAngle(d2) < Math.PI ? 1 : -1);
+		                return "translate(" + pos + ")";
+		            };
+		        })
+		        .styleTween("text-anchor", function (d) {
+		            this._current = this._current || d;
+		            var interpolate = d3.interpolate(this._current, d);
+		            this._current = interpolate(0);
+		            return function (t) {
+		                var d2 = interpolate(t);
+		                return midAngle(d2) < Math.PI ? "start" : "end";
+		            };
+		        });
+
+            text.exit()
+		        .remove();
+
+            /* ------- SLICE TO TEXT POLYLINES -------*/
+
+            var polyline = fndBefore.select(".lines").selectAll("polyline")
+		        .data(pie(data), key);
+
+            polyline.enter()
+		        .append("polyline");
+
+            polyline.transition().duration(1000)
+		        .attrTween("points", function (d) {
+		            this._current = this._current || d;
+		            var interpolate = d3.interpolate(this._current, d);
+		            this._current = interpolate(0);
+		            return function (t) {
+		                var d2 = interpolate(t);
+		                var pos = outerArc.centroid(d2);
+		                pos[0] = radius * 0.63 * (midAngle(d2) < Math.PI ? 1 : -1);
+		                if (lineDistance(midPoint(midPoint(arc.centroid(d2), outerArc.centroid(d2)), outerArc.centroid(d2)), pos)) {
+		                    return [midPoint(midPoint(arc.centroid(d2), outerArc.centroid(d2)), outerArc.centroid(d2)), pos];
+		                } else {
+		                    return [pos, pos];
+		                }
+		            };
+		        });
+
+            polyline.exit()
+		        .remove();
+
+        };
+
+
+        function change(data) {
+            var denominator = 0;
+
+            for (i = 0; i < data.length; i++)
+            {
+                denominator = denominator + data[i].value;
+            }
+
+            /* ------- PIE SLICES -------*/
+
+            var slice = fndAfter.select(".slices").selectAll("path.slice")
+		        .data(pie(data), key);
+
+	        slice.enter()
+		        .insert("path")
+		        .style("fill", function(d) { return color(d.data.label); })
+		        .attr("class", "slice");
+
+	        slice
+		        .transition().duration(1000)
+		        .attrTween("d", function(d) {
+			        this._current = this._current || d;
+			        var interpolate = d3.interpolate(this._current, d);
+			        this._current = interpolate(0);
+			        return function(t) {
+				        return arc(interpolate(t));
+			        };
+		        })
+
+	        slice.exit()
+		        .remove();
+
+            /* ------- OUTER POINTS -------*/
+            //Star Trek Timelines
+
+	        var outerPoint = fndAfter.select(".outerPoints").selectAll(".outerPoint")
+               .data(pie(data), key);
+
+	        outerPoint.enter()
+                .append("circle")
+                .attr('class', 'outerPoint')
+                .attr("r", "2");
+
+	        outerPoint.transition().duration(1000)
+		        .attrTween("transform", function (d) {
+		            this._current = this._current || d;
+		            var interpolate = d3.interpolate(this._current, d);
+		            this._current = interpolate(0);
+		            return function (t) {
+
+		                var d2 = interpolate(t);
+		                var pos = outerArc.centroid(d2);
+		                pos[0] = radius * 0.624 * (midAngle(d2) < Math.PI ? 1 : -1);
+		                return "translate(" + pos + ")";
+		            };
+		        });
+
+	        outerPoint.exit()
+                .remove();
+
+            /* ------- INNER POINTS -------*/
+            //Star Trek Timelines
+
+            var innerPoint = fndAfter.select(".innerPoints").selectAll(".innerPoint")
+               .data(pie(data), key);
+
+            innerPoint.enter()
+                .append("circle")
+                .attr('class', 'innerPoint')
+                .attr("r", "2");
+
+            innerPoint.transition().duration(1000)
+		        .attrTween("transform", function (d) {
+		            this._current = this._current || d;
+		            var interpolate = d3.interpolate(this._current, d);
+		            this._current = interpolate(0);
+		            return function (t) {
+		                var d2 = interpolate(t);
+		                var pos = outerArc.centroid(d2);
+		                pos[0] = radius * 0.624 * (midAngle(d2) < Math.PI ? 1 : -1);
+		                if (pointDistance(midPoint(midPoint(arc.centroid(d2), outerArc.centroid(d2)), outerArc.centroid(d2)), pos)) {
+		                    return "translate(" + midPoint(midPoint(arc.centroid(d2), outerArc.centroid(d2)), outerArc.centroid(d2)) + ")";
+		                } else {
+		                    return "translate(" + pos + ")";
+		                }
+
+		            };
+		        });
+
+            innerPoint.exit()
+                .remove();
+
+            /* ------- TEXT LABELS -------*/
+	        var text = fndAfter.select(".labels").selectAll("text")
+		        .data(pie(data), key);
+
+	        text.enter()
+		        .append("text")
+		        .attr("dy", ".35em")
+		        .text(function (d) {
+		            return d.data.label + " " + Math.round((d.data.value / denominator) * 100) + "%";
+		        });
+
+	        function midAngle(d) {
+	            return d.startAngle + (d.endAngle - d.startAngle) / 2;
+	        }
+
+	        text.transition().duration(1000)
+		        .attrTween("transform", function (d) {
+		            this._current = this._current || d;
+		            var interpolate = d3.interpolate(this._current, d);
+		            this._current = interpolate(0);
+		            return function (t) {
+
+		                var d2 = interpolate(t);
+		                var pos = outerArc.centroid(d2);
+		                pos[0] = radius * 0.65 * (midAngle(d2) < Math.PI ? 1 : -1);
+		                return "translate(" + pos + ")";
+		            };
+		        })
+		        .styleTween("text-anchor", function (d) {
+		            this._current = this._current || d;
+		            var interpolate = d3.interpolate(this._current, d);
+		            this._current = interpolate(0);
+		            return function (t) {
+		                var d2 = interpolate(t);
+		                return midAngle(d2) < Math.PI ? "start" : "end";
+		            };
+		        }).text(function (d) {
+		            return d.data.label + " " + Math.round((d.data.value / denominator) * 100) + "%"
+		        });
+
+	        text.exit()
+		        .remove();
+
+            /* ------- SLICE TO TEXT POLYLINES -------*/
+
+	        var polyline = fndAfter.select(".lines").selectAll("polyline")
+		        .data(pie(data), key);
+
+	        polyline.enter()
+		        .append("polyline");
+
+	        polyline.transition().duration(1000)
+		        .attrTween("points", function (d) {
+		            this._current = this._current || d;
+		            var interpolate = d3.interpolate(this._current, d);
+		            this._current = interpolate(0);
+		            return function (t) {
+		                var d2 = interpolate(t);
+		                var pos = outerArc.centroid(d2);
+		                pos[0] = radius * 0.63 * (midAngle(d2) < Math.PI ? 1 : -1);
+		                if (lineDistance(midPoint(midPoint(arc.centroid(d2), outerArc.centroid(d2)), outerArc.centroid(d2)), pos)) {
+		                    return [midPoint(midPoint(arc.centroid(d2), outerArc.centroid(d2)), outerArc.centroid(d2)), pos];
+		                } else {
+		                    return [pos, pos];
+		                }
+		            };
+		        });
+
+	        polyline.exit()
+		        .remove();
+
+        };
+
+
+    </script>
+</body>
+</html>

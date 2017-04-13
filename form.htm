@@ -1,0 +1,588 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Indigo</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-switch.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/jquery-1.12.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-custom navbar-static-top" role="navigation">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="color:#FFF; padding:7px"><img src="imgs/ringlead-logo.png" /></a>
+            <div class="navbar-header navbar-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="test.htm" style="color:#FFF;">Home</a></li>
+                    <li><a href="test.htm" style="color:#FFF;">About</a></li>
+                    <li><a href="test.htm" style="color:#FFF;">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <form action="myprocessingscript.php" method="post">
+        <div class="container">
+            <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
+                <div class="col-md-5"></div>
+                <div class="col-md-2">
+                    <div style="text-align:center">Company Name</div>
+                    <input name="CompanyName" type="text" />
+                    <div style="text-align:right">* required</div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12 table-section"><h4 class="no-margin vert-center">Data Foundation</h4></div></div>
+            <div class="col-md-6">
+                <div class="col-md-2"></div><div class="col-md-10"><div class="table-subsection no-margin"><h4 class="vert-center">Record Readiness</h4></div></div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Ready</div>
+                        <input name="RecordsReady" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Not Ready</div>
+                        <input name="RecordsNotReady" type="text" value=0 />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-10"><div class="table-subsection no-margin"><h4 class="vert-center">Record Potential</h4></div></div><div class="col-md-2"></div>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Ready</div>
+                        <input name="RecordPotentialReady" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Not Ready</div>
+                        <input name="RecordPotentialNotReady" type="text" value=0 />
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-2"></div><div class="col-md-10"><div class="table-subsection no-margin"><h4 class="vert-center">Foundation Before</h4></div></div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Segmentable</div>
+                        <input name="FoundationBeforeSegmentable" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Prospectable</div>
+                        <input name="FoundationBeforeProspectable" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Researchable</div>
+                        <input name="FoundationBeforeResearchable" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Unusable</div>
+                        <input name="FoundationBeforeUnusable" type="text" value=0 />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-10"><div class="table-subsection no-margin"><h4 class="vert-center">Foundation After</h4></div></div><div class="col-md-2"></div>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Segmentable</div>
+                        <input name="FoundationAfterSegmentable" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Prospectable</div>
+                        <input name="FoundationAfterProspectable" type="text" value=0 />
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Researchable</div>
+                        <input name="FoundationAfterResearchable" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Remove</div>
+                        <input name="FoundationAfterRemove" type="text" value=0 />
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12 table-section"><h4 class="no-margin vert-center">Websites</h4></div></div>
+            <div class="col-md-6">
+                <div class="col-md-2"></div><div class="col-md-10"><div class="table-subsection no-margin"><h4 class="vert-center">Starting Sample</h4></div></div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Supplied</div>
+                        <input name="DomainsSupplied" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Blank</div>
+                        <input name="DomainsBlank" type="text" value=0 />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-10"><div class="table-subsection no-margin"><h4 class="vert-center">Starting Sample - Analysis</h4></div></div><div class="col-md-2"></div>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Good</div>
+                        <input name="DomainsGood" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Bad</div>
+                        <input name="DomainsBad" type="text" value=0 />
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-2"></div><div class="col-md-10"><div class="table-subsection no-margin"><h4 class="vert-center">Corrected</h4></div></div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Usable</div>
+                        <input name="CorrectedDomainUsable" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>No Website</div>
+                        <input name="CorrectedDomainNoWebsite" type="text" value=0 />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-10"><div class="table-subsection no-margin"><h4 class="vert-center">Correction - Analysis</h4></div></div><div class="col-md-2"></div>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Good</div>
+                        <input name="CorrectedDomainGood" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Filled</div>
+                        <input name="CorrectedDomainFilled" type="text" value=0 />
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Corrected</div>
+                        <input name="CorrectedDomains" type="text" value=0 />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12 table-section"><h4 class="no-margin vert-center">Company Names</h4></div></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="col-md-1"></div><div class="col-md-10"><div class="table-subsection no-margin"><h4 class="vert-center">Company Name - Confidence</h4></div></div>
+                <div class="col-md-12">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>High</div>
+                        <input name="CompanyNameAnalysisHigh" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Medium</div>
+                        <input name="CompanyNameAnalysisMedium" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Low</div>
+                        <input name="CompanyNameAnalysisLow" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>None</div>
+                        <input name="CompanyNameAnalysisNone" type="text" value=0 />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="container">
+            <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12 table-section"><h4 class="no-margin vert-center">Overview</h4></div></div>
+            <div class="col-md-6">
+                <div class="col-md-2"></div><div class="col-md-10"><div class="table-subsection no-margin"><h4 class="vert-center">Account</h4></div></div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Sample</div>
+                        <input name="SocialSample" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Firmagraphics</div>
+                        <input name="SocialFirmagraphics" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Linkedin</div>
+                        <input name="SocialLinkedin" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Facebook</div>
+                        <input name="SocialFacebook" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Twitter</div>
+                        <input name="SocialTwitter" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Total</div>
+                        <input name="SocialTotal" type="text" value=0 />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-10"><div class="table-subsection no-margin"><h4 class="vert-center">Contact</h4></div></div><div class="col-md-2"></div>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Sample</div>
+                        <input name="ContactSample" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Emails</div>
+                        <input name="ContactEmails" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Phones</div>
+                        <input name="ContactPhones" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Addresses</div>
+                        <input name="ContactAddresses" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Titles</div>
+                        <input name="ContactTitles" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Social</div>
+                        <input name="ContactSocial" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Effected</div>
+                        <input name="ContactEffected" type="text" value=0 />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12 table-section"><h4 class="no-margin vert-center">Expand</h4></div></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="col-md-1"></div><div class="col-md-10"><div class="table-subsection no-margin"><h4 class="vert-center">Contacts</h4></div></div>
+                <div class="col-md-12">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Website Contacts Total</div>
+                        <input name="WebsiteContactsTotal" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Website Contacts Filled</div>
+                        <input name="WebsiteContactsFilled" type="text" value=0 />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12"><h4 class="no-margin vert-center"></h4></div></div>
+            <div class="col-md-6">
+                <div class="col-md-2"></div><div class="col-md-10"><div class="table-subsection no-margin"><h4 class="vert-center">Title Department Before</h4></div></div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Exec</div>
+                        <input name="BeforeDeptExec" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Sales</div>
+                        <input name="BeforeDeptSales" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Marketing</div>
+                        <input name="BeforeDeptMarketing" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Finance</div>
+                        <input name="BeforeDeptFinance" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>IT</div>
+                        <input name="BeforeDeptIT" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Legal</div>
+                        <input name="BeforeDeptLegal" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Admin</div>
+                        <input name="BeforeDeptAdmin" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Communications</div>
+                        <input name="BeforeDeptCommunications" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Developer</div>
+                        <input name="BeforeDeptDeveloper" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Customer Service</div>
+                        <input name="BeforeDeptCustomerService" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Human Resources</div>
+                        <input name="BeforeDeptHumanResources" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Operations</div>
+                        <input name="BeforeDeptOperations" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>PR</div>
+                        <input name="BeforeDeptPR" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Strategy</div>
+                        <input name="BeforeDeptStrategy" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Other</div>
+                        <input name="BeforeDeptOther" type="text" value=0 />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-10"><div class="table-subsection no-margin"><h4 class="vert-center">Title Level Before</h4></div></div>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Before Title Board</div>
+                        <input name="BeforeTitleBoard" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Before Title SVP</div>
+                        <input name="BeforeTitleSVP" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Before Title President</div>
+                        <input name="BeforeTitlePresident" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Before Title VP</div>
+                        <input name="BeforeTitleVP" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Before Title Director</div>
+                        <input name="BeforeTitleDirector" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Before Title Manager</div>
+                        <input name="BeforeTitleManager" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Before Title Staff</div>
+                        <input name="BeforeTitleStaff" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Before Title Admin</div>
+                        <input name="BeforeTitleAdmin" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Before Title Other</div>
+                        <input name="BeforeTitleOther" type="text" value=0 />
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12"><h4 class="no-margin vert-center"></h4></div></div>
+            <div class="col-md-6">
+                <div class="col-md-2"></div><div class="col-md-10"><div class="table-subsection no-margin"><h4 class="vert-center">Title Department After</h4></div></div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Exec</div>
+                        <input name="AfterDeptExec" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Sales</div>
+                        <input name="AfterDeptSales" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Marketing</div>
+                        <input name="AfterDeptMarketing" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Finance</div>
+                        <input name="AfterDeptFinance" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>IT</div>
+                        <input name="AfterDeptIT" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Legal</div>
+                        <input name="AfterDeptLegal" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Admin</div>
+                        <input name="AfterDeptAdmin" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Communications</div>
+                        <input name="AfterDeptCommunications" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Developer</div>
+                        <input name="AfterDeptDeveloper" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Customer Service</div>
+                        <input name="AfterDeptCustomerService" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Human Resources</div>
+                        <input name="AfterDeptHumanResources" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Operations</div>
+                        <input name="AfterDeptOperations" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>PR</div>
+                        <input name="AfterDeptPR" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Strategy</div>
+                        <input name="AfterDeptStrategy" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Other</div>
+                        <input name="AfterDeptOther" type="text" value=0 />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-10"><div class="table-subsection no-margin"><h4 class="vert-center">Title Level After</h4></div></div>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Board</div>
+                        <input name="AfterTitleBoard" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>SVP</div>
+                        <input name="AfterTitleSVP" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin:5px">
+                        <div>President</div>
+                        <input name="AfterTitlePresident" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>VP</div>
+                        <input name="AfterTitleVP" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Director</div>
+                        <input name="AfterTitleDirector" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Manager</div>
+                        <input name="AfterTitleManager" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Staff</div>
+                        <input name="AfterTitleStaff" type="text" value=0 />
+                    </div>
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Admin</div>
+                        <input name="AfterTitleAdmin" type="text" value=0 />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4" style="margin:5px">
+                        <div>Other</div>
+                        <input name="AfterTitleOther" type="text" value=0 />
+                    </div>
+                </div>
+            </div>
+        </div>
+            <input type="submit" name="submit" value="Save Data">
+</form>
+</body>
+</html>

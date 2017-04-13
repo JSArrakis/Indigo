@@ -1,0 +1,1148 @@
+﻿<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+    <head>
+        <title>Indigo</title>
+        <script src="js/jquery-1.12.2.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/d3.min.js"></script>
+        <script src="js/d3pie.min.js"></script>
+        <script src="js/Donut3D.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+        <link href="css/style.css" rel="stylesheet" />
+        
+    </head>
+<body>
+    <div class="container">
+        <div class="row table-section"><div class="col-md-12 table-section no-margin"><h4 class="no-margin vert-center">Data Foundation</h4></div></div>
+    </div>
+    <div class="container no-padding">
+        <table class="table">
+            <tr>
+                <th>Sample records provided</th>
+                <th>100</th>
+            </tr>
+            <tr><td></td><td></td></tr>
+            <tr>
+                <th>Domains</th>
+                <th>100</th>
+            </tr>
+            <tr>
+                <td>Correct</td>
+                <td>62</td>
+            </tr>
+            <tr>
+                <td>Bad</td>
+                <td>36</td>
+            </tr>
+            <tr>
+                <td>Parked</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>Filled</td>
+                <td>18</td>
+            </tr>
+            <tr>
+                <td>Duplicate</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>Usable</td>
+                <td>79</td>
+            </tr>
+            <tr><td></td><td></td></tr>
+            <tr>
+                <th>Company names</th>
+                <th>100</th>
+            </tr>
+            <tr>
+                <td>Correct</td>
+                <td>48</td>
+            </tr>
+            <tr>
+                <td>Incorrect/Fixed</td>
+                <td>32</td>
+            </tr>
+            <tr>
+                <td>No website</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>Usable</td>
+                <td>80</td>
+            </tr>
+            <tr><td></td><td></td></tr>
+            <tr>
+                <th>Data readiness</th>
+                <th>79.00%</th>
+            </tr>
+        </table>
+    </div>
+    <div class="container">
+        <div class="row table-section"><div class="col-md-12 table-section no-margin"><h4 class="no-margin vert-center">Account Enhancement</h4></div></div>
+    </div>
+    <div class="container no-padding">
+        <table class="table">
+            <tr>
+                <th>Append</th>
+                <th>Sample</th>
+                <th>Filled</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>Firmographics</td>
+                <td>79</td>
+                <td>69</td>
+                <td>87%</td>
+            </tr>
+            <tr>
+                <td>LinkedIn</td>
+                <td>79</td>
+                <td>34</td>
+                <td>43%</td>
+            </tr>
+            <tr>
+                <td>Facebook</td>
+                <td>79</td>
+                <td>34</td>
+                <td>43%</td>
+            </tr>
+            <tr>
+                <td>Twitter</td>
+                <td>79</td>
+                <td>5</td>
+                <td>6%</td>
+            </tr>
+            <tr>
+                <th>Total Enahnced</th>
+                <td>79</td>
+                <td>72</td>
+                <td>91%</td>
+            </tr>
+        </table>
+    </div>
+    <div class="container">
+        <div class="row table-section"><div class="col-md-12 table-section no-margin"><h4 class="no-margin vert-center">Contact Enhancement</h4></div></div>
+    </div>
+    <div class="container no-padding">
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>Count</th>
+                <th>Average</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>Unique websites</td>
+                <td>79</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Websites with contacts</td>
+                <td>33</td>
+                <td>42%</td>
+                <td>Percent Filled</td>
+            </tr>
+            <tr>
+                <td>Total contacts</td>
+                <td>814</td>
+                <td>24.7</td>
+                <td>Contacts per company</td>
+            </tr>
+        </table>
+    </div>
+    <div class="container">
+        <div class="row table-section"><div class="col-md-12 table-section"><h4 class="no-margin vert-center">Account Data Assessment</h4></div></div>
+    </div>
+    <div class="container no-padding">
+        <div class="row">
+            <div class="btn-group" data-toggle="buttons" style="margin-left:50px;">
+                <label class="btn btn-default active">
+                    <input id="fndBefore" type="radio"> Before
+                </label>
+                <label class="btn btn-default">
+                    <input id="fndAfter" type="radio"> After
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 no-margin height-correct" id="websiteStatusPie"><div id="websiteStatusBeforePie"></div></div>
+            <div class="col-md-3 no-margin height-correct" id="companyStatusPie"><div id="companyStatusBeforePie"></div></div>
+            <div class="col-md-3 no-margin height-correct" id="recordStatusPie"><div id="recordStatusBeforePie"></div></div> 
+            <div class="col-md-3 no-margin height-correct" style="padding-left:60px;">
+                <div class="row" style="margin:10px 5px 0px 20px;"><h3 id="fndTitle" class="no-margin">Foundation Before</h3></div>
+                
+                <svg class="size vert-offset-two">
+                    <g id="foundationPie"></g>
+                </svg>
+
+                <div class="row" style="margin-left:10px;"><div class="col-md-offset-4 col-md-4 round green">Segmentable</div> <div class="col-md-12">Firmographics filled, ready to build contacts</div></div>
+                <div class="row" style="margin-left:10px;"><div class="col-md-offset-4 col-md-4 round blue">Prospectable</div> <div class="col-md-12">Basic data, needs data foundation/verification</div></div>
+                <div class="row" style="margin-left:10px;"><div class="col-md-offset-4 col-md-4 round orange">Researchable</div> <div class="col-md-12">Ready to build contacts, no firmographics</div></div>
+                <div class="row" style="margin-left:10px;"><div class="col-md-offset-4 col-md-4 round black">Unusable</div> <div class="col-md-12">Data is not usable.  Incorrect or insolvent</div></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 no-margin height-correct" id="websiteError"></div>
+        </div>
+        <br />
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row">
+                    <p>This is my footer</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    
+    <script>
+        var foundationBefore = [
+            { label: "Unusable", value:40, color: "#1F1F1F" },
+	        { label: "Segmentable", value: 2, color: "#009c14" },
+	        { label: "Researchable", value: 16, color: "#fd9000" },
+	        { label: "Prospectable", value: 42, color: "#1976d2" }
+        ]
+        var foundationAfter = [
+            { label: "Unusable", value: 10, color: "#1F1F1F" },
+	        { label: "Segmentable", value: 80, color: "#009c14" },
+            { label: "Researchable", value: 0, color: "#fd9000" },
+	        { label: "Prospectable", value: 10, color: "#1976d2" }
+        ]
+        Donut3D.draw("foundationPie", foundationBefore, 150, 150, 130, 100, 30, 0.4);
+        Donut3D.transition("foundationPie", foundationBefore, 130, 100, 30, 0.4);
+        var websiteStatusBefore = new d3pie("websiteStatusBeforePie", {
+            "header": {
+                "title": {
+                    "text": "Website Status",
+                    "color": "#696969",
+                    "fontSize": 15,
+                    "font": "helvetica"
+                },
+                "subtitle": {
+                    "text": "Before",
+                    "color": "#696969",
+                    "fontSize": 15,
+                    "font": "helvetica"
+                },
+                "location": "pie-center",
+                "titleSubtitlePadding": 2
+            },
+            "footer": {
+                "color": "#999999",
+                "fontSize": 10,
+                "font": "open sans",
+                "location": "bottom-left"
+            },
+            "size": {
+                "canvasHeight": 320,
+                "canvasWidth": 320,
+                "pieInnerRadius": "71%",
+                "pieOuterRadius": "68%"
+            },
+            "data": {
+                "content": [
+			        {
+			            "label": "Invalid",
+			            "value": 38,
+			            "color": "#d50000"
+			        },
+			        {
+			            "label": "Good",
+			            "value": 62,
+			            "color": "#009c14"
+			        }
+                ]
+            },
+            "labels": {
+                "outer": {
+                    "format": "label-percentage2",
+                    "pieDistance": 6
+                },
+                "inner": {
+                    "format": "none"
+                },
+                "mainLabel": {
+                    "font": "helvetica",
+                    "fontSize": 11
+                },
+                "percentage": {
+                    "color": "#999999",
+                    "font": "helvetica",
+                    "fontSize": 11,
+                    "decimalPlaces": 0
+                },
+                "value": {
+                    "color": "#cccc43",
+                    "font": "helvetica",
+                    "fontSize": 11
+                },
+                "truncation": {
+                    "enabled": true
+                }
+            },
+            "tooltips": {
+                "enabled": true,
+                "type": "placeholder",
+                "string": "{label}: {value}",
+                "styles": {
+                    "fadeInSpeed": 953
+                }
+            },
+            "effects": {
+                "pullOutSegmentOnClick": {
+                    "effect": "linear",
+                    "speed": 400,
+                    "size": 8
+                }
+            }
+        });
+        var companyStatusBefore = new d3pie("companyStatusBeforePie", {
+            "header": {
+                "title": {
+                    "text": "Company Status",
+                    "color": "#696969",
+                    "fontSize": 15,
+                    "font": "helvetica"
+                },
+                "subtitle": {
+                    "text": "Before",
+                    "color": "#696969",
+                    "fontSize": 15,
+                    "font": "helvetica"
+                },
+                "location": "pie-center",
+                "titleSubtitlePadding": 2
+            },
+            "footer": {
+                "color": "#999999",
+                "fontSize": 10,
+                "font": "open sans",
+                "location": "bottom-left"
+            },
+            "size": {
+                "canvasHeight": 320,
+                "canvasWidth": 320,
+                "pieInnerRadius": "71%",
+                "pieOuterRadius": "68%"
+            },
+            "data": {
+                "content": [
+			        {
+			            "label": "No Website",
+			            "value": 20,
+			            "color": "#fd9000"
+			        },
+			        {
+			            "label": "Invalid",
+			            "value": 32,
+			            "color": "#d50000"
+			        },
+			        {
+			            "label": "Good",
+			            "value": 48,
+			            "color": "#009c14"
+			        }
+                ]
+            },
+            "labels": {
+                "outer": {
+                    "format": "label-percentage2",
+                    "pieDistance": 6
+                },
+                "inner": {
+                    "format": "none"
+                },
+                "mainLabel": {
+                    "font": "helvetica",
+                    "fontSize": 11
+                },
+                "percentage": {
+                    "color": "#999999",
+                    "font": "helvetica",
+                    "fontSize": 11,
+                    "decimalPlaces": 0
+                },
+                "value": {
+                    "color": "#cccc43",
+                    "font": "helvetica",
+                    "fontSize": 11
+                },
+                "truncation": {
+                    "enabled": true
+                }
+            },
+            "tooltips": {
+                "enabled": true,
+                "type": "placeholder",
+                "string": "{label}: {value}",
+                "styles": {
+                    "fadeInSpeed": 953
+                }
+            },
+            "effects": {
+                "pullOutSegmentOnClick": {
+                    "effect": "linear",
+                    "speed": 400,
+                    "size": 8
+                }
+            }
+        });
+        var recordStatusBefore = new d3pie("recordStatusBeforePie", {
+            "header": {
+                "title": {
+                    "text": "Record Readiness",
+                    "color": "#696969",
+                    "fontSize": 15,
+                    "font": "helvetica"
+                },
+                "location": "pie-center",
+                "titleSubtitlePadding": 2
+            },
+            "footer": {
+                "color": "#999999",
+                "fontSize": 10,
+                "font": "open sans",
+                "location": "bottom-left"
+            },
+            "size": {
+                "canvasHeight": 320,
+                "canvasWidth": 320,
+                "pieInnerRadius": "71%",
+                "pieOuterRadius": "68%"
+            },
+            "data": {
+                "content": [
+			        {
+			            "label": "Invalid",
+			            "value": 58,
+			            "color": "#d50000"
+			        },
+			        {
+			            "label": "Good",
+			            "value": 42,
+			            "color": "#009c14"
+			        }
+                ]
+            },
+            "labels": {
+                "outer": {
+                    "format": "label-percentage2",
+                    "pieDistance": 6
+                },
+                "inner": {
+                    "format": "none"
+                },
+                "mainLabel": {
+                    "font": "helvetica",
+                    "fontSize": 11
+                },
+                "percentage": {
+                    "color": "#999999",
+                    "font": "helvetica",
+                    "fontSize": 11,
+                    "decimalPlaces": 0
+                },
+                "value": {
+                    "color": "#cccc43",
+                    "font": "helvetica",
+                    "fontSize": 11
+                },
+                "truncation": {
+                    "enabled": true
+                }
+            },
+            "tooltips": {
+                "enabled": true,
+                "type": "placeholder",
+                "string": "{label}: {value}",
+                "styles": {
+                    "fadeInSpeed": 953
+                }
+            },
+            "effects": {
+                "pullOutSegmentOnClick": {
+                    "effect": "linear",
+                    "speed": 400,
+                    "size": 8
+                }
+            }
+        });
+        var error = document.getElementById('websiteErrorPie');
+        console.log('WEBSITE ERROR DIV: ', error);
+        
+        $(window).ready(function () {
+
+            $('#fndBefore').closest('label').on('click', function () {
+                if ($(this).hasClass('active')) {
+                    console.log('Nope');
+                } else {
+                    $('#fndBefore').attr('data-disabled', "disabled");
+                    $('#fndAfter').removeAttr('data-disabled');
+                    Donut3D.transition("foundationPie", foundationBefore, 130, 100, 30, 0.4);
+                    $('#fndTitle').html('Foundation Before');
+                    var websiteAfter = $('#websiteStatusAfterPie');
+                    var companyAfter = $('#companyStatusAfterPie');
+                    var recordAfter = $('#recordStatusAfterPie');
+                    websiteAfter.remove();
+                    companyAfter.remove();
+                    recordAfter.remove();
+                    $('#websiteStatusPie').append('<div id="websiteStatusBeforePie"></div>');
+                    $('#companyStatusPie').append('<div id="companyStatusBeforePie"></div>');
+                    $('#recordStatusPie').append('<div id="recordStatusBeforePie"></div>');
+                    if (document.getElementById('websiteErrorPie')) {
+                        var websiteError = $('#websiteErrorPie');
+                        websiteError.remove();
+                    }
+
+                    var websiteStatusBefore = new d3pie("websiteStatusBeforePie", {
+                        "header": {
+                            "title": {
+                                "text": "Website Status",
+                                "color": "#696969",
+                                "fontSize": 15,
+                                "font": "helvetica"
+                            },
+                            "subtitle": {
+                                "text": "Before",
+                                "color": "#696969",
+                                "fontSize": 15,
+                                "font": "helvetica"
+                            },
+                            "location": "pie-center",
+                            "titleSubtitlePadding": 2
+                        },
+                        "footer": {
+                            "color": "#999999",
+                            "fontSize": 10,
+                            "font": "open sans",
+                            "location": "bottom-left"
+                        },
+                        "size": {
+                            "canvasHeight": 320,
+                            "canvasWidth": 320,
+                            "pieInnerRadius": "71%",
+                            "pieOuterRadius": "68%"
+                        },
+                        "data": {
+                            "content": [
+                                {
+                                    "label": "Invalid",
+                                    "value": 38,
+                                    "color": "#d50000"
+                                },
+                                {
+                                    "label": "Good",
+                                    "value": 62,
+                                    "color": "#009c14"
+                                }
+                            ]
+                        },
+                        "labels": {
+                            "outer": {
+                                "format": "label-percentage2",
+                                "pieDistance": 6
+                            },
+                            "inner": {
+                                "format": "none"
+                            },
+                            "mainLabel": {
+                                "font": "helvetica",
+                                "fontSize": 11
+                            },
+                            "percentage": {
+                                "color": "#999999",
+                                "font": "helvetica",
+                                "fontSize": 11,
+                                "decimalPlaces": 0
+                            },
+                            "value": {
+                                "color": "#cccc43",
+                                "font": "helvetica",
+                                "fontSize": 11
+                            },
+                            "truncation": {
+                                "enabled": true
+                            }
+                        },
+                        "tooltips": {
+                            "enabled": true,
+                            "type": "placeholder",
+                            "string": "{label}: {value}",
+                            "styles": {
+                                "fadeInSpeed": 953
+                            }
+                        },
+                        "effects": {
+                            "pullOutSegmentOnClick": {
+                                "effect": "linear",
+                                "speed": 400,
+                                "size": 8
+                            }
+                        }
+                    });
+                    var companyStatusBefore = new d3pie("companyStatusBeforePie", {
+                        "header": {
+                            "title": {
+                                "text": "Company Status",
+                                "color": "#696969",
+                                "fontSize": 15,
+                                "font": "helvetica"
+                            },
+                            "subtitle": {
+                                "text": "Before",
+                                "color": "#696969",
+                                "fontSize": 15,
+                                "font": "helvetica"
+                            },
+                            "location": "pie-center",
+                            "titleSubtitlePadding": 2
+                        },
+                        "footer": {
+                            "color": "#999999",
+                            "fontSize": 10,
+                            "font": "open sans",
+                            "location": "bottom-left"
+                        },
+                        "size": {
+                            "canvasHeight": 320,
+                            "canvasWidth": 320,
+                            "pieInnerRadius": "71%",
+                            "pieOuterRadius": "68%"
+                        },
+                        "data": {
+                            "content": [
+                                {
+                                    "label": "No Website",
+                                    "value": 20,
+                                    "color": "#fd9000"
+                                },
+                                {
+                                    "label": "Invalid",
+                                    "value": 32,
+                                    "color": "#d50000"
+                                },
+                                {
+                                    "label": "Good",
+                                    "value": 48,
+                                    "color": "#009c14"
+                                }
+                            ]
+                        },
+                        "labels": {
+                            "outer": {
+                                "format": "label-percentage2",
+                                "pieDistance": 6
+                            },
+                            "inner": {
+                                "format": "none"
+                            },
+                            "mainLabel": {
+                                "font": "helvetica",
+                                "fontSize": 11
+                            },
+                            "percentage": {
+                                "color": "#999999",
+                                "font": "helvetica",
+                                "fontSize": 11,
+                                "decimalPlaces": 0
+                            },
+                            "value": {
+                                "color": "#cccc43",
+                                "font": "helvetica",
+                                "fontSize": 11
+                            },
+                            "truncation": {
+                                "enabled": true
+                            }
+                        },
+                        "tooltips": {
+                            "enabled": true,
+                            "type": "placeholder",
+                            "string": "{label}: {value}",
+                            "styles": {
+                                "fadeInSpeed": 953
+                            }
+                        },
+                        "effects": {
+                            "pullOutSegmentOnClick": {
+                                "effect": "linear",
+                                "speed": 400,
+                                "size": 8
+                            }
+                        }
+                    });
+                    var recordStatusBefore = new d3pie("recordStatusBeforePie", {
+                        "header": {
+                            "title": {
+                                "text": "Record Readiness",
+                                "color": "#696969",
+                                "fontSize": 15,
+                                "font": "helvetica"
+                            },
+                            "location": "pie-center",
+                            "titleSubtitlePadding": 2
+                        },
+                        "footer": {
+                            "color": "#999999",
+                            "fontSize": 10,
+                            "font": "open sans",
+                            "location": "bottom-left"
+                        },
+                        "size": {
+                            "canvasHeight": 320,
+                            "canvasWidth": 320,
+                            "pieInnerRadius": "71%",
+                            "pieOuterRadius": "68%"
+                        },
+                        "data": {
+                            "content": [
+                                {
+                                    "label": "Invalid",
+                                    "value": 58,
+                                    "color": "#d50000"
+                                },
+                                {
+                                    "label": "Good",
+                                    "value": 42,
+                                    "color": "#009c14"
+                                }
+                            ]
+                        },
+                        "labels": {
+                            "outer": {
+                                "format": "label-percentage2",
+                                "pieDistance": 6
+                            },
+                            "inner": {
+                                "format": "none"
+                            },
+                            "mainLabel": {
+                                "font": "helvetica",
+                                "fontSize": 11
+                            },
+                            "percentage": {
+                                "color": "#999999",
+                                "font": "helvetica",
+                                "fontSize": 11,
+                                "decimalPlaces": 0
+                            },
+                            "value": {
+                                "color": "#cccc43",
+                                "font": "helvetica",
+                                "fontSize": 11
+                            },
+                            "truncation": {
+                                "enabled": true
+                            }
+                        },
+                        "tooltips": {
+                            "enabled": true,
+                            "type": "placeholder",
+                            "string": "{label}: {value}",
+                            "styles": {
+                                "fadeInSpeed": 953
+                            }
+                        },
+                        "effects": {
+                            "pullOutSegmentOnClick": {
+                                "effect": "linear",
+                                "speed": 400,
+                                "size": 8
+                            }
+                        }
+                    });
+                }
+            });
+            $('#fndAfter').closest('label').on('click', function () {
+                if ( $(this).hasClass('active') ) {
+                    console.log('Nope');
+                } else {
+                    $('#fndAfter').attr('data-disabled', "disabled");
+                    $('#fndBefore').removeAttr('data-disabled');
+                    Donut3D.transition("foundationPie", foundationAfter, 130, 100, 30, 0.4);
+                    $('#fndTitle').html('Foundation After');
+                    var websiteBefore = $('#websiteStatusBeforePie');
+                    var companyBefore = $('#companyStatusBeforePie');
+                    var recordBefore = $('#recordStatusBeforePie');
+                    websiteBefore.remove();
+                    companyBefore.remove();
+                    recordBefore.remove();
+                    $('#websiteStatusPie').append('<div id="websiteStatusAfterPie"></div>');
+                    $('#companyStatusPie').append('<div id="companyStatusAfterPie"></div>');
+                    $('#recordStatusPie').append('<div id="recordStatusAfterPie"></div>');
+                    if (document.getElementById('websiteErrorPie') === null) {
+                        console.log(document.getElementById('websiteErrorPie'))
+                        $('#websiteError').append('<div id="websiteErrorPie"></div>');
+                    }
+                
+                    var websiteStatusAfter = new d3pie("websiteStatusAfterPie", {
+                        "header": {
+                            "title": {
+                                "text": "Website Status",
+                                "color": "#696969",
+                                "fontSize": 15,
+                                "font": "helvetica"
+                            },
+                            "subtitle": {
+                                "text": "After",
+                                "color": "#696969",
+                                "fontSize": 15,
+                                "font": "helvetica"
+                            },
+                            "location": "pie-center",
+                            "titleSubtitlePadding": 2
+                        },
+                        "footer": {
+                            "color": "#999999",
+                            "fontSize": 10,
+                            "font": "open sans",
+                            "location": "bottom-left"
+                        },
+                        "size": {
+                            "canvasHeight": 320,
+                            "canvasWidth": 320,
+                            "pieInnerRadius": "71%",
+                            "pieOuterRadius": "68%"
+                        },
+                        "data": {
+                            "content": [
+                                {
+                                    "label": "Invalid",
+                                    "value": 20,
+                                    "color": "#d50000"
+                                },
+                                {
+                                    "label": "Corrected",
+                                    "value": 18,
+                                    "color": "#4148a4"
+                                },
+                                {
+                                    "label": "Good",
+                                    "value": 62,
+                                    "color": "#009c14"
+                                }
+                            ]
+                        },
+                        "labels": {
+                            "outer": {
+                                "format": "label-percentage2",
+                                "pieDistance": 6
+                            },
+                            "inner": {
+                                "format": "none"
+                            },
+                            "mainLabel": {
+                                "font": "helvetica",
+                                "fontSize": 11
+                            },
+                            "percentage": {
+                                "color": "#999999",
+                                "font": "helvetica",
+                                "fontSize": 11,
+                                "decimalPlaces": 0
+                            },
+                            "value": {
+                                "color": "#cccc43",
+                                "font": "helvetica",
+                                "fontSize": 11
+                            },
+                            "truncation": {
+                                "enabled": true
+                            }
+                        },
+                        "tooltips": {
+                            "enabled": true,
+                            "type": "placeholder",
+                            "string": "{label}: {value}",
+                            "styles": {
+                                "fadeInSpeed": 953
+                            }
+                        },
+                        "effects": {
+                            "pullOutSegmentOnClick": {
+                                "effect": "linear",
+                                "speed": 400,
+                                "size": 8
+                            }
+                        }
+                    });
+                    var companyStatusAfter = new d3pie("companyStatusAfterPie", {
+                        "header": {
+                            "title": {
+                                "text": "Company Status",
+                                "color": "#696969",
+                                "fontSize": 15,
+                                "font": "helvetica"
+                            },
+                            "subtitle": {
+                                "text": "After",
+                                "color": "#696969",
+                                "fontSize": 15,
+                                "font": "helvetica"
+                            },
+                            "location": "pie-center",
+                            "titleSubtitlePadding": 2
+                        },
+                        "footer": {
+                            "color": "#999999",
+                            "fontSize": 10,
+                            "font": "open sans",
+                            "location": "bottom-left"
+                        },
+                        "size": {
+                            "canvasHeight": 320,
+                            "canvasWidth": 320,
+                            "pieInnerRadius": "71%",
+                            "pieOuterRadius": "68%"
+                        },
+                        "data": {
+                            "content": [
+                                {
+                                    "label": "X-Ref",
+                                    "value": 10,
+                                    "color": "#fd9000"
+                                },
+                                {
+                                    "label": "Invalid",
+                                    "value": 10,
+                                    "color": "#d50000"
+                                },
+                                {
+                                    "label": "Corrected",
+                                    "value": 32,
+                                    "color": "#4148a4"
+                                },
+                                {
+                                    "label": "Verified",
+                                    "value": 48,
+                                    "color": "#009c14"
+                                }
+                            ]
+                        },
+                        "labels": {
+                            "outer": {
+                                "format": "label-percentage2",
+                                "pieDistance": 6
+                            },
+                            "inner": {
+                                "format": "none"
+                            },
+                            "mainLabel": {
+                                "font": "helvetica",
+                                "fontSize": 11
+                            },
+                            "percentage": {
+                                "color": "#999999",
+                                "font": "helvetica",
+                                "fontSize": 11,
+                                "decimalPlaces": 0
+                            },
+                            "value": {
+                                "color": "#cccc43",
+                                "font": "helvetica",
+                                "fontSize": 11
+                            },
+                            "truncation": {
+                                "enabled": true
+                            }
+                        },
+                        "tooltips": {
+                            "enabled": true,
+                            "type": "placeholder",
+                            "string": "{label}: {value}",
+                            "styles": {
+                                "fadeInSpeed": 953
+                            }
+                        },
+                        "effects": {
+                            "pullOutSegmentOnClick": {
+                                "effect": "linear",
+                                "speed": 400,
+                                "size": 8
+                            }
+                        }
+                    });
+                    var recordStatusAfter = new d3pie("recordStatusAfterPie", {
+                        "header": {
+                            "title": {
+                                "text": "Record Potential",
+                                "color": "#696969",
+                                "fontSize": 15,
+                                "font": "helvetica"
+                            },
+                            "location": "pie-center",
+                            "titleSubtitlePadding": 2
+                        },
+                        "footer": {
+                            "color": "#999999",
+                            "fontSize": 10,
+                            "font": "open sans",
+                            "location": "bottom-left"
+                        },
+                        "size": {
+                            "canvasHeight": 320,
+                            "canvasWidth": 320,
+                            "pieInnerRadius": "71%",
+                            "pieOuterRadius": "68%"
+                        },
+                        "data": {
+                            "content": [
+                                {
+                                    "label": "X-Ref",
+                                    "value": 10,
+                                    "color": "#fd9000"
+                                },
+                                {
+                                    "label": "Invalid",
+                                    "value": 10,
+                                    "color": "#d50000"
+                                },
+                                {
+                                    "label": "Corrected",
+                                    "value": 38,
+                                    "color": "#4148a4"
+                                },
+                                {
+                                    "label": "Verified",
+                                    "value": 42,
+                                    "color": "#009c14"
+                                }
+                            ]
+                        },
+                        "labels": {
+                            "outer": {
+                                "format": "label-percentage2",
+                                "pieDistance": 6
+                            },
+                            "inner": {
+                                "format": "none"
+                            },
+                            "mainLabel": {
+                                "font": "helvetica",
+                                "fontSize": 11
+                            },
+                            "percentage": {
+                                "color": "#999999",
+                                "font": "helvetica",
+                                "fontSize": 11,
+                                "decimalPlaces": 0
+                            },
+                            "value": {
+                                "color": "#cccc43",
+                                "font": "helvetica",
+                                "fontSize": 11
+                            },
+                            "truncation": {
+                                "enabled": true
+                            }
+                        },
+                        "tooltips": {
+                            "enabled": true,
+                            "type": "placeholder",
+                            "string": "{label}: {value}",
+                            "styles": {
+                                "fadeInSpeed": 953
+                            }
+                        },
+                        "effects": {
+                            "pullOutSegmentOnClick": {
+                                "effect": "linear",
+                                "speed": 400,
+                                "size": 8
+                            }
+                        }
+                    });
+                    var websiteError = new d3pie("websiteErrorPie", {
+                        "header": {
+                            "title": {
+                                "text": "Website Errors",
+                                "color": "#696969",
+                                "fontSize": 15,
+                                "font": "helvetica"
+                            },
+                            "location": "pie-center",
+                            "titleSubtitlePadding": 2
+                        },
+                        "footer": {
+                            "color": "#999999",
+                            "fontSize": 10,
+                            "font": "open sans",
+                            "location": "bottom-left"
+                        },
+                        "size": {
+                            "canvasHeight": 320,
+                            "canvasWidth": 320,
+                            "pieInnerRadius": "71%",
+                            "pieOuterRadius": "68%"
+                        },
+                        "data": {
+                            "content": [
+                                {
+                                    "label": "Invalid",
+                                    "value": 16,
+                                    "color": "#d50000"
+                                },
+                                {
+                                    "label": "Parked",
+                                    "value": 1.6,
+                                    "color": "#c51162"
+                                },
+                                {
+                                    "label": "Wrong Domain",
+                                    "value": 2.4,
+                                    "color": "#aa00ff"
+                                }
+                            ]
+                        },
+                        "labels": {
+                            "outer": {
+                                "format": "label-percentage2",
+                                "pieDistance": 6
+                            },
+                            "inner": {
+                                "format": "none"
+                            },
+                            "mainLabel": {
+                                "font": "helvetica",
+                                "fontSize": 11
+                            },
+                            "percentage": {
+                                "color": "#999999",
+                                "font": "helvetica",
+                                "fontSize": 11,
+                                "decimalPlaces": 0
+                            },
+                            "value": {
+                                "color": "#cccc43",
+                                "font": "helvetica",
+                                "fontSize": 11
+                            },
+                            "truncation": {
+                                "enabled": true
+                            }
+                        },
+                        "tooltips": {
+                            "enabled": true,
+                            "type": "placeholder",
+                            "string": "{label}: {value}",
+                            "styles": {
+                                "fadeInSpeed": 953
+                            }
+                        },
+                        "effects": {
+                            "pullOutSegmentOnClick": {
+                                "effect": "linear",
+                                "speed": 400,
+                                "size": 8
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

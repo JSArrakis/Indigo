@@ -1,0 +1,3129 @@
+﻿<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+    <title>Indigo</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-switch.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/jquery-1.12.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/d3pie.min.js"></script>
+    <script src="js/Donut3D.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+
+
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-custom navbar-static-top" role="navigation">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="color:#FFF; padding:7px"><img src="imgs/ringlead-logo.png" /></a>
+            <div class="navbar-header navbar-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="test.htm" style="color:#FFF;">Home</a></li>
+                    <li><a href="test.htm" style="color:#FFF;">About</a></li>
+                    <li><a href="test.htm" style="color:#FFF;">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12 table-section"><h4 class="no-margin vert-center">Data Foundation</h4></div></div>
+        <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12" style="text-align:center;">Verify company name and website domain. Account and contact enhancement services depend on a solid foundation on which to build upon.</div></div>
+        <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+            <div class="container">
+                <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+
+                    <div class="col-md-6 col-xs-12 no-margin no-padding">
+                        <div class="col-md-11" id="domainSample" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center">Record Readiness</h4></div></div><div class="col-md-1"></div>
+                        <div class="col-md-2 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:160px; width:57.5px;"></div></div>
+                        <div class="col-md-4 graph-centric">
+                            <table class="table" style="margin-top:20px;">
+                                <tr>
+                                    <th><div class="key" style="background:#77d668;"></div>Ready</th>
+                                    <td>575</td>
+                                </tr>
+                                <tr>
+                                    <th><div class="key" style="background:#6f7a79;"></div>Not Ready</th>
+                                    <td>425</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6"><div id="rcrdRdyPie" style="height:200px;"></div></div>
+                    </div>
+
+                    <div class="col-md-6 col-xs-12 no-margin no-padding">
+                        <div class="col-md-11" id="domainSampleAnalysis" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center">Record Potential</h4></div></div><div class="col-md-1"></div>
+                        <div class="col-md-2 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:160px; width:57.5px;"></div></div>
+                        <div class="col-md-4 graph-centric">
+                            <table class="table" style="margin-top:20px;">
+                                <tr>
+                                    <th><div class="key" style="background:#77d668;"></div>Ready</th>
+                                    <td>951</td>
+                                </tr>
+                                <tr>
+                                    <th><div class="key" style="background:#6f7a79;"></div>Not Ready</th>
+                                    <td>49</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6"><div id="rcrdPotPie" style="height:200px;"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12"><div class="table-subsection no-margin"><h4 class="vert-center">Websites</h4></div></div></div>
+            <div class="container">
+                <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+
+                    <div class="col-md-6 col-xs-12 no-margin no-padding">
+                        <div class="col-md-11" id="domainSample" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center">Starting Sample</h4></div></div><div class="col-md-1"></div>
+                        <div class="col-md-2 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:160px; width:57.5px;"></div></div>
+                        <div class="col-md-4 graph-centric">
+                            <table class="table" style="margin-top:20px;">
+                                <tr>
+                                    <th><div class="key" style="background:#289ea8;"></div>Supplied</th>
+                                    <td>728</td>
+                                </tr>
+                                <tr>
+                                    <th><div class="key" style="background:#6f7a79;"></div>Blank</th>
+                                    <td>272</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6"><div id="domainSamplePie" style="height:200px;"></div></div>
+                    </div>
+
+                    <div class="col-md-6 col-xs-12 no-margin no-padding">
+                        <div class="col-md-11" id="domainSampleAnalysis" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center"> Starting Sample - Analysis</h4></div></div><div class="col-md-1"></div>
+                        <div class="col-md-2 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:160px; width:57.5px;"></div></div>
+                        <div class="col-md-4 graph-centric">
+                            <table class="table" style="margin-top:20px;">
+                                <tr>
+                                    <th><div class="key" style="background:#77d668;"></div>Good</th>
+                                    <td>651</td>
+                                </tr>
+                                <tr>
+                                    <th><div class="key" style="background:#ed4949;"></div>Bad</th>
+                                    <td>77</td>
+                                </tr>
+                                <tr>
+                                    <th><div class="key" style="background:#6f7a79;"></div>Blank</th>
+                                    <td>272</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6"><div id="domainSampleAnalysisPie" style="height:200px;"></div></div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-xs-12 no-margin no-padding">
+                        <div class="col-md-11" id="domainCorrected" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center">Corrected</h4></div></div><div class="col-md-1"></div>
+                        <div class="col-md-2 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:160px; width:57.5px;"></div></div>
+                        <div class="col-md-4 graph-centric">
+                            <table class="table" style="margin-top:20px;">
+                                <tr>
+                                    <th><div class="key" style="background:#77d668;"></div>Usable</th>
+                                    <td>951</td>
+                                </tr>
+                                <tr>
+                                    <th><div class="key" style="background:#6f7a79;"></div>No Website</th>
+                                    <td>49</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6"><div id="domainCorrectedPie" style="height:200px;"></div></div>
+                    </div>
+
+                    <div class="col-md-6 col-xs-12 no-margin no-padding">
+                        <div class="col-md-11" id="domainCorrectedAnalysis" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center">Correction - Analysis</h4></div></div><div class="col-md-1"></div>
+                        <div class="col-md-2 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:160px; width:57.5px;"></div></div>
+                        <div class="col-md-4 graph-centric">
+                            <table class="table" style="margin-top:20px;">
+                                <tr>
+                                    <th><div class="key" style="background:#77d668;"></div>Good</th>
+                                    <td>651</td>
+                                </tr>
+                                <tr>
+                                    <th><div class="key" style="background:#17c89e;"></div>Email Domain</th>
+                                    <td>223</td>
+                                </tr>
+                                <tr>
+                                    <th><div class="key" style="background:#289ea8;"></div>Researched</th>
+                                    <td>77</td>
+                                </tr>
+                                <tr>
+                                    <th><div class="key" style="background:#6f7a79;"></div>No Website</th>
+                                    <td>49</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6"><div id="domainCorrectedAnalysisPie" style="height:200px;"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12"><div class="table-subsection no-margin"><h4 class="vert-center">Company Names</h4></div></div></div>
+            <div class="col-md-6 col-xs-12 no-margin no-padding">
+                <div class="col-md-11" id="domainCorrectedAnalysis" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center">Company Name - Confidence</h4></div></div><div class="col-md-1"></div>
+                <div class="col-md-2 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:160px; width:57.5px;"></div></div>
+                <div class="col-md-4 graph-centric">
+                    <table class="table" style="margin-top:20px;">
+                        <tr>
+                            <th><div class="key" style="background:#289ea8;"></div>High</th>
+                            <td>692</td>
+                        </tr>
+                        <tr>
+                            <th><div class="key" style="background:#ED8D34;"></div>Medium</th>
+                            <td>127</td>
+                        </tr>
+                        <tr>
+                            <th><div class="key" style="background:#ed4949"></div>Low</th>
+                            <td>84</td>
+                        </tr>
+                        <tr>
+                            <th><div class="key" style="background:#6f7a79;"></div>None</th>
+                            <td>97</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-6"><div id="cpnyNmAn" style="height:200px;"></div></div>
+            </div>
+            <div class="col-md-6">
+                <div style="margin-top:35px;">
+                    <div class="key" style="background:#289ea8;"></div>
+                    <p><b>High</b>: Company name was verified from the company website.  High confidence on full name match OR exact match by substring or acronym. </p>
+                    <div class="key" style="background:#ED8D34;"></div>
+                    <p><b>Medium</b>: Company name was verified from the company website.   Medium confidence on full name match OR fuzzy match of substring or acronym.</p>
+                    <div class="key" style="background:#ed4949;"></div>
+                    <p><b>Low</b>: Sub parts of company name or acronym was verified from the company website.  Company name has probably changed.</p>
+                    <div class="key" style="background:#6f7a79;"></div>
+                    <p><b>None</b>: No correlation of name on website to company name. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12 table-section"><h4 class="no-margin vert-center">Account Enhancement</h4></div></div>
+        <div class="col-md-6 col-xs-12 no-margin no-padding" style="height:300px;">
+            <div class="col-md-2 graph-centric vert-center" style="padding:0px,20px,20px,20px;"><div style="background:lightgrey; height:180px; width:57.5px;"></div></div>
+            <div class="col-md-9 graph-centric vert-center">
+                <table class="table">
+                    <tr>
+                        <th>Append</th>
+                        <th>Sample</th>
+                        <th>Filled</th>
+                        <th> </th>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#1985BC;"></div>LinkedIn</th>
+                        <td>951</td>
+                        <td>677</td>
+                        <td>71%</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#3b5998;"></div>Facebook</th>
+                        <td>951</td>
+                        <td>639</td>
+                        <td>67%</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#326ada;"></div>Twitter</th>
+                        <td>951</td>
+                        <td>30</td>
+                        <td>3%</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#289ea8;"></div>Firmagraphics</th>
+                        <td>951</td>
+                        <td>779</td>
+                        <td>82%</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#20ad8c;"></div>Total Enhanced</th>
+                        <td>951</td>
+                        <td>916</td>
+                        <td>96%</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6 no-padding no-margin">
+            <div class="col-md-4"><div id="linkedin" style="height:150px;"></div></div><div class="col-md-4"><div id="facebook" style="height:150px;"></div></div><div class="col-md-4"><div id="twitter" style="height:150px;"></div></div>
+            <div class="col-md-4"><div id="firmagraphics" style="height:150px;"></div></div><div class="col-md-4"><div id="totalSocial" style="height:150px;"></div></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12 table-section"><h4 class="no-margin vert-center">Contact Enhancement</h4></div></div>
+        <div class="col-md-6 col-xs-12 no-margin no-padding" style="height:300px;">
+            <div class="col-md-11" id="domainSample" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center">Connect</h4></div></div><div class="col-md-1"></div>
+            <div class="col-md-2 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:210px; width:57.5px;"></div></div>
+            <div class="col-md-9 graph-centric" style="margin-top:20px;">
+                <table class="table">
+                    <tr>
+                        <th>Append</th>
+                        <th>Sample</th>
+                        <th>Filled</th>
+                        <th> </th>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#20ad8c;"></div>Emails</th>
+                        <td>1000</td>
+                        <td>643</td>
+                        <td>64%</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#22287a;"></div>Phones</th>
+                        <td>1000</td>
+                        <td>672</td>
+                        <td>67%</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#3b5998;"></div>Addresses</th>
+                        <td>1000</td>
+                        <td>666</td>
+                        <td>67%</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#289ea8;"></div>Titles</th>
+                        <td>1000</td>
+                        <td>102</td>
+                        <td>10%</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#20ad8c;"></div>Social</th>
+                        <td>1000</td>
+                        <td>589</td>
+                        <td>59%</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#20ad8c;"></div>Total Enhanced</th>
+                        <td>1000</td>
+                        <td>922</td>
+                        <td>92%</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6 no-padding no-margin">
+            <div class="col-md-4 no-padding"><div id="emails" style="height:150px;"></div></div><div class="col-md-4 no-padding"><div id="phones" style="height:150px;"></div></div><div class="col-md-4 no-padding"><div id="addresses" style="height:150px;"></div></div>
+            <div class="col-md-4 no-padding"><div id="titles" style="height:150px;"></div></div><div class="col-md-4 no-padding"><div id="social" style="height:150px;"></div></div><div class="col-md-4 no-padding"><div id="totalConnect" style="height:150px;"></div></div>
+        </div>
+        <div class="col-md-12 col-xs-12 no-margin no-padding" style="height:230px;">
+            <div class="col-md-12" id="domainSample" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center">Expand Service</h4></div></div>
+            <div class="col-md-1 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:150px; width:57.5px;"></div></div>
+            <div class="col-md-9 graph-centric" style="margin-top:20px;">
+                <table class="table">
+                    <tr>
+                        <th> </th>
+                        <th>Count</th>
+                        <th>Averages</th>
+                        <th> </th>
+                    </tr>
+                    <tr>
+                        <th>Unique Websites</th>
+                        <td>951</td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <th>Websites with contacts</th>
+                        <td>807</td>
+                        <td>85%</td>
+                        <td>Percent Filled</td>
+                    </tr>
+                    <tr>
+                        <th>Total Contacts</th>
+                        <td>19544</td>
+                        <td>24.2</td>
+                        <td>Contacts per company</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12 table-section"><h4 class="no-margin vert-center">Title Analysis</h4></div></div>
+        <div class="col-md-5" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center"> Title Department</h4></div></div><div class="col-md-1"></div>
+        <div class="col-md-5" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center"> Title Level</h4></div></div><div class="col-md-1"></div>
+        <div class="col-md-6 col-xs-12 no-margin no-padding" style="height:320px;">
+            <div class="col-md-1 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:300px; width:37.5px;"></div></div>
+            <div class="col-md-5 graph-centric" style="margin-top:20px;">
+                <table class="table">
+                    <tr>
+                        <th><div class="key" style="background:#98abc5;"></div>Sales</th>
+                        <td>764</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#289ea8;"></div>Marketing</th>
+                        <td>289</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#7b6888;"></div>Finance</th>
+                        <td>491</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#ed4949;"></div>IT</th>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#77d668;"></div>Legal</th>
+                        <td>315</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#6B486B;"></div>Admin</th>
+                        <td>1080</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#ff8c00;"></div>Content</th>
+                        <td>260</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#17c89e;"></div>Communications</th>
+                        <td>92</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#98abc5;"></div>Developer</th>
+                        <td>301</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#6f7a79;"></div>Customer Service</th>
+                        <td>254</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-6" style="height:320px;"><div id="titleCountPie" class="vert-center" style="margin-top:60px;height:300px" ></div></div>
+        </div>
+        <div class="col-md-6 col-xs-12 no-margin no-padding" style="height:320px;">
+            <div class="col-md-1 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:300px; width:37.5px;"></div></div>
+            <div class="col-md-5 graph-centric" style="margin-top:20px;">
+                <table class="table">
+                    <tr>
+                        <th><div class="key" style="background:#98abc5;"></div>C Level</th>
+                        <td>764</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#289ea8;"></div>Board</th>
+                        <td>289</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#7b6888;"></div>SVP/EVP</th>
+                        <td>491</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#ed4949;"></div>President</th>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#77d668;"></div>VP</th>
+                        <td>315</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#6B486B;"></div>Director</th>
+                        <td>1080</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#ff8c00;"></div>Manager</th>
+                        <td>260</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#17c89e;"></div>Staff</th>
+                        <td>92</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#98abc5;"></div>Assistant</th>
+                        <td>301</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-6" style="height:320px;"><div id="titleLevelPie" class="vert-center" style="margin-top:60px;height:300px"></div></div>
+        </div>
+        </div>
+    <footer class="footer-custom">
+        <div class="container-fluid">
+            &copy; Ringlead, Inc.
+        </div>
+    </footer>
+
+        <script>
+            var dmnSmplData = {
+                Supplied: 728,
+                Blank: 272
+            }
+
+            var dmnSmplAnData = {
+                Good: 651,
+                Bad: 77,
+                Blank: 272
+            }
+
+            var dmnCorrData = {
+                Usable: 951,
+                Unusable: 49
+            }
+
+            var dmnCorrAnData = {
+                Good: 651,
+                Filled: 223,
+                Corrected: 77,
+                Blank: 49
+            }
+
+
+
+            var accEnData = {
+                Sample: 951,
+                Firmagraphics: 779,
+                Linkedin: 677,
+                Facebook: 639,
+                Twitter: 30,
+                Total: 916
+            }
+
+            var cnctData = {
+                Sample: 1000,
+                Emails: 643,
+                Phones: 672,
+                Addresses: 666,
+                Titles: 102,
+                Social: 589,
+                TotalEff: 922
+            }
+
+            var cntactExpdEnData = {
+                UniqWebsites: 71,
+                WebContacts: 47,
+                TotalCont: 13307
+            }
+
+            var titleLvl = {
+                CLevel: 412,
+                Board: 114,
+                SVP: 395,
+                President: 113,
+                VP: 120,
+                Director: 788,
+                Manager: 2564,
+                Staff: 445,
+                Assistant: 106,
+                Intern: 0
+            }
+
+            titleDev = {
+                Sales: 1022,
+                Marketing: 118,
+                Finance: 378,
+                IT: 255,
+                Legal: 161,
+                Admin: 728,
+                Content: 29,
+                Communications: 57,
+                Developer: 452,
+                CustomerServ: 225
+            }
+
+            var domainColor = d3.scale.ordinal()
+                .domain(["Correct", "Usable", "Filled", "Supplied", "Corrected", "No Website", "Junk", "Duplicate", "Provided", "Blank", "Unusable", "Good", "Bad"])
+                .range(["#77d668", "#77d668", "#17c89e", "#289ea8", "#289ea8", "#ed4949", "#6f7a79", "#ebae44", "#289ea8", "#6f7a79", "#6f7a79", "#77d668", "#ed4949"]);
+
+            var companyNameColor = d3.scale.ordinal()
+                .domain(["Correct", "Filled", "Incorrect/Fixed", "No Website", "Junk"])
+                .range(["#77d668", "#289ea8", "#289ea8", "#ed4949", "#6f7a79"]);
+
+            function midPoint(coor1, coor2) {
+                return [(coor1[0] + coor2[0]) / 2, (coor1[1] + coor2[1]) / 2]
+            }
+
+            function pointDistance(coor1, coor2) {
+                return 10 < Math.sqrt(Math.pow(coor2[0] - coor1[0], 2) + Math.pow(coor2[1] - coor1[1], 2));
+            }
+
+            var domainSample = d3.select("#domainSamplePie")
+                .append("svg")
+                .append("g");
+
+            domainSample.append("g")
+                .attr("class", "slices");
+            domainSample.append("g")
+                .attr("class", "labels");
+            domainSample.append("g")
+                .attr("class", "title");
+            domainSample
+                .attr("transform", "translate(" + $('#domainSample').width() / 4 + "," + 100 + ")");
+
+            var domainSampleAnalysis = d3.select("#domainSampleAnalysisPie")
+                .append("svg")
+                .append("g");
+
+            domainSampleAnalysis.append("g")
+                .attr("class", "slices");
+            domainSampleAnalysis.append("g")
+                .attr("class", "labels");
+            domainSampleAnalysis.append("g")
+                .attr("class", "title");
+            domainSampleAnalysis
+                .attr("transform", "translate(" + $('#domainSampleAnalysis').width() / 4 + "," + 100 + ")");
+
+            var domainCorrected = d3.select("#domainCorrectedPie")
+                .append("svg")
+                .append("g");
+
+            domainCorrected.append("g")
+                .attr("class", "slices");
+            domainCorrected.append("g")
+                .attr("class", "labels");
+            domainCorrected.append("g")
+                .attr("class", "title");
+            domainCorrected
+                .attr("transform", "translate(" + $('#domainSampleAnalysis').width() / 4 + "," + 100 + ")");
+
+            var domainCorrectedAnalysis = d3.select("#domainCorrectedAnalysisPie")
+                .append("svg")
+                .append("g");
+
+            domainCorrectedAnalysis.append("g")
+                .attr("class", "slices");
+            domainCorrectedAnalysis.append("g")
+                .attr("class", "labels");
+            domainCorrectedAnalysis.append("g")
+                .attr("class", "title");
+            domainCorrectedAnalysis
+                .attr("transform", "translate(" + $('#domainSampleAnalysis').width() / 4 + "," + 100 + ")");
+
+            var companyPie = d3.select("#companyPie")
+                .append("svg")
+                .append("g");
+
+            companyPie.append("g")
+                .attr("class", "slices");
+            companyPie.append("g")
+                .attr("class", "labels");
+            companyPie.append("g")
+                .attr("class", "title");
+            companyPie
+                .attr("transform", "translate(" + $('#companyPie').width() / 2 + "," + 100 + ")");
+
+            var width = 350,
+                height = 350,
+                radius = Math.min(width, height) / 2;
+
+            var pie = d3.layout.pie()
+                .sort(null)
+                .value(function (d) {
+                    return d.value;
+                });
+
+            var arc = d3.svg.arc()
+                .outerRadius(radius * 0.45)
+                .innerRadius(radius * 0.35);
+
+            var outerArc = d3.svg.arc()
+                .innerRadius(radius * 0.5)
+                .outerRadius(radius * 0.5);
+
+
+
+            var key = function (d) { return d.data.label; };
+
+            domainSample.select(".title")
+                .append("text")
+                .text("Provided")
+                .attr("text-anchor", "middle")
+                .attr("fill", "#5f5f5f")
+                .attr("transform", "translate(" + 0 + "," + 7 + ")")
+                .style("font-size", "20px")
+                .style("font-family", "helvetica");
+
+            domainSampleAnalysis.select(".title")
+                .append("text")
+                .text("Analysis")
+                .attr("text-anchor", "middle")
+                .attr("fill", "#5f5f5f")
+                .attr("transform", "translate(" + 0 + "," + 7 + ")")
+                .style("font-size", "20px")
+                .style("font-family", "helvetica");
+
+            domainCorrected.select(".title")
+                .append("text")
+                .text("Corrected")
+                .attr("text-anchor", "middle")
+                .attr("fill", "#5f5f5f")
+                .attr("transform", "translate(" + 0 + "," + 7 + ")")
+                .style("font-size", "20px")
+                .style("font-family", "helvetica");
+
+            domainCorrectedAnalysis.select(".title")
+                .append("text")
+                .text("Analysis")
+                .attr("text-anchor", "middle")
+                .attr("fill", "#5f5f5f")
+                .attr("transform", "translate(" + 0 + "," + 7 + ")")
+                .style("font-size", "20px")
+                .style("font-family", "helvetica");
+
+            companyPie.select(".title")
+                .append("text")
+                .text("Company")
+                .attr("text-anchor", "middle")
+                .attr("fill", "#5f5f5f")
+                .attr("transform", "translate(" + 0 + "," + 8 + ")")
+                .style("font-size", "20px")
+                .style("font-family", "helvetica");
+
+            var domainSampleData = [
+                { label: "Supplied", value: dmnSmplData.Supplied },
+                { label: "Blank", value: dmnSmplData.Blank }
+            ];
+
+            var domainSampleAnalysisData = [
+                { label: "Good", value: dmnSmplAnData.Good },
+                { label: "Bad", value: dmnSmplAnData.Bad },
+                { label: "Blank", value: dmnSmplAnData.Blank }
+            ];
+
+            var domainCorrectedData = [
+                { label: "Usable", value: dmnCorrData.Usable },
+                { label: "Unusable", value: dmnCorrData.Unusable }
+            ];
+
+            var domainCorrectedAnalysisData = [
+                { label: "Good", value: dmnCorrAnData.Good },
+                { label: "Filled", value: dmnCorrAnData.Filled },
+                { label: "Corrected", value: dmnCorrAnData.Corrected },
+                { label: "Blank", value: dmnCorrAnData.Blank }
+            ]
+
+            drawDomainSample(domainSampleData);
+
+            drawDomainSampleAnalysis(domainSampleAnalysisData);
+
+            drawDomainCorrected(domainCorrectedData);
+
+            drawDomainCorrectedAnalysis(domainCorrectedAnalysisData);
+
+            function drawDomainSample(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = domainSample.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return domainColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition().duration(1000)
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return arc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = domainSample.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".35em")
+                    .text(function (d) {
+                        if (d.data.value === 0) {
+                            return "";
+                        } else {
+                            return Math.round((d.data.value / denominator) * 100) + "%";
+                        }
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = outerArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            function drawDomainSampleAnalysis(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = domainSampleAnalysis.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return domainColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition().duration(1000)
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return arc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = domainSampleAnalysis.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".35em")
+                    .text(function (d) {
+                        if (d.data.value === 0) {
+                            return "";
+                        } else {
+                            return Math.round((d.data.value / denominator) * 100) + "%";
+                        }
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = outerArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            function drawDomainCorrected(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = domainCorrected.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return domainColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition().duration(1000)
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return arc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = domainCorrected.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".35em")
+                    .text(function (d) {
+                        if (d.data.value === 0) {
+                            return "";
+                        } else {
+                            return Math.round((d.data.value / denominator) * 100) + "%";
+                        }
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = outerArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            function drawDomainCorrectedAnalysis(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = domainCorrectedAnalysis.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return domainColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition().duration(1000)
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return arc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = domainCorrectedAnalysis.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".35em")
+                    .text(function (d) {
+                        if (d.data.value === 0) {
+                            return "";
+                        } else {
+                            return Math.round((d.data.value / denominator) * 100) + "%";
+                        }
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = outerArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            function drawCompanyPie(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = companyPie.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return companyNameColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition().duration(1000)
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return arc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = companyPie.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".35em")
+                    .text(function (d) {
+                        if (d.data.value === 0) {
+                            return "";
+                        } else {
+                            return Math.round((d.data.value / denominator) * 100) + "%";
+                        }
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = outerArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+            /*--------------------------------------*/
+            /* ------- COMPANY NAME ANALYSIS -------*/
+            /*--------------------------------------*/
+
+            var cmpyNmData = {
+                High: 692,
+                Medium: 127,
+                Low: 84,
+                None: 97
+
+            }
+
+            var accColor = d3.scale.ordinal()
+                .domain(["High", "Medium", "Low", "None"])
+                .range(["#289ea8", "#ED8D34", "#ed4949", "#6f7a79"]);
+
+            var cmpyNmAnData = [
+                { label: "High", value: cmpyNmData.High },
+                { label: "Medium", value: cmpyNmData.Medium },
+                { label: "Low", value: cmpyNmData.Low },
+                { label: "None", value: cmpyNmData.None },
+            ];
+
+            var cpnyNmAn = d3.select("#cpnyNmAn")
+                .append("svg")
+                .append("g");
+
+            cpnyNmAn.append("g")
+                .attr("class", "slices");
+            cpnyNmAn.append("g")
+                .attr("class", "labels");
+            cpnyNmAn.append("g")
+                .attr("class", "title");
+            cpnyNmAn
+                .attr("transform", "translate(" + $('#domainSample').width() / 4 + "," + 100 + ")");
+
+            cpnyNmAn.select(".title")
+                .append("text")
+                .text("Confidence")
+                .attr("text-anchor", "middle")
+                .attr("fill", "#5f5f5f")
+                .attr("transform", "translate(" + 0 + "," + 7 + ")")
+                .style("font-size", "20px")
+                .style("font-family", "helvetica");
+
+            drawCmpyNmPie(cmpyNmAnData);
+
+            function drawCmpyNmPie(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = cpnyNmAn.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return accColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition().duration(1000)
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return arc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = cpnyNmAn.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".35em")
+                    .text(function (d) {
+                        if (d.data.label !== "Blank") {
+                            if (d.data.value === 0) {
+                                return "";
+                            } else {
+                                return Math.round((d.data.value / denominator) * 100) + "%";
+                            }
+                        } else {
+                            return "";
+                        }
+
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = outerArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            var accWidth = 200,
+                accHeight = 200,
+                accRadius = Math.min(width, height) / 2;
+
+            var pie = d3.layout.pie()
+                .sort(null)
+                .value(function (d) {
+                    return d.value;
+                });
+
+            var accArc = d3.svg.arc()
+                .outerRadius(accRadius * 0.3)
+                .innerRadius(accRadius * 0.23);
+
+            var accOuterArc = d3.svg.arc()
+                .innerRadius(accRadius * 0.35)
+                .outerRadius(accRadius * 0.35);
+
+            /*------------------------------*/
+            /* ------- FIRMAGRAPHICS -------*/
+            /*------------------------------*/
+
+            var accColor = d3.scale.ordinal()
+                .domain(["Blank", "Firmagraphics", "Linkedin", "Facebook", "Twitter", "Total Enhanced"])
+                .range(["#b5b5b5", "#289ea8", "#1985BC", "#3b5998", "#326ada", "#20ad8c"]);
+
+            var firmagraphicsData = [
+                { label: "Firmagraphics", value: accEnData.Firmagraphics },
+                { label: "Blank", value: accEnData.Sample - accEnData.Firmagraphics }
+            ];
+
+            var firmagraphics = d3.select("#firmagraphics")
+                .append("svg")
+                .append("g");
+
+            firmagraphics.append("g")
+                .attr("class", "slices");
+            firmagraphics.append("g")
+                .attr("class", "labels");
+            firmagraphics.append("g")
+                .attr("class", "title");
+            firmagraphics.append("g")
+                .attr("class", "icon");
+            firmagraphics
+                .attr("transform", "translate(" + $('#firmagraphics').width() / 2 + "," + 75 + ")");
+
+            firmagraphics.select(".icon")
+                .append('svg:foreignObject')
+                .attr("width", 2)
+                .attr("height", 2)
+                .html('<i class="fa fa-bar-chart" style="color:grey; font-size:2.35em"></i>')
+                .attr("transform", "translate(" + -18 + "," + -15 + ")");
+
+            drawFirmagraphicsPie(firmagraphicsData);
+
+            function drawFirmagraphicsPie(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = firmagraphics.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return accColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition()
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return accArc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = firmagraphics.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".28em")
+                    .text(function (d) {
+                        if (d.data.label !== "Blank") {
+                            if (d.data.value === 0) {
+                                return "";
+                            } else {
+                                return Math.round((d.data.value / denominator) * 100) + "%";
+                            }
+                        } else {
+                            return "";
+                        }
+
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = accOuterArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            /*-------------------------*/
+            /* ------- LINKEDIN -------*/
+            /*-------------------------*/
+
+            var linkedinData = [
+                { label: "Linkedin", value: accEnData.Linkedin },
+                { label: "Blank", value: accEnData.Sample - accEnData.Linkedin }
+            ];
+
+            var linkedin = d3.select("#linkedin")
+                .append("svg")
+                .append("g");
+
+            linkedin.append("g")
+                .attr("class", "slices");
+            linkedin.append("g")
+                .attr("class", "labels");
+            linkedin.append("g")
+                .attr("class", "title");
+            linkedin.append("g")
+                .attr("class", "icon");
+            linkedin
+                .attr("transform", "translate(" + $('#linkedin').width() / 2 + "," + 75 + ")");
+
+            linkedin.select(".icon")
+                .append('svg:foreignObject')
+                .attr("width", 2)
+                .attr("height", 2)
+                .html('<i class="fa fa-linkedin-square fa-3x" style="color:grey"></i>')
+                .attr("transform", "translate(" + -18 + "," + -21 + ")");
+
+
+            drawLinkedinPie(linkedinData);
+
+            function drawLinkedinPie(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = linkedin.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return accColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition()
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return accArc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = linkedin.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".28em")
+                    .text(function (d) {
+                        if (d.data.label !== "Blank") {
+                            if (d.data.value === 0) {
+                                return "";
+                            } else {
+                                return Math.round((d.data.value / denominator) * 100) + "%";
+                            }
+                        } else {
+                            return "";
+                        }
+
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = accOuterArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            /*-------------------------*/
+            /* ------- FACEBOOK -------*/
+            /*-------------------------*/
+
+            var facebookData = [
+                { label: "Facebook", value: accEnData.Facebook },
+                { label: "Blank", value: accEnData.Sample - accEnData.Facebook }
+            ];
+
+            var facebook = d3.select("#facebook")
+                .append("svg")
+                .append("g");
+
+            facebook.append("g")
+                .attr("class", "slices");
+            facebook.append("g")
+                .attr("class", "labels");
+            facebook.append("g")
+                .attr("class", "title");
+            facebook.append("g")
+                .attr("class", "icon");
+            facebook
+                .attr("transform", "translate(" + $('#facebook').width() / 2 + "," + 75 + ")");
+
+            facebook.select(".icon")
+                .append('svg:foreignObject')
+                .attr("width", 2)
+                .attr("height", 2)
+                .html('<i class="fa fa-facebook-official fa-3x" style="color:grey"></i>')
+                .attr("transform", "translate(" + -18 + "," + -21 + ")");
+
+            drawFacebookPie(facebookData);
+
+            function drawFacebookPie(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = facebook.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return accColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition()
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return accArc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = facebook.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".28em")
+                    .text(function (d) {
+                        if (d.data.label !== "Blank") {
+                            if (d.data.value === 0) {
+                                return "";
+                            } else {
+                                return Math.round((d.data.value / denominator) * 100) + "%";
+                            }
+                        } else {
+                            return "";
+                        }
+
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = accOuterArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            /*------------------------*/
+            /* ------- TWITTER -------*/
+            /*------------------------*/
+
+            var twitterData = [
+                { label: "Twitter", value: accEnData.Twitter },
+                { label: "Blank", value: accEnData.Sample - accEnData.Twitter }
+            ];
+
+            var twitter = d3.select("#twitter")
+                .append("svg")
+                .append("g");
+
+            twitter.append("g")
+                .attr("class", "slices");
+            twitter.append("g")
+                .attr("class", "labels");
+            twitter.append("g")
+                .attr("class", "title");
+            twitter.append("g")
+                .attr("class", "icon");
+            twitter
+                .attr("transform", "translate(" + $('#linkedin').width() / 2 + "," + 75 + ")");
+
+            twitter.select(".icon")
+                .append('svg:foreignObject')
+                .attr("width", 2)
+                .attr("height", 2)
+                .html('<i class="fa fa-twitter fa-3x" style="color:grey"></i>')
+                .attr("transform", "translate(" + -18 + "," + -19 + ")");
+
+            drawTwitterPie(twitterData);
+
+            function drawTwitterPie(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = twitter.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return accColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition()
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return accArc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = twitter.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".28em")
+                    .text(function (d) {
+                        if (d.data.label !== "Blank") {
+                            if (d.data.value === 0) {
+                                return "";
+                            } else {
+                                return Math.round((d.data.value / denominator) * 100) + "%";
+                            }
+                        } else {
+                            return "";
+                        }
+
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = accOuterArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            /*--------------------------------*/
+            /* ------- TOTAL SOCIAL -------*/
+            /*--------------------------------*/
+
+            var totalSocialData = [
+                { label: "Total Enhanced", value: accEnData.Total },
+                { label: "Blank", value: accEnData.Sample - accEnData.Total }
+            ];
+
+            var totalSocial = d3.select("#totalSocial")
+                .append("svg")
+                .append("g");
+
+            totalSocial.append("g")
+                .attr("class", "slices");
+            totalSocial.append("g")
+                .attr("class", "labels");
+            totalSocial.append("g")
+                .attr("class", "title");
+            totalSocial.append("g")
+                .attr("class", "icon");
+            totalSocial
+                .attr("transform", "translate(" + $('#linkedin').width() / 2 + "," + 75 + ")");
+
+            totalSocial.select(".icon")
+                .append('svg:foreignObject')
+                .attr("width", 2)
+                .attr("height", 2)
+                .html('<i class="fa fa-industry" style="color:grey; font-size:2.5em;"></i>')
+                .attr("transform", "translate(" + -17 + "," + -17 + ")");
+
+            drawTotalSocialPie(totalSocialData);
+
+            function drawTotalSocialPie(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = totalSocial.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return accColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition()
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return accArc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = totalSocial.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".28em")
+                    .text(function (d) {
+                        if (d.data.label !== "Blank") {
+                            if (d.data.value === 0) {
+                                return "";
+                            } else {
+                                return Math.round((d.data.value / denominator) * 100) + "%";
+                            }
+                        } else {
+                            return "";
+                        }
+
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = accOuterArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            /*---------------------------------*/
+            /* ------- RECORD READINESS -------*/
+            /*---------------------------------*/
+
+            var rcrdRdy = {
+                Ready: 575,
+                NotReady: 425
+            }
+
+            var rcrdColor = d3.scale.ordinal()
+                .domain(["Ready", "Not Ready"])
+                .range(["#77d668", "#6f7a79"]);
+
+            var rcrdRdyData = [
+                { label: "Ready", value: rcrdRdy.Ready },
+                { label: "Not Ready", value: rcrdRdy.NotReady },
+            ];
+
+            var rcrdRdy = d3.select("#rcrdRdyPie")
+                .append("svg")
+                .append("g");
+
+            rcrdRdy.append("g")
+                .attr("class", "slices");
+            rcrdRdy.append("g")
+                .attr("class", "labels");
+            rcrdRdy.append("g")
+                .attr("class", "title");
+            rcrdRdy
+                .attr("transform", "translate(" + $('#domainSample').width() / 4 + "," + 100 + ")");
+
+            rcrdRdy.select(".title")
+                .append("text")
+                .text("Current")
+                .attr("text-anchor", "middle")
+                .attr("fill", "#5f5f5f")
+                .attr("transform", "translate(" + 0 + "," + 7 + ")")
+                .style("font-size", "20px")
+                .style("font-family", "helvetica");
+
+            drawRcrdRdyPie(rcrdRdyData);
+
+            function drawRcrdRdyPie(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = rcrdRdy.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return rcrdColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition().duration(1000)
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return arc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = rcrdRdy.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".35em")
+                    .text(function (d) {
+                        if (d.data.label !== "Blank") {
+                            if (d.data.value === 0) {
+                                return "";
+                            } else {
+                                return Math.round((d.data.value / denominator) * 100) + "%";
+                            }
+                        } else {
+                            return "";
+                        }
+
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = outerArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            /*---------------------------------*/
+            /* ------- RECORD POTENTIAL -------*/
+            /*---------------------------------*/
+
+            var rcrdPot = {
+                Ready: 951,
+                NotReady: 49
+            }
+
+            var rcrdColor = d3.scale.ordinal()
+                .domain(["Ready", "Not Ready"])
+                .range(["#77d668", "#6f7a79"]);
+
+            var rcrdPotData = [
+                { label: "Ready", value: rcrdPot.Ready },
+                { label: "Not Ready", value: rcrdPot.NotReady },
+            ];
+
+            var rcrdPot = d3.select("#rcrdPotPie")
+                .append("svg")
+                .append("g");
+
+            rcrdPot.append("g")
+                .attr("class", "slices");
+            rcrdPot.append("g")
+                .attr("class", "labels");
+            rcrdPot.append("g")
+                .attr("class", "title");
+            rcrdPot
+                .attr("transform", "translate(" + $('#domainSample').width() / 4 + "," + 100 + ")");
+
+            rcrdPot.select(".title")
+                .append("text")
+                .text("Potential")
+                .attr("text-anchor", "middle")
+                .attr("fill", "#5f5f5f")
+                .attr("transform", "translate(" + 0 + "," + 7 + ")")
+                .style("font-size", "20px")
+                .style("font-family", "helvetica");
+
+            drawRcrdPotPie(rcrdPotData);
+
+            function drawRcrdPotPie(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = rcrdPot.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return rcrdColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition().duration(1000)
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return arc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = rcrdPot.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".35em")
+                    .text(function (d) {
+                        if (d.data.label !== "Blank") {
+                            if (d.data.value === 0) {
+                                return "";
+                            } else {
+                                return Math.round((d.data.value / denominator) * 100) + "%";
+                            }
+                        } else {
+                            return "";
+                        }
+
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = outerArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            /*-----------------------*/
+            /* ------- EMAILS -------*/
+            /*-----------------------*/
+
+            var accColor = d3.scale.ordinal()
+                .domain(["Blank", "Emails", "Phones", "Addresses", "Titles", "Social", "Total Enhanced"])
+                .range(["#b5b5b5", "#289ea8", "#22287a", "#3b5998", "#326ada", "#20ad8c", "#20ad8c"]);
+
+            var emailsData = [
+                { label: "Emails", value: cnctData.Emails },
+                { label: "Blank", value: cnctData.Sample - cnctData.Emails }
+            ];
+
+            var emails = d3.select("#emails")
+                .append("svg")
+                .append("g");
+
+            emails.append("g")
+                .attr("class", "slices");
+            emails.append("g")
+                .attr("class", "labels");
+            emails.append("g")
+                .attr("class", "title");
+            emails.append("g")
+                .attr("class", "icon");
+            emails
+                .attr("transform", "translate(" + $('#emails').width() / 2 + "," + 75 + ")");
+
+            emails.select(".icon")
+                .append('svg:foreignObject')
+                .attr("width", 2)
+                .attr("height", 2)
+                .html('<i class="fa fa-envelope" style="color:grey; font-size:2.35em"></i>')
+                .attr("transform", "translate(" + -17 + "," + -17 + ")");
+
+            drawEmailsPie(emailsData);
+
+            function drawEmailsPie(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = emails.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return accColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition()
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return accArc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = emails.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".28em")
+                    .text(function (d) {
+                        if (d.data.label !== "Blank") {
+                            if (d.data.value === 0) {
+                                return "";
+                            } else {
+                                return Math.round((d.data.value / denominator) * 100) + "%";
+                            }
+                        } else {
+                            return "";
+                        }
+
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = accOuterArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            /*-----------------------*/
+            /* ------- PHONES-------*/
+            /*-----------------------*/
+
+            var phonesData = [
+                { label: "Phones", value: cnctData.Phones },
+                { label: "Blank", value: cnctData.Sample - cnctData.Phones }
+            ];
+
+            var phones = d3.select("#phones")
+                .append("svg")
+                .append("g");
+
+            phones.append("g")
+                .attr("class", "slices");
+            phones.append("g")
+                .attr("class", "labels");
+            phones.append("g")
+                .attr("class", "title");
+            phones.append("g")
+                .attr("class", "icon");
+            phones
+                .attr("transform", "translate(" + $('#emails').width() / 2 + "," + 75 + ")");
+
+            phones.select(".icon")
+                .append('svg:foreignObject')
+                .attr("width", 2)
+                .attr("height", 2)
+                .html('<i class="fa fa-phone" style="color:grey; font-size:2.9em"></i>')
+                .attr("transform", "translate(" + -16 + "," + -18 + ")");
+
+            drawPhonesPie(phonesData);
+
+            function drawPhonesPie(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = phones.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return accColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition()
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return accArc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = phones.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".28em")
+                    .text(function (d) {
+                        if (d.data.label !== "Blank") {
+                            if (d.data.value === 0) {
+                                return "";
+                            } else {
+                                return Math.round((d.data.value / denominator) * 100) + "%";
+                            }
+                        } else {
+                            return "";
+                        }
+
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = accOuterArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            /*------------------------*/
+            /* -------ADDRESSES-------*/
+            /*------------------------*/
+
+            var addressesData = [
+                { label: "Addresses", value: cnctData.Addresses },
+                { label: "Blank", value: cnctData.Sample - cnctData.Addresses }
+            ];
+
+            var addresses = d3.select("#addresses")
+                .append("svg")
+                .append("g");
+
+            addresses.append("g")
+                .attr("class", "slices");
+            addresses.append("g")
+                .attr("class", "labels");
+            addresses.append("g")
+                .attr("class", "title");
+            addresses.append("g")
+                .attr("class", "icon");
+            addresses
+                .attr("transform", "translate(" + $('#addresses').width() / 2 + "," + 75 + ")");
+
+            addresses.select(".icon")
+                .append('svg:foreignObject')
+                .attr("width", 2)
+                .attr("height", 2)
+                .html('<i class="fa fa-map-marker" style="color:grey; font-size:3.3em"></i>')
+                .attr("transform", "translate(" + -13 + "," + -21 + ")");
+
+            drawAddressesPie(addressesData);
+
+            function drawAddressesPie(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = addresses.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return accColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition()
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return accArc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = addresses.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".28em")
+                    .text(function (d) {
+                        if (d.data.label !== "Blank") {
+                            if (d.data.value === 0) {
+                                return "";
+                            } else {
+                                return Math.round((d.data.value / denominator) * 100) + "%";
+                            }
+                        } else {
+                            return "";
+                        }
+
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = accOuterArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            /*---------------------*/
+            /* -------TITLES-------*/
+            /*---------------------*/
+
+            var titlesData = [
+                { label: "Titles", value: cnctData.Titles },
+                { label: "Blank", value: cnctData.Sample - cnctData.Titles }
+            ];
+
+            var titles = d3.select("#titles")
+                .append("svg")
+                .append("g");
+
+            titles.append("g")
+                .attr("class", "slices");
+            titles.append("g")
+                .attr("class", "labels");
+            titles.append("g")
+                .attr("class", "title");
+            titles.append("g")
+                .attr("class", "icon");
+            titles
+                .attr("transform", "translate(" + $('#addresses').width() / 2 + "," + 75 + ")");
+
+            titles.select(".icon")
+                .append('svg:foreignObject')
+                .attr("width", 2)
+                .attr("height", 2)
+                .html('<i class="fa fa-briefcase" style="color:grey; font-size:2.9em"></i>')
+                .attr("transform", "translate(" + -20 + "," + -18 + ")");
+
+            drawTitlesPie(titlesData);
+
+            function drawTitlesPie(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = titles.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return accColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition()
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return accArc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = titles.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".28em")
+                    .text(function (d) {
+                        if (d.data.label !== "Blank") {
+                            if (d.data.value === 0) {
+                                return "";
+                            } else {
+                                return Math.round((d.data.value / denominator) * 100) + "%";
+                            }
+                        } else {
+                            return "";
+                        }
+
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = accOuterArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            /*--------------------*/
+            /*--------SOCIAL------*/
+            /*--------------------*/
+
+            var socialData = [
+                { label: "Social", value: cnctData.Social },
+                { label: "Blank", value: cnctData.Sample - cnctData.Social }
+            ];
+
+            var social = d3.select("#social")
+                .append("svg")
+                .append("g");
+
+            social.append("g")
+                .attr("class", "slices");
+            social.append("g")
+                .attr("class", "labels");
+            social.append("g")
+                .attr("class", "title");
+            social.append("g")
+                .attr("class", "icon");
+            social
+                .attr("transform", "translate(" + $('#addresses').width() / 2 + "," + 75 + ")");
+
+            social.select(".icon")
+                .append('svg:foreignObject')
+                .attr("width", 2)
+                .attr("height", 2)
+                .html('<i class="fa fa-commenting" style="color:grey; font-size:2.7em"></i>')
+                .attr("transform", "translate(" + -18 + "," + -20 + ")");
+
+            drawSocialPie(socialData);
+
+            function drawSocialPie(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = social.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return accColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition()
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return accArc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = social.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".28em")
+                    .text(function (d) {
+                        if (d.data.label !== "Blank") {
+                            if (d.data.value === 0) {
+                                return "";
+                            } else {
+                                return Math.round((d.data.value / denominator) * 100) + "%";
+                            }
+                        } else {
+                            return "";
+                        }
+
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = accOuterArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            /*---------------------------*/
+            /*--------TOTAL CONNECT------*/
+            /*---------------------------*/
+
+            var totalConnData = [
+                { label: "Total Enhanced", value: cnctData.TotalEff },
+                { label: "Blank", value: cnctData.Sample - cnctData.TotalEff }
+            ];
+
+            var totalConn = d3.select("#totalConnect")
+                .append("svg")
+                .append("g");
+
+            totalConn.append("g")
+                .attr("class", "slices");
+            totalConn.append("g")
+                .attr("class", "labels");
+            totalConn.append("g")
+                .attr("class", "title");
+            totalConn.append("g")
+                .attr("class", "icon");
+            totalConn
+                .attr("transform", "translate(" + $('#addresses').width() / 2 + "," + 75 + ")");
+
+            totalConn.select(".icon")
+                .append('svg:foreignObject')
+                .attr("width", 2)
+                .attr("height", 2)
+                .html('<i class="fa fa-users" style="color:grey; font-size:2.5em;"></i>')
+                .attr("transform", "translate(" + -18 + "," + -16 + ")");
+
+            drawTotalConnPie(totalConnData);
+
+            function drawTotalConnPie(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = totalConn.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return accColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition()
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return accArc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = totalConn.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".28em")
+                    .text(function (d) {
+                        if (d.data.label !== "Blank") {
+                            if (d.data.value === 0) {
+                                return "";
+                            } else {
+                                return Math.round((d.data.value / denominator) * 100) + "%";
+                            }
+                        } else {
+                            return "";
+                        }
+
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = accOuterArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            //----TITLESSSSS
+
+            var titleCountData = {
+                Sales: 677,
+                Marketing: 639,
+                Finance: 30,
+                IT: 779,
+                Legal: 916,
+                Admin: 667,
+                Content: 639,
+                Communications: 30,
+                Developer: 779,
+                CustService: 916
+            }
+
+            var titleCountColor = d3.scale.ordinal()
+                .domain(["Sales", "Marketing", "Finance", "IT", "Legal", "Admin", "Content", "Communications", "Developer", "Customer Service"])
+                .range(["#98abc5", "#289ea8", "#7b6888", "#ed4949", "#77d668", "#6B486B", "#ff8c00", "#17c89e", "#98abc5", "#6f7a79"]);
+
+            var titleCountData = [
+                { label: "Sales", value: titleCountData.Sales },
+                { label: "Marketing", value: titleCountData.Marketing },
+                { label: "Finance", value: titleCountData.Finance },
+                { label: "IT", value: titleCountData.IT },
+                { label: "Legal", value: titleCountData.Legal },
+                { label: "Admin", value: titleCountData.Admin },
+                { label: "Content", value: titleCountData.Content },
+                { label: "Communications", value: titleCountData.Communications },
+                { label: "Developer", value: titleCountData.Developer },
+                { label: "Customer Service", value: titleCountData.CustService },
+                
+            ];
+
+            var titleCount = d3.select("#titleCountPie")
+                .append("svg")
+                .append("g");
+
+            titleCount.append("g")
+                .attr("class", "slices");
+            titleCount.append("g")
+                .attr("class", "labels");
+            titleCount.append("g")
+                .attr("class", "title");
+            titleCount
+                .attr("transform", "translate(" + $('#titleCountPie').width() / 2 + "," + 100 + ")");
+
+            drawTitleCountPie(titleCountData);
+
+            function drawTitleCountPie(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = titleCount.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return titleCountColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition().duration(1000)
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return arc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = titleCount.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".35em")
+                    .text(function (d) {
+                        if (d.data.label !== "Blank") {
+                            if (d.data.value === 0) {
+                                return "";
+                            } else {
+                                return Math.round((d.data.value / denominator) * 100) + "%";
+                            }
+                        } else {
+                            return "";
+                        }
+
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = outerArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            var titleLevelData = {
+                CLevel: 1675,
+                Board: 853,
+                SVP: 562,
+                President: 1023,
+                VP: 999,
+                Director: 2401,
+                Manager: 1750,
+                Staff: 499,
+                Assistant: 394
+            }
+
+            var titleLevelColor = d3.scale.ordinal()
+                .range(["#98abc5", "#289ea8", "#7b6888", "#ed4949", "#77d668", "#6B486B", "#ff8c00", "#17c89e", "#98abc5", "#6f7a79"]);
+
+            var titleLevelData = [
+                { label: "C Level", value: titleLevelData.CLevel },
+                { label: "Board", value: titleLevelData.Board },
+                { label: "SVP/EVP", value: titleLevelData.SVP},
+                { label: "President", value: titleLevelData.President },
+                { label: "VP", value: titleLevelData.VP },
+                { label: "Director", value: titleLevelData.Director},
+                { label: "Manager", value: titleLevelData.Manager },
+                { label: "Staff", value: titleLevelData.Staff },
+                { label: "Assistant", value: titleLevelData.Assistant }
+
+            ];
+
+            var titleLevel = d3.select("#titleLevelPie")
+                .append("svg")
+                .append("g");
+
+            titleLevel.append("g")
+                .attr("class", "slices");
+            titleLevel.append("g")
+                .attr("class", "labels");
+            titleLevel.append("g")
+                .attr("class", "title");
+            titleLevel
+                .attr("transform", "translate(" + $('#titleCountPie').width() / 2 + "," + 100 + ")");
+
+            drawTitleLevelPie(titleLevelData);
+
+            function drawTitleLevelPie(data) {
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = titleLevel.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return titleLevelColor(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition().duration(1000)
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return arc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = titleLevel.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".35em")
+                    .text(function (d) {
+                        if (d.data.label !== "Blank") {
+                            if (d.data.value === 0) {
+                                return "";
+                            } else {
+                                return Math.round((d.data.value / denominator) * 100) + "%";
+                            }
+                        } else {
+                            return "";
+                        }
+
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = outerArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+
+            /*------AUTOMATION------*/
+            /*------AUTOMATION------*/
+            /*------AUTOMATION------*/
+
+            var titleLevelData = {
+                CLevel: 1675,
+                Board: 853,
+                SVP: 562,
+                President: 1023,
+                VP: 999,
+                Director: 2401,
+                Manager: 1750,
+                Staff: 499,
+                Assistant: 394
+            }
+
+            var titleLevelColor = d3.scale.ordinal()
+                .range(["#98abc5", "#289ea8", "#7b6888", "#ed4949", "#77d668", "#6B486B", "#ff8c00", "#17c89e", "#98abc5", "#6f7a79"]);
+
+            var titleLevelData = [
+                { label: "C Level", value: titleLevelData.CLevel },
+                { label: "Board", value: titleLevelData.Board },
+                { label: "SVP/EVP", value: titleLevelData.SVP },
+                { label: "President", value: titleLevelData.President },
+                { label: "VP", value: titleLevelData.VP },
+                { label: "Director", value: titleLevelData.Director },
+                { label: "Manager", value: titleLevelData.Manager },
+                { label: "Staff", value: titleLevelData.Staff },
+                { label: "Assistant", value: titleLevelData.Assistant }
+
+            ];
+
+            function createStandardPie(data, target, color, size) {
+
+                var element = d3.select(target)
+                .append("svg")
+                .append("g");
+
+                element.append("g")
+                    .attr("class", "slices");
+                element.append("g")
+                    .attr("class", "labels");
+                element.append("g")
+                    .attr("class", "title");
+                element
+                    .attr("transform", "translate(" + $(element).width() / 2 + "," + $(element).height() / 2 + ")");
+
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = element.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return color(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition().duration(1000)
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return size.arc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = element.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".35em")
+                    .text(function (d) {
+                        if (d.data.label !== "Blank") {
+                            if (d.data.value === 0) {
+                                return "";
+                            } else {
+                                return Math.round((d.data.value / denominator) * 100) + "%";
+                            }
+                        } else {
+                            return "";
+                        }
+
+                    });
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = size.outerArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            
+
+
+        </script>
+
+
+
+</body>
+</html>

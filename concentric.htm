@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+<style>
+    body {
+        background: #222;
+        margin: auto;
+        width: 960px;
+    }
+
+    .arc-center {
+        fill: none;
+    }
+</style>
+</head>
+<body>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script>
+
+var width = 960,
+    height = 800,
+    radius = Math.min(width, height) / 1.9,
+    spacing = .095;
+
+var vColor = d3.scale.ordinal()
+    .domain(["Firmagraphics", "Linkedin", "Facebook", "Twitter"])
+    .range(["#5c24a1", "#0077B%", "#3b5998", "#326ada"]);
+
+var color = d3.scale.linear()
+    .range(["hsl(-100,60%,50%)", "hsl(-180,60%,50%)"])
+    .interpolate(function (a, b) { var i = d3.interpolateString(a, b); return function (t) { return d3.hsl(i(t)); }; });
+
+var radialStartAngle = Math.PI + Math.PI / 5;
+
+var arcBody = d3.svg.arc()
+    .startAngle(radialStartAngle)
+    .endAngle(function (d) { return -(Math.PI * 2 * (d.value / 870) - radialStartAngle); })
+    .innerRadius(function(d) { return d.index * radius; })
+    .outerRadius(function(d) { return (d.index + spacing) * radius; })
+    .cornerRadius(2);
+
+var arcCenter = d3.svg.arc()
+    .startAngle(radialStartAngle)
+    .endAngle(function (d) { return 0; })
+    .innerRadius(function(d) { return (d.index + spacing / 2) * radius; })
+    .outerRadius(function(d) { return (d.index + spacing / 2) * radius; });
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+var field = svg.selectAll("g")
+    .data(fields)
+  .enter().append("g");
+
+field.append("path")
+    .attr("class", "arc-body");
+
+field.append("path")
+    .attr("id", function(d, i) { return "arc-center-" + i; })
+    .attr("class", "arc-center");
+
+d3.select(self.frameElement).style("height", height + "px");
+
+    field
+      .each(function(d) { this._value = d.value; })
+      .data(fields)
+      .each(fieldDraw);
+
+
+function fieldDraw() {
+  var field = d3.select(this).transition();
+
+  field.select(".arc-body")
+      .attr("d", arcBody)
+      .style("fill", function(d) { return vColor(d.text); });
+
+  field.select(".arc-center")
+      .attr("d", arcCenter);
+
+  field.select(".arc-text")
+      .text(function(d) { return d.text; });
+}
+
+function fields() {
+  return [
+    { index: .5, text: "Firmagraphics", value: 717 },
+    { index: .4, text: "Linkedin", value: 632 },
+    { index: .3, text: "Facebook", value: 587 },
+    { index: .2, text: "Twitter", value: 9 }
+  ];
+}
+
+</script>
+
+</body>
+</html>

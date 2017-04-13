@@ -1,0 +1,341 @@
+﻿<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+    <title>Indigo</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-switch.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/jquery-1.12.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/d3pie.min.js"></script>
+    <script src="js/Donut3D.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+
+
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-custom navbar-static-top" role="navigation">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="color:#FFF; padding:7px"><img src="imgs/ringlead-logo.png" /></a>
+            <div class="navbar-header navbar-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="test.htm" style="color:#FFF;">Home</a></li>
+                    <li><a href="test.htm" style="color:#FFF;">About</a></li>
+                    <li><a href="test.htm" style="color:#FFF;">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div row>
+            <div class="col-md-2"></div>
+            <div id="foundationBefore" class="col-md-8" style="height:500px;"></div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div row>
+            <div class="col-md-2"></div>
+            <svg id="svg_donut" class="col-md-8" width="600" height="400"></svg>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+    <svg id="svg_donut" width="600" height="400"></svg>
+
+    <!-- Footer -->
+    <footer class="footer-custom">
+        <div class="container-fluid">
+            &copy; Ringlead, Inc.
+        </div>
+    </footer>
+    <!-- Footer End -->
+    <script>
+        function midPoint(coor1, coor2) {
+            return [(coor1[0]+coor2[0])/2,(coor1[1]+coor2[1])/2]
+        }
+
+        function pointDistance(coor1, coor2) {
+            return 10 < Math.sqrt(Math.pow(coor2[0] - coor1[0], 2) + Math.pow(coor2[1] - coor1[1], 2));
+        }
+
+
+        var fndBefore = d3.select("#foundationBefore")
+	        .append("svg")
+	        .append("g")
+
+        fndBefore.append("g")
+	        .attr("class", "slices");
+        fndBefore.append("g")
+	        .attr("class", "labels");
+        fndBefore.append("g")
+	        .attr("class", "lines");
+        fndBefore.append("g")
+            .attr("class", "title");
+        fndBefore.append("g")
+            .attr("class", "innerPoints");
+        fndBefore.append("g")
+            .attr("class", "outerPoints");
+
+        var width = 730,
+            height = 450,
+	        radius = Math.min(width, height) / 2;
+
+        var pie = d3.layout.pie()
+	        .sort(null)
+	        .value(function(d) {
+		        return d.value;
+	        });
+
+        var arc = d3.svg.arc()
+	        .outerRadius(radius * 0.5)
+	        .innerRadius(radius * 0.4);
+
+        var outerArc = d3.svg.arc()
+	        .innerRadius(radius * 0.55)
+	        .outerRadius(radius * 0.55);
+        fndBefore.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+        var key = function (d) { return d.data.label; };
+
+        fndBefore.select(".title")
+            .append("text")
+            .text("Department")
+            .attr("text-anchor", "middle")
+            .attr("fill", "#5f5f5f")
+            .attr("transform", "translate(" + 0 + "," + 7 + ")")
+            .style("font-size", "25px")
+            .style("font-family", "helvetica");
+
+        var indigo = d3.scale.ordinal()
+	        .domain(["Sales", "Marketing", "Finance", "IT", "Legal", "Admin", "Content", "Communications", "Developer", "Customer Service"])
+	        .range(["#037ba3", "#239ea3", "#0b8d93", "#216389", "#2A4C70", "#313E74", "#392878", "#42147E", "#4B0082", "#3d1f9e"]);
+
+        var indigoTwo = d3.scale.ordinal()
+	        .domain(["Sales", "Marketing", "Finance", "IT", "Legal", "Admin", "Content", "Communications", "Developer", "Customer Service"])
+	        .range(["#468C9E", "#365F7A", "#313B70", "#3D2559", "#340E46", "#340E36", "#340E46", "#3D2559", "#313B70", "#365F7A"]);
+
+        var indigoThree = d3.scale.ordinal()
+           .domain(["Sales", "Marketing", "Finance", "IT", "Legal", "Admin", "Content", "Communications", "Developer", "Customer Service"])
+           .range(["#47ccfe", "#4c9fe5", "#5083d5", "5651ba", "#5c24a1", "#600490", "#5c24a1", "#5651ba", "#5083d5", "#4c9fe5"]);
+
+        var color = d3.scale.ordinal()
+	        .domain(["Segmentable", "Prospectable", "Researchable", "Unusable"])
+	        .range(["#77d668", "#289ea8", "#17c89e", "#6f7a79"]);
+
+        var currentData = [
+            { label: "Sales", value: 713 },
+	        { label: "Marketing", value: 280 },
+	        { label: "Finance", value: 443 },
+            { label: "IT", value: 93 },
+            { label: "Legal", value: 307 },
+            { label: "Admin", value: 982 },
+            { label: "Content", value: 258 },
+            { label: "Communications", value: 88 },
+            { label: "Developer", value: 284 },
+            { label: "Customer Service", value: 233 }
+        ];
+
+
+
+
+        noChange(currentData);
+
+        function noChange(data) {
+            var denominator = 0;
+
+            for (i = 0; i < data.length; i++) {
+                denominator = denominator + data[i].value;
+            }
+
+            /* ------- PIE SLICES -------*/
+            var slice = fndBefore.select(".slices").selectAll("path.slice")
+		        .data(pie(data), key);
+
+            slice.enter()
+		        .insert("path")
+		        .style("fill", function (d) { return indigoThree(d.data.label); })
+		        .attr("class", "slice");
+
+            slice
+		        .transition()
+		        .attrTween("d", function (d) {
+		            console.log("D: ", d);
+		            this._current = this._current || d;
+		            console.log("This Current: ", this._current);
+		            var interpolate = d3.interpolate(this._current, d);
+		            this._current = interpolate(0);
+		            console.log("New This Current: ", this._current);
+		            return function (t) {
+
+		                console.log("T: ", t);
+		                console.log("arc: ", arc(interpolate(t)));
+		                var d2 = interpolate(t);
+		                console.log("D2: ", d2);
+		                return arc(interpolate(t));
+		            };
+		        })
+
+            slice.exit()
+		        .remove();
+
+            /* ------- OUTER POINTS -------*/
+            //Star Trek Timelines
+
+            var outerPoint = fndBefore.select(".outerPoints").selectAll(".outerPoint")
+               .data(pie(data), key);
+
+            outerPoint.enter()
+                .append("circle")
+                .attr('class', 'outerPoint')
+                .attr("r", "2");
+
+            outerPoint.transition().duration(1000)
+		        .attrTween("transform", function (d) {
+		            this._current = this._current || d;
+		            var interpolate = d3.interpolate(this._current, d);
+		            this._current = interpolate(0);
+		            return function (t) {
+
+		                var d2 = interpolate(t);
+		                var pos = outerArc.centroid(d2);
+		                pos[0] = radius * 0.624 * (midAngle(d2) < Math.PI ? 1 : -1);
+		                return "translate(" + pos + ")";
+		            };
+		        });
+
+            outerPoint.exit()
+                .remove();
+
+            /* ------- INNER POINTS -------*/
+            //Star Trek Timelines
+
+            var innerPoint = fndBefore.select(".innerPoints").selectAll(".innerPoint")
+               .data(pie(data), key);
+
+            innerPoint.enter()
+                .append("circle")
+                .attr('class', 'innerPoint')
+                .attr("r", "2");
+
+            innerPoint.transition().duration(1000)
+		        .attrTween("transform", function (d) {
+		            this._current = this._current || d;
+		            var interpolate = d3.interpolate(this._current, d);
+		            this._current = interpolate(0);
+		            return function (t) {
+
+		                var d2 = interpolate(t);
+		                var pos = outerArc.centroid(d2);
+		                pos[0] = radius * 0.624 * (midAngle(d2) < Math.PI ? 1 : -1);
+		                if (pointDistance(midPoint(midPoint(arc.centroid(d2), outerArc.centroid(d2)), outerArc.centroid(d2)), pos)) {
+		                    return "translate(" + midPoint(midPoint(arc.centroid(d2), outerArc.centroid(d2)), outerArc.centroid(d2)) + ")";
+		                } else {
+		                    return "translate(" + pos + ")";
+		                }
+		            };
+		        });
+
+            innerPoint.exit()
+                .remove();
+
+            /* ------- TEXT LABELS -------*/
+            var text = fndBefore.select(".labels").selectAll("text")
+		        .data(pie(data), key);
+
+            text.enter()
+		        .append("text")
+		        .attr("dy", ".35em")
+		        .text(function (d) {
+		            if (d.data.value === 0) {
+		                return "";
+		            } else {
+		                return d.data.label + " " + Math.round((d.data.value / denominator) * 100) + "%";
+		            }
+		        });
+
+            function midAngle(d) {
+                return d.startAngle + (d.endAngle - d.startAngle) / 2;
+            }
+
+            text.transition().duration(1000)
+		        .attrTween("transform", function (d) {
+		            this._current = this._current || d;
+		            var interpolate = d3.interpolate(this._current, d);
+		            this._current = interpolate(0);
+		            return function (t) {
+
+		                var d2 = interpolate(t);
+		                var pos = outerArc.centroid(d2);
+		                pos[0] = radius * 0.65 * (midAngle(d2) < Math.PI ? 1 : -1);
+		                return "translate(" + pos + ")";
+		            };
+		        })
+		        .styleTween("text-anchor", function (d) {
+		            this._current = this._current || d;
+		            var interpolate = d3.interpolate(this._current, d);
+		            this._current = interpolate(0);
+		            return function (t) {
+		                var d2 = interpolate(t);
+		                return midAngle(d2) < Math.PI ? "start" : "end";
+		            };
+		        });
+
+            text.exit()
+		        .remove();
+
+            /* ------- SLICE TO TEXT POLYLINES -------*/
+
+            var polyline = fndBefore.select(".lines").selectAll("polyline")
+		        .data(pie(data), key);
+
+            polyline.enter()
+		        .append("polyline");
+
+            polyline.transition().duration(1000)
+		        .attrTween("points", function (d) {
+		            this._current = this._current || d;
+		            var interpolate = d3.interpolate(this._current, d);
+		            this._current = interpolate(0);
+		            return function (t) {
+		                var d2 = interpolate(t);
+		                var pos = outerArc.centroid(d2);
+		                pos[0] = radius * 0.63 * (midAngle(d2) < Math.PI ? 1 : -1);
+		                return [midPoint(midPoint(arc.centroid(d2), outerArc.centroid(d2)), outerArc.centroid(d2)), pos];
+		            };
+		        });
+
+            polyline.exit()
+		        .remove();
+
+        };
+
+        var cScale = d3.scale.linear()
+            .domain([0, 100])
+            .range([0, 2 * Math.PI]);
+
+        var data = [[75, 25, "#aa8888"], [35, 60, "#88bb88"], [60, 75, "#8888cc"]];
+
+        var vis = d3.select("#svg_donut");
+   
+
+        var arc = d3.svg.arc()
+            .innerRadius(50)
+            .outerRadius(100)
+            .startAngle(function (d) { return cScale(d[0]); })
+            .endAngle(function (d) { return cScale(d[1]); });
+
+        vis.selectAll("path")
+            .data(data).enter()
+            .append("path")
+            .attr("d", arc)
+            .style("fill", function (d) {
+                return d[2];
+            })
+            .attr("transform", "translate(300,200)");
+
+    </script>
+</body>
+</html>

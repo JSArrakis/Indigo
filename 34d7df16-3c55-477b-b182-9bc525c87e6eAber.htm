@@ -1,0 +1,1375 @@
+﻿<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+    <title>Indigo</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-switch.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/jquery-1.12.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/d3pie.min.js"></script>
+    <script src="js/Donut3D.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+
+
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-custom navbar-static-top" role="navigation">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="color:#FFF; padding:7px"><img src="imgs/ringlead-logo.png" /></a>
+            <div class="navbar-header navbar-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="test.htm" style="color:#FFF;">Home</a></li>
+                    <li><a href="test.htm" style="color:#FFF;">About</a></li>
+                    <li><a href="test.htm" style="color:#FFF;">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12 table-section"><h4 class="no-margin vert-center">Data Foundation</h4></div></div>
+        <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12" style="text-align:center;">Verify company name and website domain. Account and contact enhancement services depend on a solid foundation on which to build upon.</div></div>
+        <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+            <div class="container">
+                <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+                    <div class="col-md-6 col-xs-12 no-margin no-padding">
+                        <div class="col-md-11" id="domainSample" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center">Record Readiness</h4></div></div><div class="col-md-1"></div>
+                        <div class="col-md-2 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:160px; width:57.5px;"></div></div>
+                        <div id="rcrdRdyChart" class="col-md-4 graph-centric no-padding" style="margin-top:20px;"></div>
+                        <div class="col-md-6"><div id="rcrdRdyPie" style="height:200px;"></div></div>
+                    </div>
+                    <div class="col-md-6 col-xs-12 no-margin no-padding">
+                        <div class="col-md-11" id="domainSampleAnalysis" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center">Record Potential</h4></div></div><div class="col-md-1"></div>
+                        <div class="col-md-2 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:160px; width:57.5px;"></div></div>
+                        <div id="rcrdPotChart" class="col-md-4 graph-centric no-padding" style="margin-top:20px;"></div>
+                        <div class="col-md-6"><div id="rcrdPotPie" style="height:200px;"></div></div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+                    <div class="col-md-12" style="text-align:center;">
+                        The Readiness metrics show how much of the provided company records are able to have Ringlead Data Services performed on them.  The Record readiness shows the data as provided where the Record potential shows the enhanced provided data after applying our Foundation and Normalization services.
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+                        <div class="col-md-6 col-xs-12 no-margin no-padding">
+                            <div class="col-md-11" id="domainSample" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center">Foundation Before</h4></div></div><div class="col-md-1"></div>
+                            <div class="col-md-2 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:160px; width:57.5px;"></div></div>
+                            <div id="fndBfrChart" class="col-md-4 graph-centric no-padding" style="margin-top:20px;"></div>
+                            <div class="col-md-6"><div id="fndBfrPie" style="height:200px;"></div></div>
+                        </div>
+                        <div class="col-md-6 col-xs-12 no-margin no-padding">
+                            <div class="col-md-11" id="domainSample" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center">Foundation After</h4></div></div><div class="col-md-1"></div>
+                            <div class="col-md-2 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:160px; width:57.5px;"></div></div>
+                            <div id="fndAfrChart" class="col-md-4 graph-centric no-padding" style="margin-top:20px;"></div>
+                            <div class="col-md-6"><div id="fndAfrPie" style="height:200px;"></div></div>
+                        </div>
+                </div>
+                <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+                    <div class="col-md-12" style="text-align:center;">
+                        Foundation metrics show the current status and post RingLead Data Services status of your Account data.  It is broken into usability levels that range from "Segment-able", where you can market to and slice up the accounts by Industry, Size, or Revenue, to "Remove" records that were found to be bad and should be removed from your system to declutter your CRM.
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12"><div class="table-subsection no-margin"><h4 class="vert-center">Websites</h4></div></div></div>
+            <div class="container">
+                <div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+
+                    <div class="col-md-6 col-xs-12 no-margin no-padding">
+                        <div class="col-md-11" id="domainSample" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center">Starting Sample</h4></div></div><div class="col-md-1"></div>
+                        <div class="col-md-2 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:160px; width:57.5px;"></div></div>
+                        <div id="domainSampleChart" class="col-md-4 graph-centric no-padding" style="margin-top:20px;"></div>
+                        <div class="col-md-6"><div id="domainSamplePie" style="height:200px;"></div></div>
+                    </div>
+
+                    <div class="col-md-6 col-xs-12 no-margin no-padding">
+                        <div class="col-md-11" id="domainSampleAnalysis" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center"> Starting Sample - Analysis</h4></div></div><div class="col-md-1"></div>
+                        <div class="col-md-2 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:160px; width:57.5px;"></div></div>
+                        <div id="domainSampleAnalysisChart" class="col-md-4 graph-centric no-padding" style="margin-top:20px;"></div>
+                        <div class="col-md-6"><div id="domainSampleAnalysisPie" style="height:200px;"></div></div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-xs-12 no-margin no-padding">
+                        <div class="col-md-11" id="domainCorrected" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center">Corrected</h4></div></div><div class="col-md-1"></div>
+                        <div class="col-md-2 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:160px; width:57.5px;"></div></div>
+                        <div id="domainCorrectedChart" class="col-md-4 graph-centric no-padding" style="margin-top:20px;"></div>
+                        <div class="col-md-6"><div id="domainCorrectedPie" style="height:200px;"></div></div>
+                    </div>
+
+                    <div class="col-md-6 col-xs-12 no-margin no-padding">
+                        <div class="col-md-11" id="domainCorrectedAnalysis" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center">Correction - Analysis</h4></div></div><div class="col-md-1"></div>
+                        <div class="col-md-2 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:160px; width:57.5px;"></div></div>
+                        <div id="domainCorrectedAnalysisChart" class="col-md-4 graph-centric no-padding" style="margin-top:20px;"></div>
+                        <div class="col-md-6"><div id="domainCorrectedAnalysisPie" style="height:200px;"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12"><div class="table-subsection no-margin"><h4 class="vert-center">Company Names</h4></div></div></div>
+            <div class="col-md-6 col-xs-12 no-margin no-padding">
+                <div class="col-md-11" id="domainCorrectedAnalysis" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center">Company Name - Confidence</h4></div></div><div class="col-md-1"></div>
+                <div class="col-md-2 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:160px; width:57.5px;"></div></div>
+                <div id="cpnyNmAnChart" class="col-md-4 graph-centric no-padding" style="margin-top:20px;"></div>
+                <div class="col-md-6"><div id="cpnyNmAn" style="height:200px;"></div></div>
+            </div>
+            <div class="col-md-6">
+                <div style="margin-top:35px;">
+                    <div class="key" style="background:#289ea8;"></div>
+                    <p><b>High</b>: Company name was verified from the company website.  High confidence on full name match OR exact match by substring or acronym. </p>
+                    <div class="key" style="background:#ED8D34;"></div>
+                    <p><b>Medium</b>: Company name was verified from the company website.   Medium confidence on full name match OR fuzzy match of substring or acronym.</p>
+                    <div class="key" style="background:#ed4949;"></div>
+                    <p><b>Low</b>: Sub parts of company name or acronym was verified from the company website.  Company name has probably changed.</p>
+                    <div class="key" style="background:#6f7a79;"></div>
+                    <p><b>None</b>: No correlation of name on website to company name. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12 table-section"><h4 class="no-margin vert-center">Account Overview</h4></div></div>
+        <div class="col-md-6 col-xs-12 no-margin no-padding" style="height:300px;">
+            <div class="col-md-2 graph-centric vert-center" style="padding:0px,20px,20px,20px;"><div style="background:lightgrey; height:180px; width:57.5px;"></div></div>
+            <div class="col-md-9 graph-centric vert-center no-padding">
+                <table class="table">
+                    <tr>
+                        <th>Append</th>
+                        <th>Sample</th>
+                        <th>Filled</th>
+                        <th> </th>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#1985BC;"></div>LinkedIn</th>
+                        <td>11782</td>
+                        <td>0</td>
+                        <td>0%</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#3b5998;"></div>Facebook</th>
+                        <td>11782</td>
+                        <td>0</td>
+                        <td>0%</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#326ada;"></div>Twitter</th>
+                        <td>11782</td>
+                        <td>0</td>
+                        <td>0%</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#289ea8;"></div>Firmagraphics</th>
+                        <td>11782</td>
+                        <td>10320</td>
+                        <td>88%</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#20ad8c;"></div>Total Enhanced</th>
+                        <td>11782</td>
+                        <td>10320</td>
+                        <td>88%</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6 no-padding no-margin">
+            <div class="col-md-4 no-padding"><div id="linkedin" style="height:150px;"></div></div><div class="col-md-4 no-padding"><div id="facebook" style="height:150px;"></div></div><div class="col-md-4 no-padding"><div id="twitter" style="height:150px;"></div></div>
+            <div class="col-md-4 no-padding"><div id="firmagraphics" style="height:150px;"></div></div><div class="col-md-4 no-padding"><div id="totalSocial" style="height:150px;"></div></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12 table-section"><h4 class="no-margin vert-center">Contact Overview</h4></div></div>
+        <div class="col-md-6 col-xs-12 no-margin no-padding" style="height:300px;">
+            <div class="col-md-11" id="domainSample" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center">Connect</h4></div></div><div class="col-md-1"></div>
+            <div class="col-md-2 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:210px; width:57.5px;"></div></div>
+            <div class="col-md-9 graph-centric no-padding" style="margin-top:20px;">
+                <table class="table">
+                    <tr>
+                        <th>Append</th>
+                        <th>Sample</th>
+                        <th>Found</th>
+                        <th> </th>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#20ad8c;"></div>Emails</th>
+                        <td>11693</td>
+                        <td>10904</td>
+                        <td>93%</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#22287a;"></div>Phones</th>
+                        <td>11693</td>
+                        <td>10840</td>
+                        <td>93%</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#3b5998;"></div>Addresses</th>
+                        <td>11693</td>
+                        <td>10330</td>
+                        <td>88%</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#289ea8;"></div>Titles</th>
+                        <td>11693</td>
+                        <td>3262</td>
+                        <td>28%</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#20ad8c;"></div>Social</th>
+                        <td>11693</td>
+                        <td>7973</td>
+                        <td>68%</td>
+                    </tr>
+                    <tr>
+                        <th><div class="key" style="background:#20ad8c;"></div>Total Enhanced</th>
+                        <td>11693</td>
+                        <td>115</td>
+                        <td>99%</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6 no-padding no-margin">
+            <div class="col-md-4 no-padding"><div id="emails" style="height:150px;"></div></div><div class="col-md-4 no-padding"><div id="phones" style="height:150px;"></div></div><div class="col-md-4 no-padding"><div id="addresses" style="height:150px;"></div></div>
+            <div class="col-md-4 no-padding"><div id="titles" style="height:150px;"></div></div><div class="col-md-4 no-padding"><div id="social" style="height:150px;"></div></div><div class="col-md-4 no-padding"><div id="totalConnect" style="height:150px;"></div></div>
+        </div>
+        
+    </div>
+    <div class="container">
+        <div class="row" style="margin-top: 10px; margin-bottom: 10px;"><div class="col-md-12 table-section"><h4 class="no-margin vert-center">Expand Service</h4></div></div>
+        <div  id="webConChart" class="col-md-12 col-xs-12 no-margin no-padding" style="height:200px;">
+            <div class="col-md-1"></div>
+            <div class="col-md-1 graph-centric vert-center" style="padding:20px;"><div style="background:lightgrey; height:150px; width:57.5px;"></div></div>
+            <div class="col-md-7 graph-centric vert-center no-padding" style="margin-top:20px;">
+                    <table class="table">
+                        <tr>
+                            <th> </th>
+                            <th>Count</th>
+                            <th>Averages</th>
+                            <th> </th>
+                        </tr>
+                        <tr>
+                            <th>Unique Websites</th>
+                            <td>3262</td>
+                            <td> </td>
+                            <td> </td>
+                        </tr>
+                        <tr>
+                            <th>Websites with contacts</th>
+                            <td>2800</td>
+                            <td>86%</td>
+                            <td>Percent Filled</td>
+                        </tr>
+                        <tr>
+                            <th>Total Contacts</th>
+                            <td>31685</td>
+                            <td>11.3</td>
+                            <td>Contacts per company</td>
+                        </tr>
+                    </table>
+            </div>
+            <div class="col-md-3" margin-top:20px;" id="webConPie"></div>
+        </div>
+        <div class="col-md-5" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center"> Title Department Before</h4></div></div><div class="col-md-1"></div>
+        <div class="col-md-5" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center"> Title Level Before</h4></div></div><div class="col-md-1"></div>
+        <div class="col-md-6 col-xs-12 no-margin no-padding">
+            <div class="col-md-1 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:450px; width:37.5px;"></div></div>
+            <div id="titleCountChartBfr" class="col-md-5 graph-centric" style="margin-top:20px;"></div>
+            <div class="col-md-6" style="height:450px; margin-top:20px;"><div id="titleCountPieBfr" class="vert-center" style="height:450px"></div></div>
+        </div>
+        <div class="col-md-6 col-xs-12 no-margin no-padding">
+            <div class="col-md-1 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:450px; width:37.5px;"></div></div>
+            <div id="titleLevelChartBfr" class="col-md-5 graph-centric" style="margin-top:20px;"></div>
+            <div class="col-md-6" style="height:450px; margin-top:20px;"><div id="titleLevelPieBfr" class="vert-center" style="height:450px"></div></div>
+        </div>
+        <div class="col-md-5" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center"> Title Department After</h4></div></div><div class="col-md-1"></div>
+        <div class="col-md-5" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center"> Title Level After</h4></div></div><div class="col-md-1"></div>
+        <div class="col-md-6 col-xs-12 no-margin no-padding">
+            <div class="col-md-1 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:450px; width:37.5px;"></div></div>
+            <div id="titleCountChartAfr" class="col-md-5 graph-centric" style="margin-top:20px;"></div>
+            <div class="col-md-6" style="height:450px; margin-top:20px;"><div id="titleCountPieAfr" class="vert-center" style="height:450px" ></div></div>
+        </div>
+        <div class="col-md-6 col-xs-12 no-margin no-padding">
+            <div class="col-md-1 graph-centric" style="padding:20px;"><div style="background:lightgrey; height:450px; width:37.5px;"></div></div>
+            <div id="titleLevelChartAfr" class="col-md-5 graph-centric" style="margin-top:20px;"></div>
+            <div class="col-md-6" style="height:450px; margin-top:20px;"><div id="titleLevelPieAfr" class="vert-center" style="height:450px"></div></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 no-margin no-padding">
+                <div class="col-md-10" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center"> Title Level by Count</h4></div></div><div class="col-md-2"></div>
+                <div class="col-md-12" id="titleDeptCountGraph" style="margin-top:20px;"></div>
+            </div>
+            <div class="col-md-6 no-margin no-padding" >
+                <div class="col-md-10" style="padding-left:20px;"><div class="table-subsection no-margin"><h4 class="vert-center"> Title Department by Count</h4></div></div><div class="col-md-2"></div>
+                <div class="col-md-12" id="titleLevelCountGraph" style="margin-top:20px;"></div>
+            </div>
+        </div>
+    </div>  
+    <footer class="footer-custom">
+        <div class="container-fluid">
+            &copy; Ringlead, Inc.
+        </div>
+    </footer>
+
+        <script>
+
+            function getQueryVariable(variable) {
+                var query = window.location.search.substring(1);
+                var vars = query.split('&');
+                for (var i = 0; i < vars.length; i++) {
+                    var pair = vars[i].split('=');
+                    if (decodeURIComponent(pair[0]) == variable) {
+                        return decodeURIComponent(pair[1]);
+                    }
+                }
+                console.log('Query variable %s not found', variable);
+            }
+
+            function midPoint(coor1, coor2) {
+                return [(coor1[0] + coor2[0]) / 2, (coor1[1] + coor2[1]) / 2]
+            }
+
+            function pointDistance(coor1, coor2) {
+                return 10 < Math.sqrt(Math.pow(coor2[0] - coor1[0], 2) + Math.pow(coor2[1] - coor1[1], 2));
+            }
+
+            var key = function (d) { return d.data.label; };
+            var tableKey = function (d) { return d.label; }; 
+
+            var pie = d3.layout.pie()
+                .sort(null)
+                .value(function (d) {
+                    return d.value;
+                });
+
+            var standardSize = {
+                arc: {
+                    innerRadius: 0.575,
+                    outerRadius: 0.75
+                },
+                outerArc: {
+                    innerRadius: 0.825,
+                    outerRadius: 0.825
+                }
+            }
+
+            var Green;
+            var Teal;
+            var Blue;
+            var Orange;
+            var Red;
+            var Grey;
+
+            var standardColor = d3.scale.ordinal()
+                .domain(["Correct", "Usable", "Filled", "Supplied", "Corrected", "No Website", "Junk", "Duplicate", "Provided", "Blank", "Unusable", "Good", "Bad"])
+                .range(["#77d668", "#77d668", "#17c89e", "#289ea8", "#289ea8", "#6f7a79", "#6f7a79", "#ebae44", "#289ea8", "#6f7a79", "#6f7a79", "#77d668", "#ed4949"]);
+
+            /*-------------------------*/
+            /*-------DOMAIN DATA-------*/
+            /*-------------------------*/
+
+            var domainColor = d3.scale.ordinal()
+                .domain(["Correct", "Usable", "Filled", "Supplied", "Corrected", "No Website", "Junk", "Duplicate", "Provided", "Blank", "Unusable", "Good", "Bad"])
+                .range(["#77d668", "#77d668", "#17c89e", "#289ea8", "#289ea8", "#6f7a79", "#6f7a79", "#ebae44", "#289ea8", "#6f7a79", "#6f7a79", "#77d668", "#ed4949"]);
+            /*------------------------------*/
+            /*-------CORRECTED SAMPLE-------*/
+            /*------------------------------*/
+
+            var dmnSmplData = {
+                Supplied: 0,
+                Blank: 11782
+            }
+
+            var domainSampleData = [
+                { label: "Supplied", value: dmnSmplData.Supplied },
+                { label: "Blank", value: dmnSmplData.Blank }
+            ];
+
+            createSimpleTable(domainSampleData, "#domainSampleChart", domainColor);
+
+            createStandardPie(domainSampleData, "#domainSamplePie", domainColor, standardSize, "Provided", "#domainSampleChart");
+
+            /*---------------------------------------*/
+            /*-------CORRECTED SAMPLE ANALYSIS-------*/
+            /*---------------------------------------*/
+
+            var dmnSmplAnData = {
+                Good: 0,
+                Bad: 0,
+                Blank: 11782
+            }
+
+            var domainSampleAnalysisData = [
+                { label: "Good", value: dmnSmplAnData.Good },
+                { label: "Bad", value: dmnSmplAnData.Bad },
+                { label: "Blank", value: dmnSmplAnData.Blank }
+            ];
+
+            createSimpleTable(domainSampleAnalysisData, "#domainSampleAnalysisChart", domainColor);
+
+            createStandardPie(domainSampleAnalysisData, "#domainSampleAnalysisPie", domainColor, standardSize, "Analysis", "#domainSampleAnalysisChart");
+
+            /*------------------------------*/
+            /*-------CORRECTED DOMAIN-------*/
+            /*------------------------------*/
+
+            var dmnCorrData = {
+                Usable: 11741,
+                NoWebsite: 41
+            }
+
+            var domainCorrectedData = [
+                { label: "Usable", value: dmnCorrData.Usable },
+                { label: "No Website", value: dmnCorrData.NoWebsite }
+            ];
+
+            createSimpleTable(domainCorrectedData, "#domainCorrectedChart", domainColor);
+
+            createStandardPie(domainCorrectedData, "#domainCorrectedPie", domainColor, standardSize, "Corrected", "#domainCorrectedChart");
+
+            /*---------------------------------------*/
+            /*-------CORRECTED DOMAIN ANALYSIS-------*/
+            /*---------------------------------------*/
+
+            var dmnCorrAnData = {
+                Good: 0,
+                Filled: 10364,
+                Corrected: 1377,
+                NoWebsite: 41
+            }
+
+            var domainCorrectedAnalysisData = [
+                { label: "Good", value: dmnCorrAnData.Good },
+                { label: "Filled", value: dmnCorrAnData.Filled },
+                { label: "Corrected", value: dmnCorrAnData.Corrected },
+                { label: "No Website", value: dmnCorrAnData.NoWebsite }
+            ]
+
+            createSimpleTable(domainCorrectedAnalysisData, "#domainCorrectedAnalysisChart", domainColor);
+
+            createStandardPie(domainCorrectedAnalysisData, "#domainCorrectedAnalysisPie", domainColor, standardSize, "Analysis", "#domainCorrectedAnalysisChart");
+
+            /*--------------------------------------*/
+            /* ------- COMPANY NAME ANALYSIS -------*/
+            /*--------------------------------------*/
+
+            var cmpyNmData = {
+                High: 8180,
+                Medium: 1922,
+                Low: 1143,
+                None: 537
+
+            }
+
+            var accColor = d3.scale.ordinal()
+                .domain(["High", "Medium", "Low", "None"])
+                .range(["#289ea8", "#ED8D34", "#ed4949", "#6f7a79"]);
+
+            var cmpyNmAnData = [
+                { label: "High", value: cmpyNmData.High },
+                { label: "Medium", value: cmpyNmData.Medium },
+                { label: "Low", value: cmpyNmData.Low },
+                { label: "None", value: cmpyNmData.None },
+            ];
+
+            createSimpleTable(cmpyNmAnData, "#cpnyNmAnChart", accColor);
+
+            createStandardPie(cmpyNmAnData, "#cpnyNmAn", accColor, standardSize, "Confidence", "#cpnyNmAnChart");
+
+            /*-------------------------------*/
+            /*-------ACC AND CON DATA -------*/
+            /*-------------------------------*/
+
+            var accEnData = {
+                Sample: 11783,
+                Firmagraphics: 10320,
+                Linkedin: 0,
+                Facebook: 0,
+                Twitter: 0,
+                Total: 10321
+            }
+
+            var accSize = {
+                arc: {
+                    innerRadius: 0.575,
+                    outerRadius: 0.75
+                },
+                outerArc: {
+                    innerRadius: 0.85,
+                    outerRadius: 0.85
+                }
+            }
+
+            var accColor = d3.scale.ordinal()
+                .domain(["Blank", "Firmagraphics", "Linkedin", "Facebook", "Twitter", "Total Enhanced"])
+                .range(["#b5b5b5", "#289ea8", "#1985BC", "#3b5998", "#326ada", "#20ad8c"]);
+
+            /*------------------------------*/
+            /* ------- FIRMAGRAPHICS -------*/
+            /*------------------------------*/
+
+            
+
+            var firmagraphicsData = [
+                { label: "Firmagraphics", value: accEnData.Firmagraphics },
+                { label: "Blank", value: accEnData.Sample - accEnData.Firmagraphics }
+            ];
+
+            createIconPie(firmagraphicsData, "#firmagraphics", accColor, accSize, "fa-bar-chart", "2.35em", -18, -15);
+
+            /*-------------------------*/
+            /* ------- LINKEDIN -------*/
+            /*-------------------------*/
+
+            var linkedinData = [
+                { label: "Linkedin", value: accEnData.Linkedin },
+                { label: "Blank", value: accEnData.Sample - accEnData.Linkedin }
+            ];
+
+            createIconPie(linkedinData, "#linkedin", accColor, accSize, "fa-linkedin-square", "3em", -19, -19);
+
+            /*-------------------------*/
+            /* ------- FACEBOOK -------*/
+            /*-------------------------*/
+
+            var facebookData = [
+                { label: "Facebook", value: accEnData.Facebook },
+                { label: "Blank", value: accEnData.Sample - accEnData.Facebook }
+            ];
+
+            createIconPie(facebookData, "#facebook", accColor, accSize, "fa-facebook-square", "3em", -19, -19);
+
+            /*------------------------*/
+            /* ------- TWITTER -------*/
+            /*------------------------*/
+
+            var twitterData = [
+                { label: "Twitter", value: accEnData.Twitter },
+                { label: "Blank", value: accEnData.Sample - accEnData.Twitter }
+            ];
+
+            createIconPie(twitterData, "#twitter", accColor, accSize, "fa-twitter", "3em", -19, -19);
+
+            /*--------------------------------*/
+            /* ------- TOTAL SOCIAL -------*/
+            /*--------------------------------*/
+
+            var totalSocialData = [
+                { label: "Total Enhanced", value: accEnData.Total },
+                { label: "Blank", value: accEnData.Sample - accEnData.Total }
+            ];
+
+            createIconPie(totalSocialData, "#totalSocial", accColor, accSize, "fa-industry", "2.5em", -17, -17);
+
+            /*---------------------------------*/
+            /* ------- RECORD READINESS -------*/
+            /*---------------------------------*/
+
+            var rcrdRdy = {
+                Ready: 9290,
+                NotReady: 2492
+            }
+
+            var rcrdColor = d3.scale.ordinal()
+                .domain(["Ready", "Not Ready"])
+                .range(["#77d668", "#6f7a79"]);
+
+            var rcrdRdyData = [
+                { label: "Ready", value: rcrdRdy.Ready },
+                { label: "Not Ready", value: rcrdRdy.NotReady },
+            ];
+
+            createSimpleTable(rcrdRdyData, "#rcrdRdyChart", rcrdColor);
+
+            createStandardPie(rcrdRdyData, "#rcrdRdyPie", rcrdColor, standardSize, "Current", "#rcrdRdyChart");
+
+            /*---------------------------------*/
+            /* ------- RECORD POTENTIAL -------*/
+            /*---------------------------------*/
+
+            var rcrdPot = {
+                Ready: 11699,
+                NotReady: 83
+            }
+
+            var rcrdColor = d3.scale.ordinal()
+                .domain(["Ready", "Not Ready"])
+                .range(["#77d668", "#6f7a79"]);
+
+            var rcrdPotData = [
+                { label: "Ready", value: rcrdPot.Ready },
+                { label: "Not Ready", value: rcrdPot.NotReady },
+            ];
+
+            createSimpleTable(rcrdPotData, "#rcrdPotChart", rcrdColor);
+
+            createStandardPie(rcrdPotData, "#rcrdPotPie", rcrdColor, standardSize, "Potential", "#rcrdPotChart");
+
+            /*---------------------------------*/
+            /*------- FOUNDATION BEFORE -------*/
+            /*---------------------------------*/
+
+            var fndBfr = {
+                Segmentable: 0,
+                Prospectable: 9291,
+                Researchable: 2491,
+                Unusable: 0
+            }
+
+            var fndColor = d3.scale.ordinal()
+                .domain(["Segmentable", "Prospectable", "Researchable", "Unusable", "Remove"])
+                .range(["#77d668", "#289ea8", "#ED8D34", "#6f7a79", "#6f7a79"]);
+
+            var fndBfrData = [
+                { label: "Segmentable", value: fndBfr.Segmentable },
+                { label: "Prospectable", value: fndBfr.Prospectable },
+                { label: "Researchable", value: fndBfr.Researchable },
+                { label: "Unusable", value: fndBfr.Unusable },
+            ];
+
+            createSimpleTable(fndBfrData, "#fndBfrChart", fndColor);
+
+            createStandardPie(fndBfrData, "#fndBfrPie", fndColor, standardSize, "Before", "#fndBfrChart");
+
+            /*--------------------------------*/
+            /*------- FOUNDATION AFTER -------*/
+            /*--------------------------------*/
+
+            var fndAfr = {
+                Segmentable: 10320,
+                Prospectable: 1405,
+                Researchable: 0,
+                Remove: 51
+            }
+
+            var fndAfrData = [
+                { label: "Segmentable", value: fndAfr.Segmentable },
+                { label: "Prospectable", value: fndAfr.Prospectable },
+                { label: "Researchable", value: fndAfr.Researchable },
+                { label: "Remove", value: fndAfr.Remove},
+            ];
+
+            createSimpleTable(fndAfrData, "#fndAfrChart", fndColor);
+
+            createStandardPie(fndAfrData, "#fndAfrPie", fndColor, standardSize, "After", "#fndAfrChart");
+
+            /*--------------------------*/
+            /*-------CONTACT DATA-------*/
+            /*--------------------------*/
+
+            var cnctData = {
+                Sample: 11693,
+                Emails: 10904,
+                Phones: 10840,
+                Addresses: 10330,
+                Titles: 3262,
+                Social: 7973,
+                TotalEff: 11576
+            }
+
+            var conColor = d3.scale.ordinal()
+                .domain(["Blank", "Emails", "Phones", "Addresses", "Titles", "Social", "Total Enhanced"])
+                .range(["#b5b5b5", "#289ea8", "#22287a", "#3b5998", "#326ada", "#20ad8c", "#20ad8c"]);
+
+            /*--------------------*/
+            /*-------EMAILS-------*/
+            /*--------------------*/
+
+            var emailsData = [
+                { label: "Emails", value: cnctData.Emails },
+                { label: "Blank", value: cnctData.Sample - cnctData.Emails }
+            ];
+
+            createIconPie(emailsData, "#emails", conColor, accSize, "fa-envelope", "2.35em", -17, -17);
+
+            /*--------------------*/
+            /*-------PHONES-------*/
+            /*--------------------*/
+
+            var phonesData = [
+                { label: "Phones", value: cnctData.Phones },
+                { label: "Blank", value: cnctData.Sample - cnctData.Phones }
+            ];
+
+            createIconPie(phonesData, "#phones", conColor, accSize, "fa-phone", "2.9em", -16, -18);
+
+            /*-----------------------*/
+            /*--------ADDRESSES------*/
+            /*-----------------------*/
+
+            var addressesData = [
+                { label: "Addresses", value: cnctData.Addresses },
+                { label: "Blank", value: cnctData.Sample - cnctData.Addresses }
+            ];
+
+            createIconPie(addressesData, "#addresses", conColor, accSize, "fa-map-marker", "3.3em", -13, -21);
+
+            /*--------------------*/
+            /*--------TITLES------*/
+            /*--------------------*/
+
+            var titlesData = [
+                { label: "Titles", value: cnctData.Titles },
+                { label: "Blank", value: cnctData.Sample - cnctData.Titles }
+            ];
+
+            createIconPie(titlesData, "#titles", conColor, accSize, "fa-briefcase", "2.9em", -20, -18);
+
+            /*--------------------*/
+            /*--------SOCIAL------*/
+            /*--------------------*/
+
+            var socialData = [
+                { label: "Social", value: cnctData.Social },
+                { label: "Blank", value: cnctData.Sample - cnctData.Social }
+            ];
+
+            createIconPie(socialData, "#social", conColor, accSize, "fa-commenting", "2.7em", -18, -20);
+
+            /*---------------------------*/
+            /*--------TOTAL CONNECT------*/
+            /*---------------------------*/
+
+            var totalConnData = [
+                { label: "Total Enhanced", value: cnctData.TotalEff },
+                { label: "Blank", value: cnctData.Sample - cnctData.TotalEff }
+            ];
+
+            createIconPie(totalConnData, "#totalConnect", accColor, accSize, "fa-users", "2.5em", -18, -16);
+
+            /*------------------------------*/
+            /*--------WEBSITE CONTACTS------*/
+            /*------------------------------*/
+            
+            var webConColor = d3.scale.ordinal()
+                .domain(["Filled", "Blank"])
+                .range(["#289ea8", "#b5b5b5"]);
+
+            var webConDataObj = {
+                Total: 3262,
+                Filled: 2800
+            }
+
+            var webConData = [
+                { label: "Filled", value: webConDataObj.Filled },
+                { label: "Blank", value: webConDataObj.Total - webConDataObj.Filled }
+            ];
+
+            createStandardPie(webConData, "#webConPie", webConColor, standardSize, "", "#webConChart");
+
+            /*---------------------------*/
+            /*-----TITLE DEPT BEFORE-----*/
+            /*---------------------------*/
+
+
+            var titleCountColor = d3.scale.ordinal()
+                .domain(["Sales", "Marketing", "Finance", "IT", "Legal", "Admin", "Other", "Communications", "Developer", "Customer Service", "Exec", "Human Resources", "Operations", "PR", "Strategy", "Content", "Medical", "Science", "Training", "Government", "Consultant"])
+                .range(["#98abc5", "#289ea8", "#7b6888", "#ed4949", "#77d668", "#6B486B", "#ff8c00", "#17c89e", "#f2ce3e", "#6f7a79"]);
+
+            var titleCountDataBfrObj = {
+                Exec: 1022,
+                Sales: 319,
+                Marketing: 1332,
+                Finance: 1148,
+                IT: 3177,
+                Legal: 130,
+                Admin: 36,
+                Communications: 129,
+                Developer: 16,
+                CustomerService: 296,
+                HumanResources: 65,
+                Operations: 242,
+                PR: 51,
+                Strategy: 22,
+                Other: 3797,
+            }
+
+            var titleCountDataBfr = [
+                { label: "Exec", value: titleCountDataBfrObj.Exec },
+                { label: "Sales", value: titleCountDataBfrObj.Sales },
+                { label: "Legal", value: titleCountDataBfrObj.Legal },
+                { label: "Marketing", value: titleCountDataBfrObj.Marketing },
+                { label: "Finance", value: titleCountDataBfrObj.Finance },
+                { label: "Admin", value: titleCountDataBfrObj.Admin },
+                { label: "Human Resources", value: titleCountDataBfrObj.HumanResources },
+                { label: "Operations", value: titleCountDataBfrObj.Operations },
+                { label: "Strategy", value: titleCountDataBfrObj.Strategy },
+                { label: "Customer Service", value: titleCountDataBfrObj.CustomerService },
+                { label: "IT", value: titleCountDataBfrObj.IT },
+                { label: "Developer", value: titleCountDataBfrObj.Developer },
+                { label: "Communications", value: titleCountDataBfrObj.Communications },
+                { label: "PR", value: titleCountDataBfrObj.PR },
+                { label: "Other", value: titleCountDataBfrObj.Other }
+            ];
+
+            createSimpleTable(titleCountDataBfr, "#titleCountChartBfr", titleCountColor);
+
+            createStandardPie(titleCountDataBfr, "#titleCountPieBfr", titleCountColor, standardSize, "Department");
+
+            /*----------------------------*/
+            /*-----TITLE LEVEL BEFORE-----*/
+            /*----------------------------*/
+
+            var titleLevelColor = d3.scale.ordinal()
+                .domain(["Board", "SVP/EVP", "President", "VP", "Director", "Manager", "Staff", "Admin", "Other"])
+                .range(["#98abc5", "#289ea8", "#7b6888", "#ed4949", "#77d668", "#6B486B", "#ff8c00", "#17c89e", "#6f7a79"]);
+
+            var titleLevelDataBfrObj = {
+                Board: 1262,
+                SVP: 139,
+                President: 1184,
+                VP: 271,
+                Director: 2686,
+                Manager: 5872,
+                Staff: 2,
+                Admin: 1,
+                Other: 0
+            }
+
+            var titleLevelDataBfr = [
+                { label: "Board", value: titleLevelDataBfrObj.Board },
+                { label: "SVP/EVP", value: titleLevelDataBfrObj.SVP },
+                { label: "President", value: titleLevelDataBfrObj.President },
+                { label: "VP", value: titleLevelDataBfrObj.VP },
+                { label: "Director", value: titleLevelDataBfrObj.Director },
+                { label: "Manager", value: titleLevelDataBfrObj.Manager },
+                { label: "Staff", value: titleLevelDataBfrObj.Staff },
+                { label: "Admin", value: titleLevelDataBfrObj.Admin },
+                { label: "Other", value: titleLevelDataBfrObj.Other },
+
+
+            ];
+
+            createSimpleTable(titleLevelDataBfr, "#titleLevelChartBfr", titleLevelColor);
+
+            createStandardPie(titleLevelDataBfr, "#titleLevelPieBfr", titleLevelColor, standardSize, "Level");
+
+            /*---------------------------*/
+            /*-----TITLE DEPT AFTER------*/
+            /*---------------------------*/
+
+            var titleCountDataAfrObj = {
+                Exec: 10396,
+                Sales: 2532,
+                Marketing: 3210,
+                Finance: 1473,
+                IT: 615,
+                Legal: 236,
+                Admin: 522,
+                Communications: 237,
+                Developer: 18,
+                CustomerService: 479,
+                HumanResources: 367,
+                Operations: 2485,
+                PR: 158,
+                Strategy: 71,
+                Other: 8886,
+            }
+
+            var titleCountDataAfr = [
+                { label: "Exec", value: titleCountDataAfrObj.Exec },
+                { label: "Sales", value: titleCountDataAfrObj.Sales },
+                { label: "Legal", value: titleCountDataAfrObj.Legal },
+                { label: "Marketing", value: titleCountDataAfrObj.Marketing },
+                { label: "Finance", value: titleCountDataAfrObj.Finance },
+                { label: "Admin", value: titleCountDataAfrObj.Admin },
+                { label: "Human Resources", value: titleCountDataAfrObj.HumanResources },
+                { label: "Operations", value: titleCountDataAfrObj.Operations },
+                { label: "Strategy", value: titleCountDataAfrObj.Strategy },
+                { label: "Customer Service", value: titleCountDataAfrObj.CustomerService },
+                { label: "IT", value: titleCountDataAfrObj.IT },
+                { label: "Developer", value: titleCountDataAfrObj.Developer },
+                { label: "Communications", value: titleCountDataAfrObj.Communications },
+                { label: "PR", value: titleCountDataAfrObj.PR },
+                { label: "Other", value: titleCountDataAfrObj.Other }
+            ];
+
+            createSimpleTable(titleCountDataAfr, "#titleCountChartAfr", titleCountColor);
+
+            createStandardPie(titleCountDataAfr, "#titleCountPieAfr", titleCountColor, standardSize, "Department");
+
+            barComparison("#titleDeptCountGraph", "csv/34d7df16-3c55-477b-b182-9bc525c87e6eAber/titleDepartment.csv", "count");
+
+            /*----------------------------*/
+            /*-----TITLE LEVEL AFTER-----*/
+            /*----------------------------*/
+
+            var titleLevelDataAfrObj = {
+                Board: 11478,
+                SVP: 1073,
+                President: 143,
+                VP: 1687,
+                Director: 1643,
+                Manager: 13513,
+                Staff: 212,
+                Admin: 15,
+                Other: 40
+            }
+
+            var titleLevelDataAfr = [
+                { label: "Board", value: titleLevelDataAfrObj.Board },
+                { label: "SVP/EVP", value: titleLevelDataAfrObj.SVP },
+                { label: "President", value: titleLevelDataAfrObj.President },
+                { label: "VP", value: titleLevelDataAfrObj.VP },
+                { label: "Director", value: titleLevelDataAfrObj.Director },
+                { label: "Manager", value: titleLevelDataAfrObj.Manager },
+                { label: "Staff", value: titleLevelDataAfrObj.Staff },
+                { label: "Admin", value: titleLevelDataAfrObj.Admin },
+                { label: "Other", value: titleLevelDataAfrObj.Other },
+            ];
+
+            createSimpleTable(titleLevelDataAfr, "#titleLevelChartAfr", titleLevelColor);
+
+            createStandardPie(titleLevelDataAfr, "#titleLevelPieAfr", titleLevelColor, standardSize, "Level");
+
+
+            barComparison("#titleLevelCountGraph", "csv/34d7df16-3c55-477b-b182-9bc525c87e6eAber/titleLevel.csv", "count");
+
+            /*------------------------------*/
+            /*--------ICON DONUT CHART------*/
+            /*------------------------------*/
+           
+            function createIconPie(data, target, color, size, icon, iconSize, x, y, heightMatch) {
+
+                var debug = false;
+
+                if (target === "#webConPie") {
+                    debug = true;
+                }
+
+                if (heightMatch !== null) {
+                    $(target).css("height", $(heightMatch).height());
+                } else {
+                    $(target).css("height", $(target).width());
+                }
+
+                var radius = Math.min($(target).width(), $(target).height()) / 2;
+
+                var arc = d3.svg.arc()
+                .outerRadius(radius * size.arc.outerRadius)
+                .innerRadius(radius * size.arc.innerRadius);
+
+                var outerArc = d3.svg.arc()
+                .outerRadius(radius * size.outerArc.outerRadius)
+                .innerRadius(radius * size.outerArc.innerRadius);
+
+                var element = d3.select(target)
+                .append("svg")
+                .append("g");
+
+                element.append("g")
+                    .attr("class", "slices");
+                element.append("g")
+                    .attr("class", "labels");
+                element.append("g")
+                    .attr("class", "title");
+                element.append("g")
+                    .attr("class", "icon");
+                element
+                    .attr("transform", "translate(" + $(target).width() / 2 + "," + $(target).height() / 2 + ")");
+
+                element.select(".icon")
+                    .append('svg:foreignObject')
+                    .attr("width", 2)
+                    .attr("height", 2)
+                    .html('<i class="fa ' + icon + '" style="color:grey; font-size:' + iconSize + ';"></i>')
+                    .attr("transform", "translate(" + x + "," + y + ")");
+
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = element.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return color(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition()
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return arc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = element.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".28em")
+                    .text(function (d) {
+                        if (d.data.label !== "Blank") {
+                            if (d.data.value === 0) {
+                                return "";
+                            } else {
+                                return Math.round((d.data.value / denominator) * 100) + "%";
+                            }
+                        } else {
+                            return "";
+                        }
+
+                    })
+                    .style("font-size", ".85em");
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = outerArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            /*--------------------------------*/
+            /*------STANDARD DONUT CHART------*/
+            /*--------------------------------*/
+
+            function createStandardPie(data, target, color, size, title, heightMatch) {
+
+                var debug = false;
+
+                if (target === "#webConPie") { debug = true; }
+
+                if (heightMatch) {
+                    $(target).css("height", $(heightMatch).height());
+                } else {
+                    $(target).css("height", $(target).width());
+                }
+
+                var radius = Math.min($(target).width(), $(target).height()) / 2;
+
+                var arc = d3.svg.arc()
+                .outerRadius(radius * size.arc.outerRadius)
+                .innerRadius(radius * size.arc.innerRadius);
+
+                var outerArc = d3.svg.arc()
+                .outerRadius(radius * size.outerArc.outerRadius)
+                .innerRadius(radius * size.outerArc.innerRadius);
+
+                var element = d3.select(target)
+                .append("svg")
+                .append("g");
+
+                element.append("g")
+                    .attr("class", "slices");
+                element.append("g")
+                    .attr("class", "labels");
+                element.append("g")
+                    .attr("class", "title");
+                element
+                    .attr("transform", "translate(" + $(target).width() / 2 + "," + $(target).height() / 2 + ")");
+
+                element.select(".title")
+                .append("text")
+                .text(title)
+                .attr("text-anchor", "middle")
+                .attr("fill", "#5f5f5f")
+                .attr("transform", "translate(" + 0 + "," + 7 + ")")
+                .style("font-size", "20px")
+                .style("font-family", "helvetica");
+
+                var denominator = 0;
+
+                for (i = 0; i < data.length; i++) {
+                    denominator = denominator + data[i].value;
+                }
+
+                /* ------- PIE SLICES -------*/
+                var slice = element.select(".slices").selectAll("path.slice")
+                    .data(pie(data), key);
+
+                slice.enter()
+                    .insert("path")
+                    .style("fill", function (d) { return color(d.data.label); })
+                    .attr("class", "slice");
+
+                slice
+                    .transition().duration(1000)
+                    .attrTween("d", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            return arc(interpolate(t));
+                        };
+                    })
+
+                slice.exit()
+                    .remove();
+
+                /* ------- TEXT LABELS -------*/
+                var text = element.select(".labels").selectAll("text")
+                    .data(pie(data), key);
+
+                text.enter()
+                    .append("text")
+                    .attr("dy", ".35em")
+                    .text(function (d) {
+                        if (d.data.label !== "Blank") {
+                            if (d.data.value === 0) {
+                                return "";
+                            } else if (Math.round((d.data.value / denominator) * 100) < 1) {
+                                return "";
+                            } else {
+                                return Math.round((d.data.value / denominator) * 100) + "%";
+                            }
+                        } else {
+                            return "";
+                        }
+
+                    })
+                    .style("font-size", ".8em");
+
+                function midAngle(d) {
+                    return d.startAngle + (d.endAngle - d.startAngle) / 2;
+                }
+
+                text.transition().duration(1000)
+                    .attrTween("transform", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+
+                            var d2 = interpolate(t);
+                            var pos = outerArc.centroid(d2);
+                            return "translate(" + pos + ")";
+                        };
+                    })
+                    .styleTween("text-anchor", function (d) {
+                        this._current = this._current || d;
+                        var interpolate = d3.interpolate(this._current, d);
+                        this._current = interpolate(0);
+                        return function (t) {
+                            var d2 = interpolate(t);
+                            return midAngle(d2) < Math.PI ? "start" : "end";
+                        };
+                    });
+
+                text.exit()
+                    .remove();
+
+            };
+
+            /*------------------------*/
+            /*------CREATE TABLE------*/
+            /*------------------------*/
+
+            function createSimpleTable(data, target, color) {
+                
+
+                var table = d3.select(target)
+                    .append("table")
+                    .attr("class", "table no-padding");
+                    
+                var tbody = table.append("tbody");
+
+                for (var i = 0; i < data.length; i++) {
+                    var row = tbody.append("tr");
+
+                        row
+                        .append("th")
+                        .html(data[i].label)
+                        .append("div")
+                        .attr("class", "key")
+                        .style("background", color(data[i].label));
+                        
+                        row
+                        .append("td")
+                        .html(data[i].value);
+
+                }
+            }
+
+            
+
+            /*--------------------------------------*/
+            /*------COUNT COMPARISON BAR GRAPH------*/
+            /*--------------------------------------*/
+
+            function barComparison(target, data, format) {
+
+                var margin = { top: 20, right: 30, bottom: 30, left: 40 },
+                    width = $(target).width() - margin.left - margin.right,
+                    height = 300 - margin.top - margin.bottom,
+                    formatPercent = d3.format("%");
+
+                $(target).css("height", "auto");
+
+                var x0 = d3.scale.ordinal()
+                    .rangeRoundBands([0, width], .1);
+
+                var x1 = d3.scale.ordinal();
+
+                var y = d3.scale.linear()
+                    .range([height, 0]);
+
+                var color = d3.scale.ordinal()
+                    .range(["#ed4949", "#289ea8"]);
+
+                var xAxis = d3.svg.axis()
+                    .scale(x0)
+                    .orient("bottom");
+
+                var yAxis = d3.svg.axis()
+                    .scale(y)
+                    .orient("left")
+                    .ticks(5)
+                    .tickFormat(function (d) {
+                        if (format === "count") {
+                            return d;
+                        } else if (format === "percent") {
+                            return formatPercent(d / 100);
+                        }   
+                    });
+
+            var svg = d3.select(target).append("svg")
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom)
+                    .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                d3.csv(data, function (error, data) {
+                    if (error) throw error;
+
+                    var providedDenom = 0;
+
+                    var enhancedDenom = 0;
+
+                    for (var i = 0; i < data.length; i++) {
+                        providedDenom = providedDenom + parseInt(data[i].Provided);
+                        enhancedDenom = enhancedDenom + parseInt(data[i].Enhanced);
+                    }
+
+                    var ageNames = d3.keys(data[0]).filter(function (key) { return key !== "State"; });
+
+                    data.forEach(function (d) {
+                        if (format === "percent") {
+                            d.ages = ageNames.map(function (name) { return { name: name, value: name === "Provided" ? Math.round((+d[name] / providedDenom) * 100) : Math.round((+d[name] / enhancedDenom) * 100) }; });
+                        } else if (format === "count") {
+                            d.ages = ageNames.map(function (name) { return { name: name, value: +d[name] }; });
+                        }
+                    });
+
+                    x0.domain(data.map(function (d) { return d.State; }));
+                    x1.domain(ageNames).rangeRoundBands([0, x0.rangeBand()]);
+                    y.domain([0, d3.max(data, function (d) { return d3.max(d.ages, function (d) { return d.value; }); })]);
+
+                    svg.append("g")
+                        .attr("class", "x axis")
+                        .attr("transform", "translate(0," + height + ")")
+                        .call(xAxis)
+                        .attr("font-size", ".8em");
+
+                    if(format === "count"){
+                        svg.append("g")
+                        .attr("class", "y axis")
+                        .call(yAxis)
+                        .attr("font-size", ".6em")
+                        .attr("transform", "translate(-7,0)")
+                      .append("text")
+                        .attr("transform", "rotate(-90)")
+                        .attr("y", 8)
+                        .attr("dy", ".2em")
+                        .style("text-anchor", "end")
+                        .text("Total Count")
+                        .attr("font-size", "1.1em");
+                    } else if (format = "percent") {
+                        svg.append("g")
+                        .attr("class", "y axis")
+                        .call(yAxis)
+                        .attr("font-size", ".6em")
+                        .attr("transform", "translate(-7,0)")
+                      .append("text")
+                        .attr("transform", "rotate(-90)")
+                        .attr("y", 8)
+                        .attr("dy", ".2em")
+                        .style("text-anchor", "end")
+                        .text("Adjusted Percent")
+                        .attr("font-size", "1.1em");
+                    }
+                    
+
+                    var state = svg.selectAll(".state")
+                        .data(data)
+                      .enter().append("g")
+                        .attr("class", "state")
+                        .attr("transform", function (d) { return "translate(" + x0(d.State) + ",0)"; });
+
+                    state.selectAll("rect")
+                        .data(function (d) { return d.ages; })
+                      .enter().append("rect")
+                        .attr("width", x1.rangeBand())
+                        .attr("x", function (d) { return x1(d.name); })
+                        .attr("y", function (d) { return y(d.value); })
+                        .attr("height", function (d) { return height - y(d.value); })
+                        .style("fill", function (d) { return color(d.name); });
+
+                    var legend = svg.selectAll(".legend")
+                        .data(ageNames.slice())
+                      .enter().append("g")
+                        .attr("class", "legend")
+                        .attr("transform", function (d, i) { return "translate(0," + i * 12 + ")"; });
+
+                    legend.append("rect")
+                        .attr("x", width - 10)
+                        .attr("width", 10)
+                        .attr("height", 10)
+                        .style("fill", color);
+
+                    legend.append("text")
+                        .attr("x", width - 13)
+                        .attr("y", 5)
+                        .attr("dy", ".35em")
+                        .style("text-anchor", "end")
+                        .text(function (d) { return d; })
+                        .style("font-size", ".7em");
+
+                });
+            }
+
+        </script>
+
+
+
+</body>
+</html>
